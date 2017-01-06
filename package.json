@@ -1,0 +1,11 @@
+{
+  "name": "stavis",
+  "version": "1.0.0",
+  "description": "A Visual Analytics tool based on React, React-router,redux,redux-saga",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EvanGu\u001b[D\u001b[D G\u001b[2~u",
+  "license": "ISC"
+}
