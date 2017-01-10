@@ -1,16 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import Helmet from 'react-helmet';
-import MapDiv from 'components/map';
 
-class Container extends Component {
+class MapDiv extends Component {
+    static propTypes = {
+        className: PropTypes.string,
+    };
 
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
+    }
 
-	}
+    componentDidMount() {
+    	this.initialMap();
+    }
 
-	initialMap() {
+    initialMap() {
 		const opacity = 0.6;
 		const map = new  ol.Map({
 			renderer:('webgl'),
@@ -138,15 +141,11 @@ class Container extends Component {
 		});
 	}
 
-	render() {
-		return (
-			<div>
-				<Helmet title="Visual Analytics For Movement"/>
-				<h>Hello World</h>
-				<MapDiv />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div id="map"></div>
+        );
+    }
 }
 
-export default Container;
+export default MapDiv;

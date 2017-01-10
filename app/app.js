@@ -9,6 +9,7 @@ import 'babel-polyfill';
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import Container from 'container';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
     render() {
         return (
             <div>
-            	<h>Hello World</h>
+                <Container />
             </div>
         );
     }
