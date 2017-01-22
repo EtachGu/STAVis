@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Helmet from 'react-helmet';
 import MapDiv from 'components/map';
 
+import styles from './styles.css';
+
 class Container extends Component {
 
 	constructor(props) {
@@ -141,9 +143,9 @@ class Container extends Component {
 	render() {
 		return (
 			<div>
-				<Helmet title="Visual Analytics For Movement"/>
+				<Helmet title="Visual Analytics For Movement" />
 				<h>Hello World</h>
-				<MapDiv />
+				<MapDiv className={styles.mapdiv} />
 			</div>
 		);
 	}

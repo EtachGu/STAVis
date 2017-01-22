@@ -9,7 +9,7 @@ import 'babel-polyfill';
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Container from 'container';
+import Container from 'containers';
 
 class App extends Component {
 
