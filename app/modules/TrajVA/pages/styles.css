@@ -1,18 +1,11 @@
-.left {
-	min-width: 200px;
-	margin-right: 10px;
-	width: 20%;
-	height: 100%;
+.header {
+	background: rgb(60,141,200);
+	height: 30px;
+	line-height: 30px;
 }
-.center {
-	width: 60%;
-	height: 100%;
-	margin-right: 200px;
-	margin-left: 200px;
+.content {
+	background: rgb(255,255,255);
 }
-.right {
-	min-width: 200px;
-	float: right;
-	width: 20%;
-	height: 100%;
+.sider {
+	background: rgb(255,255,255);
 }

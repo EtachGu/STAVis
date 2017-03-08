@@ -2,6 +2,15 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+// import components
+import { Input, Icon, Collapse }  from 'antd';
+
+// css styles
+import 'antd/dist/antd.css';
+
+const Panel = Collapse.Panel;
+
+
 class ControlPanel extends Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -11,9 +20,27 @@ class ControlPanel extends Component {
     super(props);
   }
 
+  callback = (key) => {
+    console.log(key);
+  }
+
   render() {
+    const text = "control text"
     return (
-      <div></div>
+      <div>
+        <Input prefix={<Icon type="user" />} />
+        <Collapse defaultActiveKey={['1']} onChange={this.callback}>
+          <Panel header="This is panel header 1" key="1">
+            <p>{text}</p>
+          </Panel>
+          <Panel header="This is panel header 2" key="2">
+            <p>{text}</p>
+          </Panel>
+          <Panel header="This is panel header 3" key="3">
+            <p>{text}</p>
+          </Panel>
+        </Collapse>
+      </div>
     );
   }
 }
@@ -31,6 +58,5 @@ export function mapDispatchToProps(dispatch) {
     changeRoute: (url) => dispatch(push(url)),
   };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
