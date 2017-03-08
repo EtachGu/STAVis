@@ -2,6 +2,13 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+// componenets
+import { Button, Icon } from 'antd';
+
+// CSS
+import 'antd/dist/antd.css';
+import styles from './styles.css';
+
 class TimeView extends Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -13,7 +20,9 @@ class TimeView extends Component {
 
   render() {
     return (
-      <div></div>
+      <div className={styles.timeview}>
+        <Button shape="circle" icon="play-circle" />
+      </div>
     );
   }
 }

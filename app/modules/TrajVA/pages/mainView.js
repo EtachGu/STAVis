@@ -9,6 +9,7 @@ import GraphView from '../components/GraphView';
 import MapView from '../components/MapView';
 import TimeView from '../components/TimeView';
 import TaskPanel from '../components/TaskPanel';
+import TaskSteps from '../components/TaskPanel/TaskSteps';
 
 // Import Actions
 import { addTaxiOD, addTaxiODRequest, fetchTaxiODs, fetchTaxiOD } from '../TrajVAActions';
@@ -29,22 +30,25 @@ class MainView extends Component {
 
 	render() {
 		return (
-			<Layout >
-				<Header className={styles.header}>header</Header>
+			<Layout className={styles.mainview} >
+				<Sider className={styles.content}>
+					<TaskPanel />
+					<ControlPanel />
+				</Sider>
 				<Layout className={styles.content} >
-					<Sider className={styles.content}>
-						<TaskPanel />
-						<ControlPanel />
-					</Sider>
+					<Header className={styles.header}>
+						<TaskSteps></TaskSteps>
+					</Header>
 					<Content className={styles.content}>
 						<MapView />
-						<TimeView />
 					</Content>
-					<Sider className={styles.content}>
-						<GraphView />
-					</Sider>
+					<Footer>
+						<TimeView />
+					</Footer>
 				</Layout>
-				<Footer>footer</Footer>
+				<div className={styles['sider-right']}>
+					<GraphView />
+				</div>
 			</Layout>
 		);
 	}

@@ -1,11 +1,23 @@
+.mainview {
+	overflow: hidden;
+}
 .header {
-	background: rgb(60,141,200);
-	height: 30px;
-	line-height: 30px;
+	background: rgb(255,255,255);
+	height: 50px;
+	line-height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .content {
 	background: rgb(255,255,255);
 }
 .sider {
 	background: rgb(255,255,255);
+}
+
+.sider-right {
+	background: rgb(255,255,255);
+	width: 400px;
 }

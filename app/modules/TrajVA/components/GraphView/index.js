@@ -2,6 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+// components
+import BarCharts from './components/BarCharts';
+
+// css
+import styles from './styles.css';
+
 class GraphView extends Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -12,8 +18,12 @@ class GraphView extends Component {
   }
 
   render() {
+    const barWidth = 300;
+    const barHeight = 300;
     return (
-      <div></div>
+      <div>
+        <BarCharts className={styles.barcharts} width={barWidth} height={barHeight} />
+      </div>
     );
   }
 }

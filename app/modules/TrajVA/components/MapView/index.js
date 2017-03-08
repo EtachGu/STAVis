@@ -148,8 +148,6 @@ class MapView extends Component {
   render() {
     return (
       <div>
-        <Helmet title="Visual Analytics For Movement" />
-        <h>Hello World</h>
         <MapDiv className={styles.mapdiv} />
       </div>
     );

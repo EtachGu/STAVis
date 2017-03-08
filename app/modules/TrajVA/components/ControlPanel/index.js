@@ -46,7 +46,7 @@ class ControlPanel extends Component {
 }
 
 ControlPanel.propTypes = {
-  tt: PropTypes.func.isRequired,
+  tt: PropTypes.func,
 };
 
 // Retrieve data from store as props

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 // Import Components
 import { Tree } from 'antd';
-
+import taskstep from './TaskSteps';
 // CSS
 import 'antd/dist/antd.css';
 
@@ -44,7 +44,7 @@ class TaskPanel extends Component {
 }
 
 TaskPanel.propTypes = {
-  ss: PropTypes.func.isRequired,
+  ss: PropTypes.func,
 };
 
 // Retrieve data from store as props
@@ -56,6 +56,5 @@ export function mapDispatchToProps(dispatch) {
     changeRoute: (url) => dispatch(push(url)),
   };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskPanel);

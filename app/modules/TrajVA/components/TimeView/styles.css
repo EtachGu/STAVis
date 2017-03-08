@@ -1,0 +1,10 @@
+.timeview {
+	position: absolute;
+	height: 250px;
+	width: 1000px;
+	left:200px;
+  	bottom: 0px;
+  	z-index: 100px;
+  	background: rgb(255,255,255);
+  	opacity:0.5;
+}
