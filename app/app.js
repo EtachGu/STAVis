@@ -3,28 +3,26 @@
  *
  * 整个应用的总入口
  */
-
+// 引入第三方控件
 // 让redux-saga支持es6语法包
 import 'babel-polyfill';
-
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Container from 'containers';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
 
-class App extends Component {
+import configureStore from './store';
+import routes from './routes';
 
-    constructor(props) {
-        super(props);
-    }
+// 创建带history的redux store，让store和history结合在一起的一部分。
+// 使用react-router提供的browserHistory 。
+const store = configureStore();
 
-    render() {
-        return (
-            <div>
-                <Container />
-            </div>
-        );
-    }
-}
-
-ReactDOM.render(<App/>,document.getElementById('app'));
-
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={browserHistory}>
+          {routes}
+        </Router>
+    </Provider>,
+    document.getElementById('app')
+);

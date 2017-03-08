@@ -1,0 +1,18 @@
+.left {
+	min-width: 200px;
+	margin-right: 10px;
+	width: 20%;
+	height: 100%;
+}
+.center {
+	width: 60%;
+	height: 100%;
+	margin-right: 200px;
+	margin-left: 200px;
+}
+.right {
+	min-width: 200px;
+	float: right;
+	width: 20%;
+	height: 100%;
+}
