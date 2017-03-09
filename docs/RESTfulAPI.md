@@ -27,7 +27,9 @@
 ####`POST` http://localhost:3000/trajectory
 
 **Resquest 参数说明**
+
 请求头 body
+
 ```json
 {
     trajName: []
@@ -35,6 +37,7 @@
     id: []
 }
 ```
+
 + trajName: 为数据集的名称，例如MongoDB中collection的名称,或集合
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如['2016-03-01'],['2016-03-03','2016-03-05']
 + id: 唯一标识列表
@@ -67,9 +70,9 @@
 **Resquest 参数说明**
 
 + collectionName: 为数据集的名称，例如MongoDB中collection的名称
-+ type: 统计的类型，
- - `avg` 表示均值
- - `count` 表示总数
+- type: 统计的类型，
+    + `avg` 表示均值
+    + `count` 表示总数
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如'2016-03-01',['2016-03-03','2016-03-05']
 + filed: 需要统计的字段_field_
 
@@ -88,7 +91,9 @@
 ####`POST` http://localhost:3000/statistics
 
 **Resquest 参数说明**
+
 请求头 body
+
 ```json
 [
     {
