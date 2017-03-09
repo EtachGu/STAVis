@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
-import bmap from 'echarts/extension/bmap/bmap';
-
-import buslines from 'data/bus_lines.json';
 
 class BarCharts extends Component {
 	static propTypes = {
@@ -37,7 +34,7 @@ class BarCharts extends Component {
 		    dataShadow.push(yMax);
 		}
 
-		const option = {
+		myChart.setOption({
 		    title: {
 		        text: '特性示例：渐变色 阴影 点击缩放',
 		        subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
@@ -114,7 +111,7 @@ class BarCharts extends Component {
 		            data: data
 		        }
 		    ]
-		};
+		});
 
 		// Enable data zoom when user click bar.
 		const zoomSize = 6;

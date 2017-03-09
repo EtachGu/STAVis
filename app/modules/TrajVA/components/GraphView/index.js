@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 // components
 import BarCharts from './components/BarCharts';
+import PieCharts from './components/PieCharts';
 
 // css
 import styles from './styles.css';
@@ -18,11 +19,12 @@ class GraphView extends Component {
   }
 
   render() {
-    const barWidth = 300;
-    const barHeight = 300;
+    const barWidth = 350;
+    const barHeight = 350;
     return (
       <div>
-        <BarCharts className={styles.barcharts} width={barWidth} height={barHeight} />
+        <BarCharts className={styles.charts} width={barWidth} height={barHeight} />
+        <PieCharts className={styles.charts} width={barWidth} height={barHeight} />
       </div>
     );
   }
