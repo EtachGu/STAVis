@@ -4,22 +4,36 @@
 
 -----
 
-####`GET` http://localhost:3000/trajectory/:trajName?datetime=_datetime_&id=_id_
+####`GET` http://localhost:3000/trajectory/:trajName?datetime=_datetime_&timeunit=_timeunit_&id=_id_
 
 **Resquest 参数说明**
 
 + trajName: 为数据集的名称，例如MongoDB中collection的名称
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如'2016-03-01',['2016-03-03','2016-03-05']
-+ id: 唯一标识_id_
++ timeunit: 时间粒度，例如 mm(分钟)，hh(小时)，dd(天)
++ id: 唯一标识_id_, 缺省的情况，代表所有的对象都会查找
 
 **Response 返回的数据**
 
+返回的data 按照时间粒度，将时间点划分为多个数据片段。例如 以1hh（小时）为时间粒度，则可以将datetime"2016-03-01"划分为24个时间片段，对应的data集合包含为24块。
+
 ```json
 {
-    datetime: "2016-03-01 01",
-    trajectories: [
-        [121.01, 31.54564, 121.03, 32,3543],
-        [120.0132, 31.53564, 122.0133, 32,3343]
+    datetime: "2016-03-01",
+    timeunit: "1hh"
+    data: [
+        {
+            trajectories: [
+                [121.01, 31.54564, 121.03, 32,3543],
+                [120.0132, 31.53564, 122.0133, 32,3343]
+            ]
+        },
+        {
+            trajectories: [
+                [121.01, 31.54564, 121.03, 32,3543],
+                [120.0132, 31.53564, 122.0133, 32,3343]
+            ]
+        },
     ]
 }
 ```
@@ -32,30 +46,42 @@
 
 ```json
 {
-    trajName: []
-    datetime: []
-    id: []
+    trajName: _trajName_,
+    datetime: [],
+    timeunit：_timeunit_,
+    id: [],
 }
 ```
 
-+ trajName: 为数据集的名称，例如MongoDB中collection的名称,或集合
++ trajName: 为数据集的名称，例如MongoDB中collection的名称
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如['2016-03-01'],['2016-03-03','2016-03-05']
++ timeunit: 时间粒度，例如 mm(分钟)，hh(小时)，dd(天)
 + id: 唯一标识列表
 
 **Response 返回的数据**
+
+返回数据按照id集合元素的顺序进行组织，其中data 按照时间粒度，将时间点划分为多个数据片段。例如 以1hh（小时）为时间粒度，则可以将datetime"2016-03-01"划分为24个时间片段，对应的data集合包含为24块
 
 ```json
 [
     {
         datetime: "2016-03-01",
-        trajectories: [
-            [121.01, 31.54564, 121.03, 32,3543],
-            [120.0132, 31.53564, 122.0133, 32,3343]
+        timeunit: "hh",
+        id:_id1_,
+        data: [
+            {
+                trajectories: [
+                    [121.01, 31.54564, 121.03, 32,3543],
+                    [120.0132, 31.53564, 122.0133, 32,3343]
+                ]
+            }
         ]
     },
     {
         datetime: "2016-03-02",
-        trajectories: []
+        timeunit: "hh",
+        id:_id2_,
+        data: []
     }
 ]
 ```
@@ -64,8 +90,7 @@
 
 ----
 
-####`GET` http://localhost:3000/statistics/:collectionName?type=_avg_&datetime=_datetime_&filed=_filed_
-
+####`GET` http://localhost:3000/statistics/:collectionName?type=_avg_&datetime=_datetime_&timeunit=_timeunit_&filed=_filed_
 
 **Resquest 参数说明**
 
@@ -74,6 +99,7 @@
     + `avg` 表示均值
     + `count` 表示总数
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如'2016-03-01',['2016-03-03','2016-03-05']
++ timeunit: 划分的时间粒度，若缺省，则将datetime 作为一个整体
 + filed: 需要统计的字段_field_
 
 **Response 返回的数据**
@@ -83,10 +109,14 @@
     collectionName: "",
     type:_avg_,
     datetime: "2016-03-01",
+    timeunit: _timeunit_,
     field:"",
-    data: _data_,
+    data: [],
 }
 ```
+
+data 中元素按照时间粒度依次排列
+
 
 ####`POST` http://localhost:3000/statistics
 
@@ -100,16 +130,19 @@
         collectName: _taxi_,
         type: _count_,
         datetime: "2016-03-02",
+        timeunit: _timeunit_,
         fields: [_field1_,_field2_]
     },
     {
         collectName: _bus_,
         type: _avg_,
-        datetime: ["2016-03-02","2016-03-05"]
+        datetime: ["2016-03-02","2016-03-05"],
+        timeunit: _timeunit_,
         fields: [_field1_]
     }
 ]
 ```
+
 + collectName: 为数据集的名称，例如MongoDB中collection的名称
 + datetime: 查询的时间范围，可以为一个时间点或者时间范围，例如['2016-03-01'],['2016-03-03','2016-03-05']
 + filed: 需要统计的字段_field_
@@ -134,12 +167,13 @@
     }
 ]
 ```
+其中_data1_、_data2_中数据值按照时间粒度组织
 
 ###3 Cluster data
 
 ---
 
-####`POST` http://localhost:3000/cluster/:collectionName
+####`POST` http://localhost:3000/cluster
 
 **Resquest 参数说明**
 
