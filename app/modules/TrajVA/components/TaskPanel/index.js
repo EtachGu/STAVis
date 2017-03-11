@@ -29,13 +29,16 @@ class TaskPanel extends Component {
         onSelect={this.onSelect}
         onCheck={this.onCheck}
       >
-        <TreeNode title="parent 1" key="0-0">
-          <TreeNode title="parent 1-0" key="0-0-0" disabled>
-            <TreeNode title="leaf" key="0-0-0-0" disableCheckbox />
-            <TreeNode title="leaf" key="0-0-0-1" />
+        <TreeNode title="Task" key="0-0">
+          <TreeNode title="overview" key="0-0-0">
+            <TreeNode title="cellPhoneUser" key="0-0-0-0"/>
+            <TreeNode title="cellPhoneTrajectory" key="0-0-0-1"/>
           </TreeNode>
-          <TreeNode title="parent 1-1" key="0-0-1">
-            <TreeNode title={<span style={{ color: '#08c' }}>sss</span>} key="0-0-1-0" />
+          <TreeNode title="analysis" key="0-0-1">
+            <TreeNode title={<span style={{ color: '#08c' }}>spatio-temporal analysis</span>} key="0-0-1-0" />
+          </TreeNode>
+          <TreeNode title="conclusion" key="0-0-2">
+            <TreeNode title={<span style={{ color: '#08c' }}>human mobility pattern</span>} key="0-0-2-0" />
           </TreeNode>
         </TreeNode>
       </Tree>

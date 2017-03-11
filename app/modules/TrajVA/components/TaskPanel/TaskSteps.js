@@ -15,10 +15,10 @@ class TaskSteps extends Component {
   render() {
     return (
       <Steps>
-        <Step status="finish" title="Login" icon={<Icon type="user" />} />
-        <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
-        <Step status="process" title="Pay" icon={<Icon type="credit-card" />} />
-        <Step status="wait" title="Done" icon={<Icon type="smile-o" />} />
+        <Step status="finish" title="overview" icon={<Icon type="global" />} />
+        <Step status="finish" title="analysis" icon={<Icon type="pie-chart" />} />
+        <Step status="process" title="conclusion" icon={<Icon type="solution" />} />
+        <Step status="wait" title="done" icon={<Icon type="smile-o" />} />
       </Steps>
     );
   }
