@@ -156,15 +156,23 @@ data 中元素按照时间粒度依次排列
         collectName: _taxi_,
         type: _count_,
         datetime: "2016-03-02",
+        timeunit: _timeunit_,
         fields: [_field1_,_field2_],
-        data: [[_data1_],[_data2_]]
+        data: [
+            [_field1data1_,_field2data1_], // time = datetime + timeunit
+            [_field1data2_,_field2data2_]  // time = datetime + 2 * timeunit
+        ]
     },
     {
         collectName: _bus_,
         type: _avg_,
         datetime: ["2016-03-02",'2016-03-05'],
+        timeunit: _timeunit_,
         fields: [_field1_],
-        data: [_data1_]
+        data: [
+            [__field1data1_], // time = datetime + timeunit
+            [_field1data2_]   // time = datetime + 2 * timeunit
+        ]
     }
 ]
 ```
