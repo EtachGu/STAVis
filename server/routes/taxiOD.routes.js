@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as TaxiODController from '../controllers/taxiOD.controller';
+import * as TaxiODController from '../controllers/trajectories/taxiOD.controller.js';
 const router = new Router();
 
 // Get all Posts

@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import  express from 'express';
-import  mongoose from 'mongoose';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 import  path from 'path';
 import  logger from './logger';
 
@@ -35,7 +36,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // // RESTful API
-import  taxiOD from './routes/taxiOD.routes';
+import routers from './routes/routes';
 import  serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -54,7 +55,9 @@ mongoose.connect(serverConfig.mongoURL, { server: { socketOptions: { connectTime
 });
 
 // Apply body Parser and server public assets and routes
-app.use('/api', taxiOD);
+app.use(bodyParser.json({ limit: '20mb' }));// for parsing application/json
+app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));// for parsing application/x-www-form-urlencoded
+app.use('/api', routers);
 
 // start app
 app.listen(serverConfig.port, (error) => {
