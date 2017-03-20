@@ -1,8 +1,6 @@
 /**
  * Created by lenovo on 2017/3/20.
  */
-require('babel-register');
-import 'babel-polyfill';
 import  express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
