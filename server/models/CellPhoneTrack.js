@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const cellPhoneSchema = new Schema({
+	Date: Number,
 	IMEI: String,
 	longitude1: Number,
 	latitude1: Number,
