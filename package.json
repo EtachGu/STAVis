@@ -6,7 +6,7 @@
   "scripts": {
     "start-inspector": "cross-env NODE_ENV=development node-inspector index.js",
     "start": "cross-env NODE_ENV=development node index.js",
-    "start-debug": "cross-env NODE_ENV=development node %NODE_DEBUG_OPTION% index.js",
+    "start-debug": "cross-env NODE_ENV=development nodemon %NODE_DEBUG_OPTION% index.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --color -p --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -64,6 +64,7 @@
     "html-webpack-plugin": "2.24.0",
     "image-webpack-loader": "2.0.0",
     "json-loader": "0.5.4",
+    "nodemon": "^1.11.0",
     "offline-plugin": "3.4.2",
     "postcss-cssnext": "2.8.0",
     "postcss-focus": "1.0.0",
