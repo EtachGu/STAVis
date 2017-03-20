@@ -43,7 +43,16 @@ import  serverConfig from './config';
 mongoose.Promise = global.Promise;
 
 // MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, { server: { socketOptions: { connectTimeoutMS: 20000 }}},(error) => {
+const connectOption = {
+  server: {
+    socketOptions: {
+		connectTimeoutMS:30000,
+		socketTimeoutMS:30000,
+		keepAlive: 1
+    }
+  }
+};
+mongoose.connect(serverConfig.mongoURL, connectOption, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
     throw error;
