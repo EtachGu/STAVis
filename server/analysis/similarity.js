@@ -23,14 +23,14 @@ export function distSeq(traj1, traj2, gamma, delta) {
  * @returns number
  **/
 export function simSeq(traj1, traj2, gamma, delta) {
-	const len1 = lenSeq(traj1);
-	const len2 = lenSeq(traj2);
 	const lcsPoints = [];
 	scoreLCS(traj1, traj2, lcsPoints, delta);
 	const lenLcs1 = lenSeq(lcsPoints.map( e => e[0]));
 	const lenLcs2 = lenSeq(lcsPoints.map( e => e[1]));
 	if (Math.min(lenLcs1, lenLcs2) < gamma)
 		return 0;
+	const len1 = lenSeq(traj1);
+	const len2 = lenSeq(traj2);
 	if (len1 >= len2  ) {
 		return  lenLcs2 / len2;
 	}
@@ -49,8 +49,12 @@ export function simSeq(traj1, traj2, gamma, delta) {
 export function lenSeq(points) {
 	const size = points.length;
 	let len = 0;
+	let startPoint = [];
+	let endPoint = [];
 	for (let i = 1; i < size; i++) {
-		len += geoDistance(points[i-1], points[i]);
+		if (points[i-1]) startPoint = points[i-1];
+		if (endPoint[i]) endPoint = points[i];
+		len += geoDistance(startPoint, endPoint);
 	}
 	return len;
 }
@@ -106,9 +110,9 @@ export function scoreLCS(traj1, traj2, lcsPoints, delta) {
 	const nextTraj1 = traj1.slice(1,trajLenght1);
 	const nextTraj2 = traj2.slice(1,trajLenght2);
 	const score = [0, 0, 0];
-	score[0] = scoreLCS(nextTraj1, nextTraj2) + simPoints(traj1[0], traj2[0], delta);
-	score[1] = scoreLCS(nextTraj1, traj2);
-	score[2] = scoreLCS(traj1, nextTraj2);
+	score[0] = scoreLCS(nextTraj1, nextTraj2, lcsPoints, delta) + simPoints(traj1[0], traj2[0], delta);
+	score[1] = scoreLCS(nextTraj1, traj2, lcsPoints, delta);
+	score[2] = scoreLCS(traj1, nextTraj2, lcsPoints, delta);
 
 	let maxIndex = 0;
 	for (let i = 1; i < 3; i++) {

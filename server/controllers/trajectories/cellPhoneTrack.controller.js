@@ -84,7 +84,11 @@ export function getTrackByConditions(req, callback) {
 		}
 	};
 
-	CellPhoneTrack.aggregate([match, project, group]).exec((err, data) => {
+	const other = {
+		$limit: 20
+	};
+
+	CellPhoneTrack.aggregate([match, project, group, other]).exec((err, data) => {
 		if (err) {
 			callback({
 				err
