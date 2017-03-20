@@ -3,6 +3,7 @@
  */
 import { Router } from 'express';
 import * as trajectoryCtrls from '../controllers/trajectory.ctrl';
+import * as clusterCtrls from '../controllers/cluster.ctrl';
 const router = new Router();
 
 /**
@@ -23,6 +24,6 @@ router.route('/trajectory').post(trajectoryCtrls.getTrackByConditions);
  * Cluster API
  * http://localhost:3000/cluster
  */
-// router.route('/cluster').post(TaxiODController.getTaxiODs);
+router.route('/cluster').post(clusterCtrls.getTrackClusters);
 
 export default router;
