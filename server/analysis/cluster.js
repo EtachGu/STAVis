@@ -8,10 +8,10 @@ import { distSeq } from './similarity';
 /**
  *  LCS-DBSCAN Cluster
  * @param tr
- * @param epsilon
+ * @param epsilon  number of nearest trajectories
  * @param minTrs
- * @param gamma
- * @param delta
+ * @param gamma minLength of LCS
+ * @param delta points distance
  */
 export function dbscan(tr, epsilon, minTrs, gamma, delta) {
 	let clusterID = 0;

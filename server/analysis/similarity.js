@@ -4,6 +4,11 @@
 import { geoDistance } from 'd3-geo';
 /**
  *
+ * @param traj1  [ [lon,lat] , [lon,lat] ]
+ * @param traj2
+ * @param gamma
+ * @param delta
+ * @returns {number}
  */
 export function distSeq(traj1, traj2, gamma, delta) {
 	return 1 - simSeq(traj1, traj2, gamma, delta);
