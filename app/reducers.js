@@ -7,7 +7,9 @@ import { combineReducers } from 'redux';
 import trajva from './modules/TrajVA/TrajVAReducer';
 
 // Combine all reducers into one root reducer
-export default combineReducers({
-  trajva,
-});
-
+export default function createReducer(asyncReducers) {
+	return combineReducers({
+		trajva,
+		...asyncReducers,
+	});
+}

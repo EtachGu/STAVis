@@ -1,9 +1,7 @@
 import 'whatwg-fetch';
-import Config from '../../server/config';
+import Config from './config';
 
-export const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
-  process.env.BASE_URL || (`http://localhost:${process.env.PORT || Config.port}/api`) :
-  '/api';
+export const API_URL = Config.API_URL;
 
 export default function callApi(endpoint, method = 'get', body) {
   return fetch(`${API_URL}/${endpoint}`, {

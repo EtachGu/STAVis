@@ -5,18 +5,16 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
 
+const sagaMiddleware = createSagaMiddleware();
+const devtools = window.devToolsExtension || (() => (noop) => noop);
 export default function configureStore(initialState = {}) {
   // Middleware and store enhancers
   const enhancers = [
-    applyMiddleware(createSagaMiddleware()),
+    applyMiddleware(sagaMiddleware),
+    devtools()
   ];
 
-  if (process.env.CLIENT && process.env.NODE_ENV === 'development') {
-    // Enable DevTools only when rendering on client and during development.
-    enhancers.push(window.devToolsExtension);
-  }
-
-  const store = createStore(rootReducer, initialState, compose(...enhancers));
+  const store = createStore(rootReducer(), initialState, compose(...enhancers));
 
   // For hot reloading reducers
   if (module.hot) {
