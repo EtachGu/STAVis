@@ -15,7 +15,7 @@ import { distSeq } from './similarity';
  */
 export function dbscan(tr, epsilon, minTrs, gamma, delta) {
 	let clusterID = 0;
-	const trD = disMatrix(tr, gamma, delta);
+	const trD = disMatrix(tr, epsilon, gamma, delta);
 	// visit 0 = unvisited, visit 1 = visited
 	tr.forEach(e => e.visit = 0);
 	for (let i = 0; i < tr.length; i++){
@@ -39,15 +39,19 @@ export function dbscan(tr, epsilon, minTrs, gamma, delta) {
 /**
  *
  * @param tr
+ * @param epsilon
  * @param gamma
  * @param delta
  * @returns {Array}
  */
-export function disMatrix(tr, gamma, delta) {
+export function disMatrix(tr,epsilon, gamma, delta) {
 	const distMatrix = [];
 	for (let i = 0; i < tr.length; i++) {
 		for (let j = i + 1; j < tr.length; j++) {
-			distMatrix[i][j] = distSeq(tr[i], tr[j], gamma, delta);
+			if(distMatrix[i] === undefined){
+				distMatrix[i] = [];
+			}
+			distMatrix[i][j] = distSeq(tr[i], tr[j], epsilon, gamma, delta);
 		}
 	}
 	return distMatrix;
