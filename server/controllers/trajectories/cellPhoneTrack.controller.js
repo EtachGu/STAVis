@@ -69,7 +69,7 @@ export function getTrackByConditions(req, callback) {
 			_id:0,
 			Date: 1,
 			id:"$IMEI",
-			trajectories:["$longitude1","$latitude1","$longitude2","$latitude2","$longitude3","$latitude3","$longitude4","$latitude4","$longitude5","$latitude5","$longitude6","$latitude6","$longitude7","$latitude7","$longitude8","$latitude8","$longitude9","$latitude9","$longitude10","$latitude10","$longitude11","$latitude11","$longitude12","$latitude12","$longitude13","$latitude13","$longitude14","$latitude14","$longitude15","$latitude15","$longitude16","$latitude16","$longitude17","$latitude17","$longitude18","$latitude18","$longitude19","$latitude19","$longitude20","$latitude20","$longitude21","$latitude21","$longitude22","$latitude22","$longitude23","$latitude23","$longitude24","$latitude24"]
+			trajectories:"$geom"
 		}
 	};
 	const group = {
