@@ -85,7 +85,7 @@ class BarCharts extends Component {
         const style = {
             width: this.props.width,
             height: this.props.height
-        }
+        };
         return (
             <div id="pieCharts" style={style}></div>
         );

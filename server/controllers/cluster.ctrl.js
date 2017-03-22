@@ -20,6 +20,7 @@ import * as Cluster from '../analysis/cluster';
 	 }
  }
  */
+const EARTH_RADIUS = 6371;  // km
 export function getTrackClusters(req, res) {
 	if (!req.body) {
 		res.status(403).end();
@@ -35,15 +36,10 @@ export function getTrackClusters(req, res) {
 					res.status(500).send(data.err);
 				} else {
 					for(let i = 0; i  < data.data.length; i++) {
-						const trajectory = data.data[i].trajectories;
-						const trajSet = trajectory.map( e => {
-							const newTraj = [];
-							for(let i = 1; i<e.length; i+=2) {
-								newTraj.push([e[i-1],e[i]]);
-							}
-							return newTraj;
+						const trajSet = data.data[i].trajectories.map( e => {
+							return JSON.parse(e).coordinates;
 						});
-						Cluster.dbscan(trajSet,10,2,500,500);
+						Cluster.dbscan(trajSet,10,2,1/EARTH_RADIUS,1/EARTH_RADIUS);
 					}
 					res.json(data);
 				}

@@ -4,6 +4,8 @@ import bmap from 'echarts/extension/bmap/bmap';
 
 import buslines from 'data/bus_lines.json';
 import styles from './styles.css';
+import shanghaiJson from 'data/shanghai.json';
+import cellTracks from 'data/cellTrack_geo_collection.json';
 
 class MapDiv extends Component {
 	static propTypes = {
@@ -21,10 +23,70 @@ class MapDiv extends Component {
             
   //       }
   //       reader.readAsText(file);
-        this.initalECharts(buslines);
+        //this.initalECharts(buslines);
+		const convertData = function (data) {
+			const dataSeries = [];
+			for (let i = 0; i < data.length; i++) {
+				const collectSet = data[i].geometries.map( geom => {
+					const coord = geom.coordinates;
+					const coord_e = [];
+					for(let index = 0; index < coord.length; index++){
+						const lon = coord[index][0];
+						const lat = coord[index][1];
+						coord_e.push([lon, lat]);
+					}
+					const geom_e = { coords: coord_e };
+					return geom_e;
+				});
+				dataSeries.push(collectSet);
+			}
+			return dataSeries;
+		};
+		const seriesData = [];
+		convertData(cellTracks).forEach((item,index) => {
+			seriesData.push({
+				type: 'lines',
+				polyline: true,
+				coordinateSystem: 'geo',
+				data:item,
+				lineStyle: {
+					normal: {
+						opacity: 0.2,
+						width: 5
+					}
+				},
+				progressiveThreshold: 500,
+				progressive: 200
+			})
+		});
+		echarts.registerMap('shanghai', shanghaiJson);
+		const chart = echarts.init(document.getElementById('map'));
+		chart.setOption({
+			backgroundColor: '#404a59',
+			geo: {
+				map: 'shanghai',
+				roam: true,
+				label: {
+					emphasis: {
+						show: true
+					}
+				},
+				itemStyle: {
+					normal: {
+						areaColor: '#323c48',
+						borderColor: '#111'
+					},
+					emphasis: {
+						areaColor: '#2a333d'
+					}
+				}
+			},
+			series:seriesData
+		});
 	}
 
 	initalECharts(data) {
+
 		const myChart = echarts.init(document.getElementById('map'));
 		const hStep = 300 / (data.length - 1);
 	    const busLines = [].concat.apply([], data.map(function (busLine, idx) {
@@ -225,7 +287,7 @@ class MapDiv extends Component {
 	            })
 	        };
     	});
-	    myChart.setOption(option = {
+	    myChart.setOption({
 	        bmap: {
 	            center: [120.13066322374, 30.240018034923],
 	            zoom: 14,

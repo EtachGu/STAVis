@@ -6,33 +6,31 @@ import { geoDistance } from 'd3-geo';
  *
  * @param traj1  [ [lon,lat] , [lon,lat] ]
  * @param traj2
- * @param epsilon
  * @param gamma
  * @param delta
  * @returns {number}
  */
-export function distSeq(traj1, traj2, epsilon, gamma, delta) {
-	return 1 - simSeq(traj1, traj2, epsilon, gamma, delta);
+export function distSeq(traj1, traj2, gamma, delta) {
+	return 1 - simSeq(traj1, traj2, gamma, delta);
 }
 
 /**
  * compute the simSeqValue of two trajectories
  * @param traj1
  * @param traj2
- * @param epsilon
  * @param gamma   length of LCS constraint
  * @param delta  points distance
  * @returns number
  **/
-export function simSeq(traj1, traj2, epsilon, gamma, delta) {
+export function simSeq(traj1, traj2, gamma, delta) {
 	const len1 = lenSeq(traj1);
 	const len2 = lenSeq(traj2);
 	if (len1 < gamma || len2 < gamma)
 		return 0;
-	if (distance(traj1, traj2) > epsilon * delta)
+	const simMatrix = [];
+	if (maxSimT(traj1, traj2, simMatrix, delta) === 0)
 		return 0;
-	const lcsPoints = [];
-	scoreLCS(traj1, traj2, lcsPoints, delta);
+	const lcsPoints = LCS(traj1, traj2, simMatrix);
 	const lenLcs1 = lenSeq(lcsPoints.map( e => e[0]));
 	const lenLcs2 = lenSeq(lcsPoints.map( e => e[1]));
 	if (Math.min(lenLcs1, lenLcs2) < gamma)
@@ -140,4 +138,97 @@ export function scoreLCS(traj1, traj2, lcsPoints, delta) {
 	if (maxIndex === 0) lcsPoints.push([traj1[0], traj2[0]]);
 
 	return score[maxIndex];
+}
+
+const LEFT_UP = 1;
+const UP = 2;
+const LEFT = 3;
+function maxSimT(traj1, traj2, LCSSimArray = [], delta) {
+	let maxSim = -Number.MAX_VALUE;
+	for (let i = 0; i < traj1.length; i++) {
+		for (let j = 0; j < traj2.length; j++) {
+			if(LCSSimArray[i] == undefined) LCSSimArray[i] = [];
+			LCSSimArray[i][j] = simPoints(traj1[i], traj2[j], delta);
+			if(maxSim < LCSSimArray[i][j]) maxSim = LCSSimArray[i][j];
+		}
+	}
+	return maxSim;
+}
+function LCS(traj1, traj2, LCSSimArray) {
+	// 
+	const LCSLengthArray = [];
+	const LCSDirectArray = [];
+
+	// init 
+	for (var i = 0; i < traj1.length; i++) {
+		LCSLengthArray[i] = [];
+		LCSDirectArray[i] = [];
+	}
+
+	for (let i = 0; i < traj1.length; i++) {
+		for (let j = 0; j < traj2.length; j++) {
+
+			const simp = LCSSimArray[i][j];
+
+			if (i == 0 || j == 0) {
+				if ( i > 0) {
+					LCSLengthArray[i][j] = LCSLengthArray[i-1][j] + simp;
+					LCSDirectArray[i][j] = LEFT;
+				}
+				else if ( j > 0) {
+					LCSLengthArray[i][j] = LCSLengthArray[i][j-1] + simp;
+					LCSDirectArray[i][j] = UP;
+				} else {
+					LCSLengthArray[i][j] = simp;
+					LCSDirectArray[i][j] = LEFT_UP;
+				}
+
+			} else {
+				if (simp > 0) {
+
+					LCSLengthArray[i][j] = LCSLengthArray[i-1][j-1] + simp;
+					LCSDirectArray[i][j] = LEFT_UP;
+
+				} else if (LCSLengthArray[i][j-1] > LCSLengthArray[i-1][j]) {
+
+					LCSLengthArray[i][j] = LCSLengthArray[i][j-1];
+					LCSDirectArray[i][j] = UP;
+
+				} else {
+
+					LCSLengthArray[i][j] = LCSLengthArray[i-1][j];
+					LCSDirectArray[i][j] = LEFT;
+
+				}
+			}
+		}
+	}
+	const lcsPoints = [];
+	getLCSPoints(lcsPoints,LCSDirectArray, traj1, traj2, traj1.length - 1, traj2.length - 1);
+	return lcsPoints;
+}
+
+function getLCSPoints(lcsPoints, LCSDirectArray, traj1, traj2, row, col) {
+	if (traj1.length === 0 || traj2.length === 0 ) 
+		return [];
+	if(LCSDirectArray[row][col] == LEFT_UP)  
+    {  
+        if(row > 0 && col > 0)  
+            getLCSPoints(lcsPoints, LCSDirectArray, traj1, traj2, row - 1, col - 1);  
+  
+        // print the char  
+        lcsPoints.push(traj1[row],traj2[col]);  
+    }  
+    else if(LCSDirectArray[row][col] == LEFT)  
+    {  
+        // move to the left entry in the direction matrix  
+        if(col > 0)  
+            getLCSPoints(lcsPoints, LCSDirectArray, traj1, traj2, row, col - 1);  
+    }  
+    else if(LCSDirectArray[row][col] == UP)  
+    {  
+        // move to the up entry in the direction matrix  
+        if(row > 0)  
+            getLCSPoints(lcsPoints, LCSDirectArray, traj1, traj2, row - 1, col);  
+    }  
 }

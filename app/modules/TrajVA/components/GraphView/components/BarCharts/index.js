@@ -129,7 +129,7 @@ class BarCharts extends Component {
 		const style = {
 			width: this.props.width,
 			height: this.props.height
-		}
+		};
 		return (
 			<div id="barCharts" style={style}></div>
 		);
