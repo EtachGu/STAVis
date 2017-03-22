@@ -49,6 +49,14 @@ module.exports = (options) => ({
         }, {
             test: /\.(mp4|webm)$/,
             loader: 'url-loader?limit=10000',
+        },{
+            test: /\.csv$/,
+            loader: 'csv-loader',
+            options: {
+                dynamicTyping: true,
+                header: false,
+                skipEmptyLines: true
+            }
         }],
     },
     plugins: options.plugins.concat([

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
+import cellTrackAvg from 'data/cellTrackCluster10_avg.csv';
+import csvparseSync  from 'csv-parse/lib/sync';
 
 class BarCharts extends Component {
 	static propTypes = {
@@ -10,6 +12,12 @@ class BarCharts extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			barData:cellTrackAvg
+		};
+		// csvparseSync('data/cellTrackCluster10_avg.csv', (err, output) => {
+		// 	this.state.barData = output;
+		// })
 	}
 
 	componentDidMount() {
@@ -23,8 +31,9 @@ class BarCharts extends Component {
 	}
 
 	initalECharts = () => {
-		const myChart = echarts.init(document.getElementById('barCharts'));
 
+		const myChart = echarts.init(document.getElementById('barCharts'));
+		const barData = this.state.barData;
 		const dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
 		const data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
 		const yMax = 500;
