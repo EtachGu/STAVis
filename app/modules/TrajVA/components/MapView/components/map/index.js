@@ -4,8 +4,11 @@ import bmap from 'echarts/extension/bmap/bmap';
 
 import buslines from 'data/bus_lines.json';
 import styles from './styles.css';
+
+// data
 import shanghaiJson from 'data/shanghai.json';
 import cellTracks from 'data/cellTrack_geo_collection.json';
+import cellBaseStations from 'data/cellPhoneBaseStation.json';
 
 class MapDiv extends Component {
 	static propTypes = {
@@ -42,9 +45,13 @@ class MapDiv extends Component {
 			}
 			return dataSeries;
 		};
+		// legend 图例
+		const legendData = [ '基站'];
 		const seriesData = [];
 		convertData(cellTracks).forEach((item,index) => {
+			legendData.push(`轨迹${index}`)
 			seriesData.push({
+				name: `轨迹${index}`,
 				type: 'lines',
 				polyline: true,
 				coordinateSystem: 'geo',
@@ -52,13 +59,22 @@ class MapDiv extends Component {
 				lineStyle: {
 					normal: {
 						opacity: 0.2,
-						width: 5
+						width: 1
 					}
 				},
 				progressiveThreshold: 500,
 				progressive: 200
 			})
 		});
+		// 绘制基站
+		seriesData.push({
+			name: '基站',
+			type: 'scatter',
+			coordinateSystem: 'geo',
+			data:cellBaseStations.data,
+			symbolSize:1
+		});
+
 		echarts.registerMap('shanghai', shanghaiJson);
 		const chart = echarts.init(document.getElementById('map'));
 		chart.setOption({
@@ -81,8 +97,19 @@ class MapDiv extends Component {
 					}
 				}
 			},
-			series:seriesData
+			series:seriesData,
+			legend: {
+				orient: 'vertical',
+				y: 'top',
+				x:'left',
+				data:legendData,
+				textStyle: {
+					color: '#fff'
+				}
+			},
 		});
+
+
 	}
 
 	initalECharts(data) {
