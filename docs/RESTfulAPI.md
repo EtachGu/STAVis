@@ -176,6 +176,21 @@ data 中元素按照时间粒度依次排列
     }
 ]
 ```
+或者
+```
+    {
+        collectName: _bus_,
+        type: _avg_,
+        datetime: ["2016-03-02",'2016-03-05'],
+        series: [_seriesName1_,_seriesName2_],
+        fields: [_field1_,_field2_],
+        data: [
+            [__field1data1_,_field2data1_], // _seriesName1_
+            [_field1data2__field2data2_]   // _seriesName2_
+        ]
+    }
+]
+```
 其中_data1_、_data2_中数据值按照时间粒度组织
 
 ###3 Cluster data
