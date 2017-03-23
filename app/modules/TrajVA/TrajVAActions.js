@@ -67,7 +67,7 @@ export const UPDATE_TASKS = 'UPDATE_TASKS';
 
 export function updateTasks(data) {
 	return {
-		type: ADD_STATISTICS,
+		type: UPDATE_TASKS,
 		data,
 	};
 }
