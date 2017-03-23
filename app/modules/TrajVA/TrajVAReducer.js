@@ -1,4 +1,4 @@
-import { ADD_TRACKDATA,ADD_STATISTICS } from './TrajVAActions';
+import { ADD_TRACKDATA,ADD_STATISTICS,UPDATE_TASKS } from './TrajVAActions';
 
 
 // Initial State
@@ -8,7 +8,10 @@ const initialState = {
 	controls:{
 	  	trajName:'cellPhoneTrack',
 	  	datetime:["2016-03-02","2016-03-03"]
-  	}
+  	},
+	tasks:{
+		steps:[{name:'概览',status:'finish'},{name:'分析',status:'process'},{name:'结论',status:'wait'},{name:'完成',status:'wait'}]
+	}
 };
 
 const PostReducer = (state = initialState, action) => {
@@ -27,6 +30,8 @@ const PostReducer = (state = initialState, action) => {
 				  statistics: action.data,
 			  }
 		  );
+	  case UPDATE_TASKS:
+		  return Object.assign({}, state, {tasks:action.data});
     default:
       return state;
   }

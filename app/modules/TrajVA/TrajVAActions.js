@@ -60,3 +60,14 @@ export function addStatisticRequest(reqBody) {
 	};
 }
 
+/**
+ *  Task Action
+ */
+export const UPDATE_TASKS = 'UPDATE_TASKS';
+
+export function updateTasks(data) {
+	return {
+		type: ADD_STATISTICS,
+		data,
+	};
+}
