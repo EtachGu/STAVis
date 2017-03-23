@@ -65,7 +65,7 @@ class TaskPanel extends Component {
             <TreeNode title={<span style={{ color: '#08c' }}>出行模式分析</span>} key="0-0-1-0" />
           </TreeNode>
           <TreeNode title="结论" key="0-0-2">
-            <TreeNode title={<span style={{ color: '#08c' }}>human mobility pattern</span>} key="0-0-2-0" />
+            <TreeNode title={<span style={{ color: '#08c' }}>人群出行模式</span>} key="0-0-2-0" />
           </TreeNode>
         </TreeNode>
       </Tree>

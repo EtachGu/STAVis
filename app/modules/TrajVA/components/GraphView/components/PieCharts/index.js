@@ -27,6 +27,7 @@ class BarCharts extends Component {
 		this.initalECharts();
 	}
 
+    // 不同群体的特点
     initalECharts = () => {
         const myChart = echarts.init(document.getElementById('pieCharts'));
 		if(this.props.pieData === undefined) return;
@@ -34,41 +35,20 @@ class BarCharts extends Component {
 		const legend = this.props.pieData.legend;   //  series and row of data
 		const fields = this.props.pieData.fields;   //  column of  data
 		const data = this.props.pieData.data;
-		const radiusUnit = legend.length !== 0 ? 36 / legend.length : 20;
-		const radiusInterval = radiusUnit * 0.5;
+		const radiusUnit = legend.length !== 0 ? 56 / legend.length : 20;
+		const radiusInterval = radiusUnit * 0.25;
 		const seriesData = [];
 
-		if (data[0] instanceof Array) {
-			const seriesItemData = legend.map( (legend, index) => { return { value: data[index][0], name: `${legend}类的${fields[0]}` };});
-			seriesData.push(
-				{
-					name:fields[0],
-					type:'pie',
-					selectedMode: 'single',
-					radius: [0, '30%'],
-					label: {
-						normal: {
-							show: false
-						}
-					},
-					labelLine: {
-						normal: {
-							show: false
-						}
-					},
-					data:seriesItemData,
-					center: ['50%', '60%']
-				},
-			);
-		}
+		const legendData = legend.map( e => ({ name:`人群${e}`,icon:'circle'}));
 		for (let i = 0; i < legend.length; i++) {
 			if (data[i] instanceof Array) {
 				const seriesItemData = data[i].map( (item, index) => { return { value: item, name: fields[index] };});
+				seriesItemData.shift();
 				seriesData.push(
 					{
-						name:legend[i],
+						name:`人群${i+1}`,
 						type:'pie',
-						radius: [`${30 + radiusUnit * i + radiusInterval}%`, `${30 + radiusUnit * (i+1)}%`],
+						radius: [`${5 + radiusUnit * i + radiusInterval}%`, `${5 + radiusUnit * (i+1)}%`],
 						data:seriesItemData,
 						label: {
 							normal: {
@@ -100,11 +80,15 @@ class BarCharts extends Component {
                 trigger: 'item',
                 formatter: "{a} <br/>{b}: {c} ({d}%)"
             },
-            legend: {
+            legend: [{
                 orient: 'horizontal',
-				top:0,
-                data:fields //['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
-            },
+				bottom:0,
+                data:legendData
+            },{
+				orient:'horizontal',
+				top: 0,
+				data: fields
+			}],
 			series: seriesData
             // series: [
             //     {
