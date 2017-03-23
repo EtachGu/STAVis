@@ -4,7 +4,13 @@
 	width: 1000px;
 	left:200px;
   	bottom: 0px;
-  	z-index: 100px;
-  	background: rgb(255,255,255);
-  	opacity:0.5;
+  	z-index: 100;
+  	/*background: #323c48;*/
+  	opacity:0.9;
+}
+.timecharts {
+    opacity:1;
+}
+.timedisplayer-button {
+    z-index: 101;
 }
