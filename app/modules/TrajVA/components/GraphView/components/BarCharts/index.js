@@ -36,39 +36,14 @@ class BarCharts extends Component {
 		if(this.props.barData === undefined) return;
 		const myChart = echarts.init(document.getElementById('barCharts'));
 		const barData = this.props.barData;
-		const dataAxis = barData.fields ? barData.fields :['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
+		const dataAxis = barData.fields ? barData.fields :[];
 		const data = barData.data ? barData.data : [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
-		const yMax = 500;
-		const dataShadow = [];
-		const seriesData = [
-			{ // For shadow
-				type: 'bar',
-				itemStyle: {
-					normal: {color: 'rgba(0,0,0,0.05)'}
-				},
-				barGap:'-100%',
-				barCategoryGap:'40%',
-				data: dataShadow,
-				animation: false
-			},
-		];
+
+		const seriesData = [];
 		for (let i = 0; i < data.length; i++) {
-		    dataShadow.push(yMax);
 			if (data[i] instanceof Array) {
 				seriesData.push({
 					type: 'bar',
-					itemStyle: {
-						emphasis: {
-							color: new echarts.graphic.LinearGradient(
-								0, 0, 0, 1,
-								[
-									{offset: 0, color: '#2378f7'},
-									{offset: 0.7, color: '#2378f7'},
-									{offset: 1, color: '#83bff6'}
-								]
-							)
-						}
-					},
 					data: data[i]
 				})
 			}
@@ -79,6 +54,18 @@ class BarCharts extends Component {
 		    title: {
 		        text: '统计图',
 		    },
+			toolbox: {
+				show: true,
+				feature: {
+					dataZoom: {
+						yAxisIndex: 'none'
+					},
+					dataView: {readOnly: false},
+					magicType: {type: ['line', 'bar', 'stack', 'tiled']},
+					restore: {},
+					saveAsImage: {}
+				}
+			},
 		    xAxis: {
 		        data: dataAxis,
 		        axisLabel: {
