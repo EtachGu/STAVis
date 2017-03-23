@@ -29,15 +29,20 @@ class TaskPanel extends Component {
     console.log('onCheck', checkedKeys, info);
 	  const checkedNodePos = info.checkedNodesPositions.map( e => e.pos);
 	  const steps = this.props.steps.map((item,index) => {
-		  if (info.halfCheckedKeys.indexOf(`0-0-${index}`)){
+		  if (info.halfCheckedKeys.includes(`0-0-${index}`)){
 			  item.status = "process";
-		  }	else if (checkedNodePos.indexOf(`0-0-${index}`)){
+		  }	else if (checkedNodePos.includes(`0-0-${index}`)){
 			  item.status = "finish";
 		  } else {
 			  item.status = "wait";
 		  }
 		  return item;
 	  });
+	  if(checkedNodePos.includes('0-0')){
+		  steps[3].status = "finish";
+	  } else {
+		  steps[3].status = "wait";
+	  }
 	  this.props.updateTasksState({steps});
   }
 
