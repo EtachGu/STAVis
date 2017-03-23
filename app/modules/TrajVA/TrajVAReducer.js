@@ -1,21 +1,32 @@
-import { ADD_TAXIOD } from './TrajVAActions';
+import { ADD_TRACKDATA,ADD_STATISTICS } from './TrajVAActions';
+
 
 // Initial State
 const initialState = {
-  taxiOD: {},
+	trajectories: {},
+	statistics:{},
+	controls:{
+	  	trajName:'cellPhoneTrack',
+	  	datetime:["2016-03-02","2016-03-03"]
+  	}
 };
 
 const PostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TAXIOD :
+    case ADD_TRACKDATA :
       return Object.assign(
         {},
         state,
         {
-          taxiOD: action.data,
+			trajectories: action.data,
         }
       );
-
+	  case ADD_STATISTICS:
+		  return Object.assign( {}, state,
+			  {
+				  statistics: action.data,
+			  }
+		  );
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
-import cellTrackAvg from 'data/cellTrackCluster10_avg.csv';
+
 import csvparseSync  from 'csv-parse/lib/sync';
 
 class BarCharts extends Component {
@@ -8,13 +8,11 @@ class BarCharts extends Component {
 		className: PropTypes.string,
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
+		barData: PropTypes.array.isRequired
 	};
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			barData:cellTrackAvg
-		};
 		// csvparseSync('data/cellTrackCluster10_avg.csv', (err, output) => {
 		// 	this.state.barData = output;
 		// })
@@ -30,23 +28,66 @@ class BarCharts extends Component {
         this.initalECharts();
 	}
 
+	componentDidUpdate () {
+		this.initalECharts();
+	}
+
 	initalECharts = () => {
 
 		const myChart = echarts.init(document.getElementById('barCharts'));
-		const barData = this.state.barData;
-		const dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
-		const data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
+		const barData = this.props.barData;
+		const dataAxis = barData.fields ? barData.fields :['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
+		const data = barData.data ? barData.data : [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
 		const yMax = 500;
 		const dataShadow = [];
-
+		const seriesData = [
+			{ // For shadow
+				type: 'bar',
+				itemStyle: {
+					normal: {color: 'rgba(0,0,0,0.05)'}
+				},
+				barGap:'-100%',
+				barCategoryGap:'40%',
+				data: dataShadow,
+				animation: false
+			},
+		];
 		for (let i = 0; i < data.length; i++) {
 		    dataShadow.push(yMax);
+			if (data[i] instanceof Array) {
+				seriesData.push({
+					type: 'bar',
+					itemStyle: {
+						normal: {
+							color: new echarts.graphic.LinearGradient(
+								0, 0, 0, 1,
+								[
+									{offset: 0, color: '#83bff6'},
+									{offset: 0.5, color: '#188df0'},
+									{offset: 1, color: '#188df0'}
+								]
+							)
+						},
+						emphasis: {
+							color: new echarts.graphic.LinearGradient(
+								0, 0, 0, 1,
+								[
+									{offset: 0, color: '#2378f7'},
+									{offset: 0.7, color: '#2378f7'},
+									{offset: 1, color: '#83bff6'}
+								]
+							)
+						}
+					},
+					data: data[i]
+				})
+			}
 		}
+
 
 		myChart.setOption({
 		    title: {
-		        text: '特性示例：渐变色 阴影 点击缩放',
-		        subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+		        text: '统计图',
 		    },
 		    xAxis: {
 		        data: dataAxis,
@@ -82,44 +123,7 @@ class BarCharts extends Component {
 		            type: 'inside'
 		        }
 		    ],
-		    series: [
-		        { // For shadow
-		            type: 'bar',
-		            itemStyle: {
-		                normal: {color: 'rgba(0,0,0,0.05)'}
-		            },
-		            barGap:'-100%',
-		            barCategoryGap:'40%',
-		            data: dataShadow,
-		            animation: false
-		        },
-		        {
-		            type: 'bar',
-		            itemStyle: {
-		                normal: {
-		                    color: new echarts.graphic.LinearGradient(
-		                        0, 0, 0, 1,
-		                        [
-		                            {offset: 0, color: '#83bff6'},
-		                            {offset: 0.5, color: '#188df0'},
-		                            {offset: 1, color: '#188df0'}
-		                        ]
-		                    )
-		                },
-		                emphasis: {
-		                    color: new echarts.graphic.LinearGradient(
-		                        0, 0, 0, 1,
-		                        [
-		                            {offset: 0, color: '#2378f7'},
-		                            {offset: 0.7, color: '#2378f7'},
-		                            {offset: 1, color: '#83bff6'}
-		                        ]
-		                    )
-		                }
-		            },
-		            data: data
-		        }
-		    ]
+		    series:seriesData
 		});
 
 		// Enable data zoom when user click bar.

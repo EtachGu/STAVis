@@ -1,25 +1,25 @@
 import callApi from '../../util/apiCaller';
 
 // Export Constants
-export const ADD_TAXIOD = 'ADD_TAXIOD';
+export const ADD_TRACKDATA = 'ADD_TRACKDATA';
 
 // Export Actions
-export function addTaxiOD(data) {
+export function addTrajectories(data) {
   return {
-    type: ADD_TAXIOD,
+    type: ADD_TRACKDATA,
     data,
   };
 }
 
-
 // Call API
-export function addTaxiODRequest(post) {
+export function addTrajSetRequest(reqBody) {
   return (dispatch) => {
-    return callApi('taxiOD', 'post', {
-      post: {
-        content: post.content,
-      },
-    }).then(res => dispatch(addTaxiOD(res.post)));
+    return callApi('trajectory', 'post', {
+      trajName: reqBody.trajName,
+      datetime: reqBody.datetime,
+      timeunit: reqBody.timeunit,
+      id: reqBody.id
+    }).then(res => dispatch(addTrajectories(res.body)));
   };
 }
 
@@ -27,7 +27,7 @@ export function addTaxiODRequest(post) {
 export function fetchTaxiODs() {
   return (dispatch) => {
     return callApi('taxiOD').then(res => {
-      dispatch(addTaxiOD(res.posts));
+      dispatch(addTrajectories(res.posts));
     });
   };
 }
@@ -35,6 +35,28 @@ export function fetchTaxiODs() {
 // datetime  2016-03-01 00:00:00
 export function fetchTaxiOD(datetime) {
   return (dispatch) => {
-    return callApi(`taxiOD/${datetime}`).then(res => dispatch(addTaxiOD(res.post)));
+    return callApi(`taxiOD/${datetime}`).then(res => dispatch(addTrajectories(res.post)));
   };
 }
+
+
+/**
+ *  Statistics
+ */
+export const ADD_STATISTICS = 'ADD_STATISTICS';
+
+export function addStatistics(data) {
+	return {
+		type: ADD_STATISTICS,
+		data,
+	};
+}
+import statistic from 'data/cellTrackCluster10_avg.json';
+// Call API
+export function addStatisticRequest(reqBody) {
+	return (dispatch) => {
+		dispatch(addStatistics(statistic));
+		// return callApi('statistics', 'post', reqBody).then(res => dispatch(addTrajectories(res.body)));
+	};
+}
+

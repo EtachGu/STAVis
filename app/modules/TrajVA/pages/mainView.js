@@ -11,8 +11,11 @@ import TimeView from '../components/TimeView';
 import TaskPanel from '../components/TaskPanel';
 import TaskSteps from '../components/TaskPanel/TaskSteps';
 
+// selector 
+import {selectControl} from './selectors';
+
 // Import Actions
-import { addTaxiOD, addTaxiODRequest, fetchTaxiODs, fetchTaxiOD } from '../TrajVAActions';
+import { addTrajSetRequest, addStatisticRequest } from '../TrajVAActions';
 
 // Import Selectors
 import { getTrajVA } from '../TrajVAReducer';
@@ -24,8 +27,29 @@ import styles from './styles.css';
 const { Header, Footer, Sider, Content } = Layout;
 
 class MainView extends Component {
+	constructor(props) {
+		super(props);
+	}
+	
 	componentDidMount() {
+		const requestBody = {
+			trajName: this.props.control.trajName,
+			datetime: this.props.control.datetime,
+			timeunit: '1hh',
+			id: []
+		};
+		this.props.chooseDataSet(requestBody);
 		
+		const requestStatistic = [
+			{
+				collectName: this.props.control.trajName,
+				type: "avg",
+				datetime:this.props.control.datetime,
+				timeunit: '1hh',
+				fields: []
+			}
+		];
+		this.props.requestStatistics(requestStatistic);
 	}
 
 	render() {
@@ -56,16 +80,20 @@ class MainView extends Component {
 
 MainView.propTypes = {
 	ee: React.PropTypes.any,
+	control: PropTypes.array.isRequired
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = createStructuredSelector({
+	control: selectControl
 });
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
 export function mapDispatchToProps(dispatch) {
 	return {
 		changeRoute: (url) => dispatch(push(url)),
+		chooseDataSet: (params) => addTrajSetRequest(params)(dispatch),
+		requestStatistics: (params) => addStatisticRequest(params)(dispatch)
 	};
 }
 
