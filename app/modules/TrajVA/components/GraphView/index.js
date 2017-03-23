@@ -18,19 +18,24 @@ class GraphView extends Component {
   }
 
   render() {
-    const barWidth = 350;
+    const barWidth = 400;
     const barHeight = 350;
 
 	const barData = this.props.statisticsData.length > 0 ? {
 		fields:this.props.statisticsData[0].fields,
 		data:this.props.statisticsData[0].data
-	} : {};
-	const pieData = barData;
+	} : undefined;
+
+	const pieData = this.props.statisticsData.length > 0 ? {
+		legend:this.props.statisticsData[1].series,
+		fields:this.props.statisticsData[1].fields,
+		data:this.props.statisticsData[1].data
+	} :undefined;
 
     return (
       <div>
         <BarCharts className={styles.charts} width={barWidth} height={barHeight} barData={barData}/>
-        <PieCharts className={styles.charts} width={barWidth} height={barHeight} pieData={pieData}/>
+        <PieCharts className={styles.charts} width={barWidth} height={420} pieData={pieData}/>
       </div>
     );
   }

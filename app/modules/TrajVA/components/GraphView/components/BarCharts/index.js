@@ -8,7 +8,7 @@ class BarCharts extends Component {
 		className: PropTypes.string,
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
-		barData: PropTypes.array.isRequired
+		barData: PropTypes.object.isRequired
 	};
 
 	constructor(props) {
@@ -33,7 +33,7 @@ class BarCharts extends Component {
 	}
 
 	initalECharts = () => {
-
+		if(this.props.barData === undefined) return;
 		const myChart = echarts.init(document.getElementById('barCharts'));
 		const barData = this.props.barData;
 		const dataAxis = barData.fields ? barData.fields :['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
@@ -58,16 +58,6 @@ class BarCharts extends Component {
 				seriesData.push({
 					type: 'bar',
 					itemStyle: {
-						normal: {
-							color: new echarts.graphic.LinearGradient(
-								0, 0, 0, 1,
-								[
-									{offset: 0, color: '#83bff6'},
-									{offset: 0.5, color: '#188df0'},
-									{offset: 1, color: '#188df0'}
-								]
-							)
-						},
 						emphasis: {
 							color: new echarts.graphic.LinearGradient(
 								0, 0, 0, 1,
@@ -92,9 +82,9 @@ class BarCharts extends Component {
 		    xAxis: {
 		        data: dataAxis,
 		        axisLabel: {
-		            inside: true,
+		            inside: false,
 		            textStyle: {
-		                color: '#fff'
+		                color: '#000'
 		            }
 		        },
 		        axisTick: {
