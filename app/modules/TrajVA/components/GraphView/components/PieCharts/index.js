@@ -60,7 +60,7 @@ class BarCharts extends Component {
 								show: false
 							}
 						},
-						center: ['50%', '60%']
+						center: ['50%', '40%']
 					}
 				);
 			} else {
@@ -82,11 +82,11 @@ class BarCharts extends Component {
             },
             legend: [{
                 orient: 'horizontal',
-				bottom:0,
+				top:0,
                 data:legendData
             },{
 				orient:'horizontal',
-				top: 0,
+				bottom: 0,
 				data: fields
 			}],
 			series: seriesData
