@@ -43,6 +43,7 @@ class BarCharts extends Component {
 		for (let i = 0; i < data.length; i++) {
 			if (data[i] instanceof Array) {
 				seriesData.push({
+					name: `人群${i}`,
 					type: 'bar',
 					data: data[i]
 				})

@@ -51,7 +51,7 @@ export function addStatistics(data) {
 		data,
 	};
 }
-import statistic from 'data/cellTrackCluster10_avg.json';
+import statistic from 'data/cellTrackCluster10_avg1.json';
 // Call API
 export function addStatisticRequest(reqBody) {
 	return (dispatch) => {

@@ -48,7 +48,8 @@ class BarCharts extends Component {
 					{
 						name:`人群${i+1}`,
 						type:'pie',
-						radius: [`${5 + radiusUnit * i + radiusInterval}%`, `${5 + radiusUnit * (i+1)}%`],
+						//radius: [`${5 + radiusUnit * i + radiusInterval}%`, `${5 + radiusUnit * (i+1)}%`],
+						radius: ['5%','25%'],
 						data:seriesItemData,
 						label: {
 							normal: {
@@ -60,7 +61,8 @@ class BarCharts extends Component {
 								show: false
 							}
 						},
-						center: ['50%', '40%']
+						// center: ['50%', '40%']
+						center: [`${33 * (i%3) + 16.5}%`, `${30 * Math.floor(i/3) + 25}%`]
 					}
 				);
 			} else {
@@ -76,17 +78,28 @@ class BarCharts extends Component {
 		}
 
         myChart.setOption({
+			toolbox: {
+				show: true,
+				feature: {
+					dataZoom: {
+						yAxisIndex: 'none'
+					},
+					dataView: {readOnly: false},
+					restore: {},
+					saveAsImage: {}
+				}
+			},
             tooltip: {
                 trigger: 'item',
                 formatter: "{a} <br/>{b}: {c} ({d}%)"
             },
             legend: [{
                 orient: 'horizontal',
-				top:0,
+				top:20,
                 data:legendData
             },{
 				orient:'horizontal',
-				bottom: 0,
+				bottom: 100,
 				data: fields
 			}],
 			series: seriesData
