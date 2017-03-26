@@ -43,6 +43,15 @@ app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));// for parsin
 app.use(bodyParser.text());
 app.use('/api', routers);
 
+app.all('*',function(req,res,next) {
+	res.set({
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': 'Content-Type',
+		'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
+	});
+	next();
+});
+
 // start app
 app.listen(serverConfig.port, (error) => {
 	if (!error) {

@@ -72,6 +72,11 @@ function postCellPhoneTrack(req, res) {
 		if(data.err){
 			res.status(500).send(data.err);
 		} else {
+			res.set({
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
+			});
 			res.json({
 				datetime,
 				timeunit,

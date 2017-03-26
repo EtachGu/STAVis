@@ -41,6 +41,11 @@ export function getTrackClusters(req, res) {
 						});
 						Cluster.dbscan(trajSet,10,2,1/EARTH_RADIUS,1/EARTH_RADIUS);
 					}
+					res.set({
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Headers': 'Content-Type',
+						'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
+					});
 					res.json(data);
 				}
 			});
