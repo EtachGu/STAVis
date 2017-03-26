@@ -26,4 +26,13 @@ router.route('/trajectory').post(trajectoryCtrls.getTrackByConditions);
  */
 router.route('/cluster').post(clusterCtrls.getTrackClusters);
 
+router.use(function(req,res,next) {
+	res.set({
+		'Access-Control-Allow-Origin':'*',
+		'Access-Control-Allow-Headers': 'Content-Type',
+		'Access-Control-Allow-Methods':'PUT,POST,GET,DELETE,OPTIONS'
+	});
+	next();
+});
+
 export default router;

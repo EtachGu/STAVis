@@ -43,7 +43,10 @@ export function getTrackByConditions(req, res) {
 	if (!req.body) {
 		res.status(403).end();
 	}
-    const trajDBName = req.body.trajName;
+	if (req.is('text/*')){
+		req.body = JSON.parse(req.body);
+	}
+	const trajDBName = req.body.trajName;
 	switch(trajDBName) {
 		case 'taxiOD':
 			taxiOD.getTaxiODByConditions(req, res);

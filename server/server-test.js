@@ -40,6 +40,7 @@ mongoose.connect(serverConfig.mongoURL, connectOption, (error) => {
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));// for parsing application/json
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.text());
 app.use('/api', routers);
 
 // start app
