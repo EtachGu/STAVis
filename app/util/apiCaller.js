@@ -1,11 +1,12 @@
 import 'whatwg-fetch';
 import Config from './config';
 
-export const API_URL = Config.API_URL;
+const API_URL = Config.API_URL;
 
 export default function callApi(endpoint, method = 'get', body) {
   return fetch(`${API_URL}/${endpoint}`, {
     headers: { 'content-type': 'application/json' },
+    mode: "no-cors",
     method,
     body: JSON.stringify(body),
   })
