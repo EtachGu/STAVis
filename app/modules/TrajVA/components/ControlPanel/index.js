@@ -1,9 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import moment from 'moment';
 
 // import components
-import { Input, Icon, Collapse, Radio, DatePicker }  from 'antd';
+import { Input, Icon, Collapse, Radio, DatePicker, Button }  from 'antd';
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
@@ -11,6 +12,9 @@ const { MonthPicker, RangePicker } = DatePicker;
 // css styles
 import 'antd/dist/antd.css';
 import styles from './styles.css';
+
+// Import Actions
+import { addTrajSetRequest } from '../../TrajVAActions';
 
 class ControlPanel extends Component {
   static propTypes = {
@@ -20,7 +24,8 @@ class ControlPanel extends Component {
   constructor(props) {
     super(props);
 	  this.state = {
-		  radioDataBaseValue:1
+		  radioDataBaseValue:1,
+		  dateRange:['2016-03-01','2016-03-02']	// [startDate, endDate]  string type
 	  }
   };
 
@@ -34,8 +39,33 @@ class ControlPanel extends Component {
 		});
 	};
 	// onDatePickerChange
-	onDatePickerChange = () => {
+	onDatePickerChange = (date, dateString) => {
+		this.setState({
+			dateRange: dateString
+		});
+	};
 
+	confirmQueryTrack = () => {
+		const dataType = this.state.radioDataBaseValue;
+		const dateRange = this.state.dateRange;
+		switch (dataType) {
+			case 1:
+				// emit the event for query the cellPhoneTrack
+				if(dateRange[0] !== '' && dateRange[0] !== ''){
+					const requestBody = {
+						trajName: "cellPhoneTrack",
+						datetime: dateRange,
+						timeunit: "1hh",
+						id: [2]//[1,2,3,4,5,6]
+					};
+					this.props.updateTrajectory(requestBody);
+				}
+				break;
+			case 2:break;
+			case 3:
+				break;
+			default:
+		}
 	};
 
   render() {
@@ -56,8 +86,14 @@ class ControlPanel extends Component {
 				  <Radio style={radioStyle} value={3}>出租车数据</Radio>
 			  </RadioGroup>
 			  <div>
-				 <RangePicker onChange={this.onDatePickerChange} />
+				 <RangePicker
+					 defaultValue={
+					 	[moment(this.state.dateRange[0]), moment(this.state.dateRange[1])]
+					 }
+					 onChange={this.onDatePickerChange}
+				 />
 			  </div>
+			  <Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
           </Panel>
           <Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
             <p>{text}</p>
@@ -82,6 +118,7 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     changeRoute: (url) => dispatch(push(url)),
+	  updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch)
   };
 }
 
