@@ -19,7 +19,11 @@ export function addTrajSetRequest(reqBody) {
       datetime: reqBody.datetime,
       timeunit: reqBody.timeunit,
       id: reqBody.id
-    }).then(res => dispatch(addTrajectories(res.body)));
+    }).then(data => {
+		if(!data.err) {
+			dispatch(addTrajectories(data.data));
+		}
+	});
   };
 }
 
