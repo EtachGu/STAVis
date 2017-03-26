@@ -110,3 +110,49 @@ export function getTrackByConditions(req, callback) {
 
 	})
 }
+
+export function getTrackByClusterId (clusterid,startDate, endDate, timeunit, callback) {
+	let clusteridCondition = clusterid;
+	if(clusterid instanceof Array) {
+		clusteridCondition = {
+			$in:clusterid
+		};
+	}
+	const match = {
+		$match: {
+			Date:{
+				$gte: startDate,
+				$lt: endDate
+			},
+			clusterid: clusteridCondition
+		}
+	};
+	const project = {
+		$project:
+		{
+			_id:0,
+			Date: 1,
+			clusterid:1,
+			geom:1
+		}
+	};
+	const group = {
+		$group:{
+			_id:"$Date",
+			clusterid:{
+				$push: "$clusterid"
+			},
+			trajectories:{
+				$push: "$geom"
+			}
+		}
+	};
+
+	CellPhoneTrack.aggregate([match, project, group]).exec((err, data) => {
+		if (err) {
+			callback({err});
+		} else {
+			callback(data);
+		}
+	});
+}

@@ -2,7 +2,7 @@
  * Created by lenovo on 2017/3/19.
  */
 import * as taxiOD from './trajectories/taxiOD.controller';
-
+import * as CellPhoneTrackCtrl from './trajectories/cellPhoneTrack.controller';
 /**
  * Get all track
  * @param req
@@ -48,8 +48,33 @@ export function getTrackByConditions(req, res) {
 		case 'taxiOD':
 			taxiOD.getTaxiODByConditions(req, res);
 			break;
-		case 'cellPhoneTrack':break;
+		case 'cellPhoneTrack':
+			postCellPhoneTrack(req, res);
+			break;
 		case 'publicTransit':break;
 		default:
 	}
+}
+
+function postCellPhoneTrack(req, res) {
+	const datetime = req.body.datetime;
+	const startTime  = new Date(datetime[0]);
+	const endTime = new Date(datetime[1]);
+	const startDate = startTime.getFullYear() * 10000 + (startTime.getMonth()+1) * 100 + startTime.getDate();
+	const endDate = endTime.getFullYear() * 10000 + (endTime.getMonth()+1) * 100 + endTime.getDate();
+	const timeunit = req.body.timeunit;
+	const ids = req.body.id;   //  clusterid
+
+	CellPhoneTrackCtrl.getTrackByClusterId(ids,startDate,endDate,timeunit,(data) => {
+		if(data.err){
+			res.status(500).send(data.err);
+		} else {
+			res.json({
+				datetime,
+				timeunit,
+				id:ids,
+				data
+			});
+		}
+	});
 }
