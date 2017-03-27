@@ -13,10 +13,16 @@ import cellBaseStations from 'data/cellPhoneBaseStation.json';
 class MapDiv extends Component {
 	static propTypes = {
 		className: PropTypes.string,
+		mapData: PropTypes.array
 	};
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			echartData:[],
+			currentDate:'',
+			color:['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f']
+		}
 	}
 
 	componentDidMount() {
@@ -108,9 +114,185 @@ class MapDiv extends Component {
 				}
 			},
 		});
-
-
 	}
+
+	componentWillReceiveProps(nextProps){
+		if(this.props.mapData && this.props.mapData != nextProps.mapData){
+			
+			if(nextProps.mapData) {
+				
+				const clusterTracks = nextProps.mapData;
+				
+				// 依据时间粒度划分的 数据集合
+				const trajDataSet = [];
+
+				for(let i = 0; i < clusterTracks.length; i++) {
+
+					// 每一个元素 为个单元时间粒度的 轨迹集合
+					const groupName = clusterTracks[i]._id;
+					const geom =  clusterTracks[i].trajectories;
+					const clusterid = clusterTracks[i].clusterid;
+
+					const nowTracksByCluster = [];  // 该时间粒度下，不同人群的轨迹集合
+
+					// 将每个时间粒度内的元素 依据各自的群体类别进行划分
+					geom.forEach((item,index) => {
+						const clusterName = `人群${clusterid[index]}`;
+
+						let everyCluster = nowTracksByCluster.find((everyCluster) => everyCluster.name == clusterName);
+
+						if(everyCluster == undefined) {
+							everyCluster = {};
+							everyCluster.name = clusterName;
+							everyCluster.geoms = [];
+							nowTracksByCluster.push(everyCluster);
+						}
+
+						const coord = JSON.parse(item).coordinates;
+						const coord_e = [];
+						for(let index = 0; index < coord.length; index++){
+							const lon = coord[index][0];
+							const lat = coord[index][1];
+							coord_e.push([lon, lat]);
+						}
+						const geom_e = { coords: coord_e };
+
+						// 将该类别的轨迹 添加到集合
+						everyCluster.geoms.push(geom_e);
+					});
+
+					const legendData = nowTracksByCluster.map( e => e.name);
+
+					const seriesData = nowTracksByCluster.map( e => e.geoms);
+
+					// 将每个时间粒度下的 数据添加到 集合
+					trajDataSet.push({
+						date:groupName,
+						legends:legendData,
+						series:seriesData
+					});
+				}
+
+				let startDate = '';
+
+				if (trajDataSet.length > 0) startDate = trajDataSet[0].date;
+
+				this.setState({
+					currentDate: startDate, 
+					echartData: trajDataSet
+				})		
+			}// if mapdata valid
+		}// if props updated
+	}
+
+	componentDidUpdate() {
+		const chart = echarts.getInstanceByDom(document.getElementById('map'));
+
+		if(this.state.currentDate != '' && chart) {
+
+			// update options
+			const currentDate = this.state.currentDate;
+			const currentEchartsData = this.state.echartData.find(e => e.date == currentDate );
+
+			const legendData = currentEchartsData.legends;
+			const series = currentEchartsData.series;
+			
+			const seriesData = [];
+
+			series.forEach((item,index) => {
+
+				seriesData.push({
+					name: legendData[index],
+					type: 'lines',
+					polyline: true,
+					coordinateSystem: 'geo',
+					data:item,
+					lineStyle: {
+						normal: {
+							opacity: 0.2,
+							width: 1
+						}
+					},
+					progressiveThreshold: 500,
+					progressive: 200
+				});
+
+			});
+
+			legendData.push('基站');
+
+			// 绘制基站
+			seriesData.push({
+				name: '基站',
+				type: 'scatter',
+				coordinateSystem: 'geo',
+				data:cellBaseStations.data,
+				itemStyle: {
+					normal: {
+						color: '#ff0000',
+						opacity: 0.2,
+					}
+				},
+				symbolSize:1
+			});
+			
+			const color = this.state.color;
+
+			chart.clear();
+
+			chart.setOption({
+				backgroundColor: '#404a59',
+				color:color,
+				geo: {
+					map: 'shanghai',
+					roam: true,
+					label: {
+						emphasis: {
+							show: true
+						}
+					},
+					itemStyle: {
+						normal: {
+							areaColor: '#323c48',
+							borderColor: '#111'
+						},
+						emphasis: {
+							areaColor: '#2a333d'
+						}
+					}
+				},
+				series:seriesData,
+				legend: {
+					orient: 'vertical',
+					y: 'top',
+					x:'left',
+					data:legendData,
+					textStyle: {
+						color: '#fff'
+					}
+				},
+			});
+		}
+	}
+
+	convertData =  (data) => {
+		const dataSeries = [];
+		for (let i = 0; i < data.length; i++) {
+			const collectSet = data[i].geometries.map( geom => {
+				const coord = geom.coordinates;
+				const coord_e = [];
+				for(let index = 0; index < coord.length; index++){
+					const lon = coord[index][0];
+					const lat = coord[index][1];
+					coord_e.push([lon, lat]);
+				}
+				const geom_e = { coords: coord_e };
+				return geom_e;
+			});
+			dataSeries.push(collectSet);
+		}
+		return dataSeries;
+	};
 
 	initalECharts(data) {
 

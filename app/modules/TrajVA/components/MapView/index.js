@@ -10,6 +10,9 @@ import MapDiv from './components/map';
 // styles
 import styles from './styles.css';
 
+// select
+import { selectTrajectory } from './selectors';
+
 class MapView extends Component {
 
   constructor(props) {
@@ -146,9 +149,10 @@ class MapView extends Component {
   }
 
   render() {
+    const mapData = this.props.trajectories.data;
     return (
       <div>
-        <MapDiv className={styles.mapdiv} />
+        <MapDiv className={styles.mapdiv} mapData={mapData} />
       </div>
     );
   }
@@ -156,10 +160,12 @@ class MapView extends Component {
 
 MapView.propTypes = {
   ij: React.PropTypes.any,
+  trajectories: React.PropTypes.object,
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = createStructuredSelector({
+  trajectories:selectTrajectory
 });
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
