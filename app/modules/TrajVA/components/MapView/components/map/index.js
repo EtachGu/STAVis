@@ -9,6 +9,112 @@ import styles from './styles.css';
 import shanghaiJson from 'data/shanghai.json';
 import cellTracks from 'data/cellTrack_geo_collection.json';
 import cellBaseStations from 'data/cellPhoneBaseStation.json';
+import metroStations from 'data/shMetroStations.json';
+
+const bmapShangHai = {
+    center: [121.487899486,31.24916171],
+    zoom: 10,
+    roam: true,
+    mapStyle: {
+        styleJson: [{
+            'featureType': 'water',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#d1d1d1'
+            }
+        }, {
+            'featureType': 'land',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#f3f3f3'
+            }
+        }, {
+            'featureType': 'railway',
+            'elementType': 'all',
+            'stylers': {
+                'visibility': 'off'
+            }
+        }, {
+            'featureType': 'highway',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#fdfdfd'
+            }
+        }, {
+            'featureType': 'highway',
+            'elementType': 'labels',
+            'stylers': {
+                'visibility': 'off'
+            }
+        }, {
+            'featureType': 'arterial',
+            'elementType': 'geometry',
+            'stylers': {
+                'color': '#fefefe'
+            }
+        }, {
+            'featureType': 'arterial',
+            'elementType': 'geometry.fill',
+            'stylers': {
+                'color': '#fefefe'
+            }
+        }, {
+            'featureType': 'poi',
+            'elementType': 'all',
+            'stylers': {
+                'visibility': 'off'
+            }
+        }, {
+            'featureType': 'green',
+            'elementType': 'all',
+            'stylers': {
+                'visibility': 'off'
+            }
+        }, {
+            'featureType': 'subway',
+            'elementType': 'all',
+            'stylers': {
+                'visibility': 'on',
+            }
+        }, {
+            'featureType': 'manmade',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#d1d1d1'
+            }
+        }, {
+            'featureType': 'local',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#d1d1d1'
+            }
+        }, {
+            'featureType': 'arterial',
+            'elementType': 'labels',
+            'stylers': {
+                'visibility': 'off'
+            }
+        }, {
+            'featureType': 'boundary',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#fefefe'
+            }
+        }, {
+            'featureType': 'building',
+            'elementType': 'all',
+            'stylers': {
+                'color': '#d1d1d1'
+            }
+        }, {
+            'featureType': 'label',
+            'elementType': 'labels.text.fill',
+            'stylers': {
+                'color': '#999999'
+            }
+        }]
+    }
+};
 
 class MapDiv extends Component {
 	static propTypes = {
@@ -29,10 +135,10 @@ class MapDiv extends Component {
 		// var file = "./data/bus_lines.json";
   //       var reader = new FileReader();
   //       reader.onload = function(data) {
-            
+			
   //       }
   //       reader.readAsText(file);
-        //this.initalECharts(buslines);
+		//this.initalECharts(buslines);
 		const convertData = function (data) {
 			const dataSeries = [];
 			for (let i = 0; i < data.length; i++) {
@@ -68,6 +174,20 @@ class MapDiv extends Component {
 						width: 1
 					}
 				},
+				// zlevel: 2,
+				// effect: {
+				// 	show: true,
+				// 	period: 6,
+				// 	trailLength: 0,
+				// 	symbol: "arrow",
+				// 	symbolSize: 15
+				// },
+				// lineStyle: {
+				// 	normal: {
+				// 		width: 1,
+				// 		opacity: 0.6,
+				// 	}
+				// },
 				progressiveThreshold: 500,
 				progressive: 200
 			})
@@ -205,12 +325,27 @@ class MapDiv extends Component {
 					name: legendData[index],
 					type: 'lines',
 					polyline: true,
-					coordinateSystem: 'geo',
+					// coordinateSystem: 'geo',
+					coordinateSystem: 'bmap',
 					data:item,
+					// lineStyle: {
+					// 	normal: {
+					// 		opacity: 0.2,
+					// 		width: 1
+					// 	}
+					// },
+					zlevel: 2,
+					effect: {
+						show: true,
+						period: 6,
+						trailLength: 0,
+						symbol: "pin",
+						symbolSize: 5
+					},
 					lineStyle: {
 						normal: {
-							opacity: 0.2,
-							width: 1
+							width: 1,
+							opacity: 0.6,
 						}
 					},
 					progressiveThreshold: 500,
@@ -225,7 +360,8 @@ class MapDiv extends Component {
 			seriesData.push({
 				name: '基站',
 				type: 'scatter',
-				coordinateSystem: 'geo',
+				// coordinateSystem: 'geo',
+				coordinateSystem: 'bmap',
 				data:cellBaseStations.data,
 				itemStyle: {
 					normal: {
@@ -238,29 +374,56 @@ class MapDiv extends Component {
 			
 			const color = this.state.color;
 
+			// add 
+			// seriesData.push({
+			// 	mapType: 'shanghai',
+			// 	type: 'map',
+			// 	center: [121.487899486,31.24916171],
+			// 	roam: true,
+			// 	label: {
+			// 		emphasis: {
+			// 			show: true
+			// 		}
+			// 	},
+			// 	itemStyle: {
+			// 		normal: {
+			// 			// areaColor: '#323c48',
+			// 			areaColor: 'rgba(128, 128, 128, 0.5)',
+			// 			borderColor: '#111'
+			// 		},
+			// 		emphasis: {
+			// 			// areaColor: '#2a333d',
+			// 			areaColor: 'rgba(128, 128, 200, 0.5)',
+			// 		}
+			// 	}
+			// });
+
 			chart.clear();
 
 			chart.setOption({
 				backgroundColor: '#404a59',
 				color:color,
-				geo: {
-					map: 'shanghai',
-					roam: true,
-					label: {
-						emphasis: {
-							show: true
-						}
-					},
-					itemStyle: {
-						normal: {
-							areaColor: '#323c48',
-							borderColor: '#111'
-						},
-						emphasis: {
-							areaColor: '#2a333d'
-						}
-					}
-				},
+				// geo: {
+				// 	map: 'shanghai',
+				// 	roam: true,
+				// 	label: {
+				// 		emphasis: {
+				// 			show: true
+				// 		}
+				// 	},
+				// 	itemStyle: {
+				// 		normal: {
+				// 			// areaColor: '#323c48',
+				// 			areaColor: rgba(128, 128, 128, 0.5),
+				// 			borderColor: '#111'
+				// 		},
+				// 		emphasis: {
+				// 			areaColor: '#2a333d',
+				// 			areaColor: rgba(128, 128, 200, 0.5),
+				// 		}
+				// 	}
+				// },
+				bmap: bmapShangHai,
 				series:seriesData,
 				legend: {
 					orient: 'vertical',
@@ -298,30 +461,30 @@ class MapDiv extends Component {
 
 		const myChart = echarts.init(document.getElementById('map'));
 		const hStep = 300 / (data.length - 1);
-	    const busLines = [].concat.apply([], data.map(function (busLine, idx) {
-	        let prevPt;
-	        let points = [];
-	        for (let i = 0; i < busLine.length; i += 2) {
-	            let pt = [busLine[i], busLine[i + 1]];
-	            if (i > 0) {
-	                pt = [
-	                    prevPt[0] + pt[0],
-	                    prevPt[1] + pt[1]
-	                ];
-	            }
-	            prevPt = pt;
+		const busLines = [].concat.apply([], data.map(function (busLine, idx) {
+			let prevPt;
+			let points = [];
+			for (let i = 0; i < busLine.length; i += 2) {
+				let pt = [busLine[i], busLine[i + 1]];
+				if (i > 0) {
+					pt = [
+						prevPt[0] + pt[0],
+						prevPt[1] + pt[1]
+					];
+				}
+				prevPt = pt;
 
-	            points.push([pt[0] / 1e4, pt[1] / 1e4]);
-	    	}
-	        return {
-	            coords: points,
-	            lineStyle: {
-	                normal: {
-	                    color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * idx))
-	                }
-	            }
-        	};
-        }));
+				points.push([pt[0] / 1e4, pt[1] / 1e4]);
+			}
+			return {
+				coords: points,
+				lineStyle: {
+					normal: {
+						color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * idx))
+					}
+				}
+			};
+		}));
 
 		myChart.setOption({
 			bmap: {
@@ -490,131 +653,131 @@ class MapDiv extends Component {
 
 		// draw line 
 		const lines = data.map(function (track) {
-	        return {
-	            coords: track.map(function (seg, idx) {
-	                return seg.coord;
-	            })
-	        };
-    	});
-	    myChart.setOption({
-	        bmap: {
-	            center: [120.13066322374, 30.240018034923],
-	            zoom: 14,
-	            roam: true,
-	            mapStyle: {
-	                styleJson: [{
-	                    'featureType': 'water',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#d1d1d1'
-	                    }
-	                }, {
-	                    'featureType': 'land',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#f3f3f3'
-	                    }
-	                }, {
-	                    'featureType': 'railway',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'highway',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#fdfdfd'
-	                    }
-	                }, {
-	                    'featureType': 'highway',
-	                    'elementType': 'labels',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'arterial',
-	                    'elementType': 'geometry',
-	                    'stylers': {
-	                        'color': '#fefefe'
-	                    }
-	                }, {
-	                    'featureType': 'arterial',
-	                    'elementType': 'geometry.fill',
-	                    'stylers': {
-	                        'color': '#fefefe'
-	                    }
-	                }, {
-	                    'featureType': 'poi',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'green',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'subway',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'manmade',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#d1d1d1'
-	                    }
-	                }, {
-	                    'featureType': 'local',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#d1d1d1'
-	                    }
-	                }, {
-	                    'featureType': 'arterial',
-	                    'elementType': 'labels',
-	                    'stylers': {
-	                        'visibility': 'off'
-	                    }
-	                }, {
-	                    'featureType': 'boundary',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#fefefe'
-	                    }
-	                }, {
-	                    'featureType': 'building',
-	                    'elementType': 'all',
-	                    'stylers': {
-	                        'color': '#d1d1d1'
-	                    }
-	                }, {
-	                    'featureType': 'label',
-	                    'elementType': 'labels.text.fill',
-	                    'stylers': {
-	                        'color': '#999999'
-	                    }
-	                }]
-	            }
-	        },
-	        series: [{
-	            type: 'lines',
-	            coordinateSystem: 'bmap',
-	            data: lines,
-	            polyline: true,
-	            lineStyle: {
-	                normal: {
-	                    color: 'purple',
-	                    opacity: 0.6,
-	                    width: 1
-	                }
-	            }
-	        }]
-	    });
+			return {
+				coords: track.map(function (seg, idx) {
+					return seg.coord;
+				})
+			};
+		});
+		myChart.setOption({
+			bmap: {
+				center: [120.13066322374, 30.240018034923],
+				zoom: 14,
+				roam: true,
+				mapStyle: {
+					styleJson: [{
+						'featureType': 'water',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#d1d1d1'
+						}
+					}, {
+						'featureType': 'land',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#f3f3f3'
+						}
+					}, {
+						'featureType': 'railway',
+						'elementType': 'all',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'highway',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#fdfdfd'
+						}
+					}, {
+						'featureType': 'highway',
+						'elementType': 'labels',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'arterial',
+						'elementType': 'geometry',
+						'stylers': {
+							'color': '#fefefe'
+						}
+					}, {
+						'featureType': 'arterial',
+						'elementType': 'geometry.fill',
+						'stylers': {
+							'color': '#fefefe'
+						}
+					}, {
+						'featureType': 'poi',
+						'elementType': 'all',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'green',
+						'elementType': 'all',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'subway',
+						'elementType': 'all',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'manmade',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#d1d1d1'
+						}
+					}, {
+						'featureType': 'local',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#d1d1d1'
+						}
+					}, {
+						'featureType': 'arterial',
+						'elementType': 'labels',
+						'stylers': {
+							'visibility': 'off'
+						}
+					}, {
+						'featureType': 'boundary',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#fefefe'
+						}
+					}, {
+						'featureType': 'building',
+						'elementType': 'all',
+						'stylers': {
+							'color': '#d1d1d1'
+						}
+					}, {
+						'featureType': 'label',
+						'elementType': 'labels.text.fill',
+						'stylers': {
+							'color': '#999999'
+						}
+					}]
+				}
+			},
+			series: [{
+				type: 'lines',
+				coordinateSystem: 'bmap',
+				data: lines,
+				polyline: true,
+				lineStyle: {
+					normal: {
+						color: 'purple',
+						opacity: 0.6,
+						width: 1
+					}
+				}
+			}]
+		});
 	}
 
 

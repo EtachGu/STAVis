@@ -1,0 +1,3930 @@
+[
+  {
+    "lineid": 101,
+    "stationname": "1号线莘庄",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.385379,
+    "lat": 31.111193
+  },
+  {
+    "lineid": 102,
+    "stationname": "1号线外环路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.39302,
+    "lat": 31.120899
+  },
+  {
+    "lineid": 103,
+    "stationname": "1号线莲花路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.402943,
+    "lat": 31.130986
+  },
+  {
+    "lineid": 104,
+    "stationname": "1号线锦江乐园",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.414107,
+    "lat": 31.142217
+  },
+  {
+    "lineid": 105,
+    "stationname": "1号线上海南站",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.430041,
+    "lat": 31.154579
+  },
+  {
+    "lineid": 106,
+    "stationname": "1号线漕宝路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.434966,
+    "lat": 31.168167
+  },
+  {
+    "lineid": 107,
+    "stationname": "1号线上海体育馆",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.437423,
+    "lat": 31.182813
+  },
+  {
+    "lineid": 108,
+    "stationname": "1号线徐家汇",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.436837,
+    "lat": 31.195338
+  },
+  {
+    "lineid": 109,
+    "stationname": "1号线衡山路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.446424,
+    "lat": 31.204528
+  },
+  {
+    "lineid": 110,
+    "stationname": "1号线常熟路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.449141,
+    "lat": 31.213524
+  },
+  {
+    "lineid": 111,
+    "stationname": "1号线陕西南路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.459957,
+    "lat": 31.217231
+  },
+  {
+    "lineid": 112,
+    "stationname": "1号线黄陂南路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.473306,
+    "lat": 31.222745
+  },
+  {
+    "lineid": 113,
+    "stationname": "1号线人民广场",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.475719,
+    "lat": 31.23277
+  },
+  {
+    "lineid": 114,
+    "stationname": "1号线新闸路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.468151,
+    "lat": 31.238373
+  },
+  {
+    "lineid": 115,
+    "stationname": "1号线汉中路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.458334,
+    "lat": 31.24161
+  },
+  {
+    "lineid": 116,
+    "stationname": "1号线上海火车站",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.458216,
+    "lat": 31.24969
+  },
+  {
+    "lineid": 117,
+    "stationname": "1号线中山北路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.459204,
+    "lat": 31.258891
+  },
+  {
+    "lineid": 118,
+    "stationname": "1号线延长路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.455329,
+    "lat": 31.271675
+  },
+  {
+    "lineid": 119,
+    "stationname": "1号线上海马戏城",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.452023,
+    "lat": 31.279895
+  },
+  {
+    "lineid": 120,
+    "stationname": "1号线汶水路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.450251,
+    "lat": 31.292556
+  },
+  {
+    "lineid": 121,
+    "stationname": "1号线彭浦新村",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.448642,
+    "lat": 31.306604
+  },
+  {
+    "lineid": 122,
+    "stationname": "1号线共康路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.447063,
+    "lat": 31.318936
+  },
+  {
+    "lineid": 123,
+    "stationname": "1号线通河新村",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.441546,
+    "lat": 31.33113
+  },
+  {
+    "lineid": 124,
+    "stationname": "1号线呼兰路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.437711,
+    "lat": 31.339703
+  },
+  {
+    "lineid": 125,
+    "stationname": "1号线共富新村",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.434063,
+    "lat": 31.355082
+  },
+  {
+    "lineid": 126,
+    "stationname": "1号线宝安公路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.430914,
+    "lat": 31.369555
+  },
+  {
+    "lineid": 127,
+    "stationname": "1号线友谊西路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.427953,
+    "lat": 31.381296
+  },
+  {
+    "lineid": 128,
+    "stationname": "1号线富锦路",
+    "fid": 100,
+    "area_id": 1,
+    "lon": 121.424661,
+    "lat": 31.39226
+  },
+  {
+    "lineid": 201,
+    "stationname": "2号线浦东国际机场",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.806298,
+    "lat": 31.150569
+  },
+  {
+    "lineid": 202,
+    "stationname": "2号线海天三路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.796878,
+    "lat": 31.168459
+  },
+  {
+    "lineid": 203,
+    "stationname": "2号线远东大道",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.755296,
+    "lat": 31.19936
+  },
+  {
+    "lineid": 204,
+    "stationname": "2号线凌空路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.723791,
+    "lat": 31.192826
+  },
+  {
+    "lineid": 205,
+    "stationname": "2号线川沙",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.69821,
+    "lat": 31.186741
+  },
+  {
+    "lineid": 206,
+    "stationname": "2号线华夏东路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.681098,
+    "lat": 31.196553
+  },
+  {
+    "lineid": 207,
+    "stationname": "2号线创新中路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.673713,
+    "lat": 31.213871
+  },
+  {
+    "lineid": 208,
+    "stationname": "2号线唐镇",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.656547,
+    "lat": 31.21334
+  },
+  {
+    "lineid": 209,
+    "stationname": "2号线广兰路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.621072,
+    "lat": 31.21105
+  },
+  {
+    "lineid": 210,
+    "stationname": "2号线金科路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.601989,
+    "lat": 31.204213
+  },
+  {
+    "lineid": 211,
+    "stationname": "2号线张江高科",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.587687,
+    "lat": 31.201832
+  },
+  {
+    "lineid": 212,
+    "stationname": "2号线龙阳路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.557634,
+    "lat": 31.203575
+  },
+  {
+    "lineid": 213,
+    "stationname": "2号线世纪公园",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.550909,
+    "lat": 31.209421
+  },
+  {
+    "lineid": 214,
+    "stationname": "2号线上海科技馆",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.544313,
+    "lat": 31.218771
+  },
+  {
+    "lineid": 215,
+    "stationname": "2号线世纪大道",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.527221,
+    "lat": 31.228764
+  },
+  {
+    "lineid": 216,
+    "stationname": "2号线东昌路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.515556,
+    "lat": 31.23327
+  },
+  {
+    "lineid": 217,
+    "stationname": "2号线陆家嘴",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.502262,
+    "lat": 31.238195
+  },
+  {
+    "lineid": 218,
+    "stationname": "2号线南京东路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.484628,
+    "lat": 31.238101
+  },
+  {
+    "lineid": 219,
+    "stationname": "2号线人民广场",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.475719,
+    "lat": 31.23277
+  },
+  {
+    "lineid": 220,
+    "stationname": "2号线南京西路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.459971,
+    "lat": 31.229853
+  },
+  {
+    "lineid": 221,
+    "stationname": "2号线静安寺",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.446221,
+    "lat": 31.223083
+  },
+  {
+    "lineid": 222,
+    "stationname": "2号线江苏路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.430635,
+    "lat": 31.220408
+  },
+  {
+    "lineid": 223,
+    "stationname": "2号线中山公园",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.415741,
+    "lat": 31.218014
+  },
+  {
+    "lineid": 224,
+    "stationname": "2号线娄山关路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.404058,
+    "lat": 31.211158
+  },
+  {
+    "lineid": 225,
+    "stationname": "2号线威宁路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.387285,
+    "lat": 31.21487
+  },
+  {
+    "lineid": 226,
+    "stationname": "2号线北新泾",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.373872,
+    "lat": 31.21669
+  },
+  {
+    "lineid": 227,
+    "stationname": "2号线淞虹路",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.359588,
+    "lat": 31.218212
+  },
+  {
+    "lineid": 228,
+    "stationname": "虹桥2号航站楼",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.326249,
+    "lat": 31.19423
+  },
+  {
+    "lineid": 229,
+    "stationname": "2号线虹桥火车站",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.32155,
+    "lat": 31.19395
+  },
+  {
+    "lineid": 230,
+    "stationname": "2号线徐泾东",
+    "fid": 200,
+    "area_id": 1,
+    "lon": 121.299416,
+    "lat": 31.188331
+  },
+  {
+    "lineid": 301,
+    "stationname": "3号线上海南站",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.430041,
+    "lat": 31.154579
+  },
+  {
+    "lineid": 302,
+    "stationname": "3号线石龙路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.443205,
+    "lat": 31.157949
+  },
+  {
+    "lineid": 303,
+    "stationname": "3号线龙漕路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.444389,
+    "lat": 31.169461
+  },
+  {
+    "lineid": 304,
+    "stationname": "3号线漕溪路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.43841,
+    "lat": 31.176746
+  },
+  {
+    "lineid": 305,
+    "stationname": "3号线宜山路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.427238,
+    "lat": 31.187082
+  },
+  {
+    "lineid": 306,
+    "stationname": "3号线虹桥路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.420814,
+    "lat": 31.197524
+  },
+  {
+    "lineid": 307,
+    "stationname": "3号线延安西路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.417062,
+    "lat": 31.209616
+  },
+  {
+    "lineid": 308,
+    "stationname": "3号线中山公园",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.415741,
+    "lat": 31.218014
+  },
+  {
+    "lineid": 309,
+    "stationname": "3号线金沙江路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.413257,
+    "lat": 31.232307
+  },
+  {
+    "lineid": 310,
+    "stationname": "3号线曹杨路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.417701,
+    "lat": 31.239302
+  },
+  {
+    "lineid": 311,
+    "stationname": "3号线镇坪路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.429779,
+    "lat": 31.246369
+  },
+  {
+    "lineid": 312,
+    "stationname": "3号线中潭路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.441001,
+    "lat": 31.254568
+  },
+  {
+    "lineid": 313,
+    "stationname": "3号线上海火车站",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.458216,
+    "lat": 31.24969
+  },
+  {
+    "lineid": 314,
+    "stationname": "3号线宝山路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.476298,
+    "lat": 31.251523
+  },
+  {
+    "lineid": 315,
+    "stationname": "3号线东宝兴路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.480202,
+    "lat": 31.25988
+  },
+  {
+    "lineid": 316,
+    "stationname": "3号线虹口足球场",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.479229,
+    "lat": 31.271353
+  },
+  {
+    "lineid": 317,
+    "stationname": "3号线赤峰路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.482429,
+    "lat": 31.281247
+  },
+  {
+    "lineid": 318,
+    "stationname": "3号线大柏树",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.483216,
+    "lat": 31.289433
+  },
+  {
+    "lineid": 319,
+    "stationname": "3号线江湾镇",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.485082,
+    "lat": 31.305546
+  },
+  {
+    "lineid": 320,
+    "stationname": "3号线殷高西路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.484856,
+    "lat": 31.320005
+  },
+  {
+    "lineid": 321,
+    "stationname": "3号线长江南路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.491482,
+    "lat": 31.332062
+  },
+  {
+    "lineid": 322,
+    "stationname": "3号线淞发路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.50039,
+    "lat": 31.345135
+  },
+  {
+    "lineid": 323,
+    "stationname": "3号线张华浜",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.498671,
+    "lat": 31.358016
+  },
+  {
+    "lineid": 324,
+    "stationname": "3号线淞滨路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.492818,
+    "lat": 31.370928
+  },
+  {
+    "lineid": 325,
+    "stationname": "3号线水产路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.488212,
+    "lat": 31.381298
+  },
+  {
+    "lineid": 326,
+    "stationname": "3号线宝杨路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.479574,
+    "lat": 31.395315
+  },
+  {
+    "lineid": 327,
+    "stationname": "3号线友谊路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.475924,
+    "lat": 31.404016
+  },
+  {
+    "lineid": 328,
+    "stationname": "3号线铁力路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.461139,
+    "lat": 31.40812
+  },
+  {
+    "lineid": 329,
+    "stationname": "3号线江杨北路",
+    "fid": 300,
+    "area_id": 1,
+    "lon": 121.439819,
+    "lat": 31.407858
+  },
+  {
+    "lineid": 401,
+    "stationname": "4号线宜山路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.427238,
+    "lat": 31.187082
+  },
+  {
+    "lineid": 402,
+    "stationname": "4号线上海体育馆",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.437423,
+    "lat": 31.182813
+  },
+  {
+    "lineid": 403,
+    "stationname": "4号线上海体育场",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.443529,
+    "lat": 31.185605
+  },
+  {
+    "lineid": 404,
+    "stationname": "4号线东安路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.454897,
+    "lat": 31.190819
+  },
+  {
+    "lineid": 405,
+    "stationname": "4号线大木桥路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.463278,
+    "lat": 31.194057
+  },
+  {
+    "lineid": 406,
+    "stationname": "4号线鲁班路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.475148,
+    "lat": 31.199221
+  },
+  {
+    "lineid": 407,
+    "stationname": "4号线西藏南路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.489555,
+    "lat": 31.201967
+  },
+  {
+    "lineid": 408,
+    "stationname": "4号线南浦大桥",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.499725,
+    "lat": 31.208504
+  },
+  {
+    "lineid": 409,
+    "stationname": "4号线塘桥",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.51869,
+    "lat": 31.209762
+  },
+  {
+    "lineid": 410,
+    "stationname": "4号线蓝村路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.527627,
+    "lat": 31.211672
+  },
+  {
+    "lineid": 411,
+    "stationname": "4号线浦电路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.529122,
+    "lat": 31.220104
+  },
+  {
+    "lineid": 412,
+    "stationname": "4号线世纪大道",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.527221,
+    "lat": 31.228764
+  },
+  {
+    "lineid": 413,
+    "stationname": "4号线浦东大道",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.519385,
+    "lat": 31.239974
+  },
+  {
+    "lineid": 414,
+    "stationname": "4号线杨树浦路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.51721,
+    "lat": 31.251935
+  },
+  {
+    "lineid": 415,
+    "stationname": "4号线大连路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.513088,
+    "lat": 31.257938
+  },
+  {
+    "lineid": 416,
+    "stationname": "4号线临平路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.500696,
+    "lat": 31.260874
+  },
+  {
+    "lineid": 417,
+    "stationname": "4号线海伦路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.488669,
+    "lat": 31.259278
+  },
+  {
+    "lineid": 418,
+    "stationname": "4号线宝山路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.476298,
+    "lat": 31.251523
+  },
+  {
+    "lineid": 419,
+    "stationname": "4号线上海火车站",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.458216,
+    "lat": 31.24969
+  },
+  {
+    "lineid": 420,
+    "stationname": "4号线中潭路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.441001,
+    "lat": 31.254568
+  },
+  {
+    "lineid": 421,
+    "stationname": "4号线镇坪路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.429779,
+    "lat": 31.246369
+  },
+  {
+    "lineid": 422,
+    "stationname": "4号线曹杨路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.417701,
+    "lat": 31.239302
+  },
+  {
+    "lineid": 423,
+    "stationname": "4号线金沙江路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.413257,
+    "lat": 31.232307
+  },
+  {
+    "lineid": 424,
+    "stationname": "4号线中山公园",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.415741,
+    "lat": 31.218014
+  },
+  {
+    "lineid": 425,
+    "stationname": "4号线延安西路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.417062,
+    "lat": 31.209616
+  },
+  {
+    "lineid": 426,
+    "stationname": "4号线虹桥路",
+    "fid": 400,
+    "area_id": 1,
+    "lon": 121.420814,
+    "lat": 31.197524
+  },
+  {
+    "lineid": 501,
+    "stationname": "5号线莘庄",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.385379,
+    "lat": 31.111193
+  },
+  {
+    "lineid": 502,
+    "stationname": "5号线春申路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.385818,
+    "lat": 31.09825
+  },
+  {
+    "lineid": 503,
+    "stationname": "5号线银都路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.390301,
+    "lat": 31.089351
+  },
+  {
+    "lineid": 504,
+    "stationname": "5号线颛桥",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.401868,
+    "lat": 31.067013
+  },
+  {
+    "lineid": 505,
+    "stationname": "5号线北桥",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.410054,
+    "lat": 31.045112
+  },
+  {
+    "lineid": 506,
+    "stationname": "5号线剑川路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.416582,
+    "lat": 31.026483
+  },
+  {
+    "lineid": 507,
+    "stationname": "5号线东川路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.419901,
+    "lat": 31.018197
+  },
+  {
+    "lineid": 508,
+    "stationname": "5号线金平路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.410186,
+    "lat": 31.011282
+  },
+  {
+    "lineid": 509,
+    "stationname": "5号线华宁路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.395255,
+    "lat": 31.007467
+  },
+  {
+    "lineid": 510,
+    "stationname": "5号线文井路",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.380775,
+    "lat": 31.003597
+  },
+  {
+    "lineid": 511,
+    "stationname": "5号线闵行开发区",
+    "fid": 500,
+    "area_id": 1,
+    "lon": 121.369712,
+    "lat": 31.000627
+  },
+  {
+    "lineid": 601,
+    "stationname": "6号线港城路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.574752,
+    "lat": 31.353005
+  },
+  {
+    "lineid": 602,
+    "stationname": "6号线外高桥保税区北",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.586926,
+    "lat": 31.347802
+  },
+  {
+    "lineid": 603,
+    "stationname": "6号线航津路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.593974,
+    "lat": 31.335371
+  },
+  {
+    "lineid": 604,
+    "stationname": "6号线外高桥保税区南",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.601963,
+    "lat": 31.321578
+  },
+  {
+    "lineid": 605,
+    "stationname": "6号线洲海路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.589396,
+    "lat": 31.312229
+  },
+  {
+    "lineid": 606,
+    "stationname": "6号线五洲大道",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.589212,
+    "lat": 31.302569
+  },
+  {
+    "lineid": 607,
+    "stationname": "6号线东靖路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.588736,
+    "lat": 31.290684
+  },
+  {
+    "lineid": 608,
+    "stationname": "6号线巨峰路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.588365,
+    "lat": 31.280684
+  },
+  {
+    "lineid": 609,
+    "stationname": "6号线五莲路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.587866,
+    "lat": 31.272025
+  },
+  {
+    "lineid": 610,
+    "stationname": "6号线博兴路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.586689,
+    "lat": 31.26352
+  },
+  {
+    "lineid": 611,
+    "stationname": "6号线金桥路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.581817,
+    "lat": 31.257084
+  },
+  {
+    "lineid": 612,
+    "stationname": "6号线云山路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.572775,
+    "lat": 31.250413
+  },
+  {
+    "lineid": 613,
+    "stationname": "6号线德平路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.564237,
+    "lat": 31.2454
+  },
+  {
+    "lineid": 614,
+    "stationname": "6号线北洋泾路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.552314,
+    "lat": 31.239145
+  },
+  {
+    "lineid": 615,
+    "stationname": "6号线民生路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.543527,
+    "lat": 31.235851
+  },
+  {
+    "lineid": 616,
+    "stationname": "6号线源深体育中心",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.534642,
+    "lat": 31.233004
+  },
+  {
+    "lineid": 617,
+    "stationname": "6号线世纪大道",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.527221,
+    "lat": 31.228764
+  },
+  {
+    "lineid": 618,
+    "stationname": "6号线浦电路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.529122,
+    "lat": 31.220104
+  },
+  {
+    "lineid": 619,
+    "stationname": "6号线蓝村路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.527627,
+    "lat": 31.211672
+  },
+  {
+    "lineid": 620,
+    "stationname": "6号线上海儿童医学中心",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.523482,
+    "lat": 31.203277
+  },
+  {
+    "lineid": 621,
+    "stationname": "6号线临沂新村",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.516695,
+    "lat": 31.193202
+  },
+  {
+    "lineid": 622,
+    "stationname": "6号线高科西路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.509845,
+    "lat": 31.185761
+  },
+  {
+    "lineid": 623,
+    "stationname": "6号线东明路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.510868,
+    "lat": 31.172646
+  },
+  {
+    "lineid": 624,
+    "stationname": "6号线高青路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.515787,
+    "lat": 31.159907
+  },
+  {
+    "lineid": 625,
+    "stationname": "6号线华夏西路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.514539,
+    "lat": 31.149878
+  },
+  {
+    "lineid": 626,
+    "stationname": "6号线上南路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.506225,
+    "lat": 31.14909
+  },
+  {
+    "lineid": 627,
+    "stationname": "6号线灵岩南路",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.495295,
+    "lat": 31.148665
+  },
+  {
+    "lineid": 628,
+    "stationname": "6号线东方体育中心",
+    "fid": 600,
+    "area_id": 1,
+    "lon": 121.480304,
+    "lat": 31.153366
+  },
+  {
+    "lineid": 701,
+    "stationname": "7号线花木路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.562754,
+    "lat": 31.211212
+  },
+  {
+    "lineid": 702,
+    "stationname": "7号线龙阳路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.557634,
+    "lat": 31.203575
+  },
+  {
+    "lineid": 703,
+    "stationname": "7号线芳华路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.550115,
+    "lat": 31.19311
+  },
+  {
+    "lineid": 704,
+    "stationname": "7号线锦绣路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.540041,
+    "lat": 31.187592
+  },
+  {
+    "lineid": 705,
+    "stationname": "7号线杨高南路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.525087,
+    "lat": 31.187566
+  },
+  {
+    "lineid": 706,
+    "stationname": "7号线高科西路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.509845,
+    "lat": 31.185761
+  },
+  {
+    "lineid": 707,
+    "stationname": "7号线云台路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.500439,
+    "lat": 31.182212
+  },
+  {
+    "lineid": 708,
+    "stationname": "7号线耀华路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.494612,
+    "lat": 31.178513
+  },
+  {
+    "lineid": 709,
+    "stationname": "7号线长清路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.486117,
+    "lat": 31.174611
+  },
+  {
+    "lineid": 710,
+    "stationname": "7号线后滩",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.473756,
+    "lat": 31.171918
+  },
+  {
+    "lineid": 711,
+    "stationname": "7号线龙华中路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.457472,
+    "lat": 31.185093
+  },
+  {
+    "lineid": 712,
+    "stationname": "7号线东安路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.454897,
+    "lat": 31.190819
+  },
+  {
+    "lineid": 713,
+    "stationname": "7号线肇嘉浜路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.450212,
+    "lat": 31.199436
+  },
+  {
+    "lineid": 714,
+    "stationname": "7号线常熟路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.449141,
+    "lat": 31.213524
+  },
+  {
+    "lineid": 715,
+    "stationname": "7号线静安寺",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.446221,
+    "lat": 31.223083
+  },
+  {
+    "lineid": 716,
+    "stationname": "7号线昌平路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.442617,
+    "lat": 31.233749
+  },
+  {
+    "lineid": 717,
+    "stationname": "7号线长寿路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.438435,
+    "lat": 31.24093
+  },
+  {
+    "lineid": 718,
+    "stationname": "7号线镇坪路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.429779,
+    "lat": 31.246369
+  },
+  {
+    "lineid": 719,
+    "stationname": "7号线岚皋路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.421939,
+    "lat": 31.256198
+  },
+  {
+    "lineid": 720,
+    "stationname": "7号线新村路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.422682,
+    "lat": 31.263952
+  },
+  {
+    "lineid": 721,
+    "stationname": "7号线大华三路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.423047,
+    "lat": 31.274024
+  },
+  {
+    "lineid": 722,
+    "stationname": "7号线行知路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.421493,
+    "lat": 31.284942
+  },
+  {
+    "lineid": 723,
+    "stationname": "7号线大场镇",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.416548,
+    "lat": 31.29332
+  },
+  {
+    "lineid": 724,
+    "stationname": "7号线场中路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.413661,
+    "lat": 31.303685
+  },
+  {
+    "lineid": 725,
+    "stationname": "7号线上大路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.40858,
+    "lat": 31.315071
+  },
+  {
+    "lineid": 726,
+    "stationname": "7号线南陈路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.398863,
+    "lat": 31.321437
+  },
+  {
+    "lineid": 727,
+    "stationname": "7号线上海大学",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.388884,
+    "lat": 31.320586
+  },
+  {
+    "lineid": 728,
+    "stationname": "7号线祁华路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.373569,
+    "lat": 31.322315
+  },
+  {
+    "lineid": 729,
+    "stationname": "7号线顾村公园",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.372756,
+    "lat": 31.344815
+  },
+  {
+    "lineid": 730,
+    "stationname": "7号线刘行",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.362404,
+    "lat": 31.357569
+  },
+  {
+    "lineid": 731,
+    "stationname": "7号线潘广路",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.355845,
+    "lat": 31.364182
+  },
+  {
+    "lineid": 732,
+    "stationname": "7号线罗南新村",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.35747,
+    "lat": 31.388831
+  },
+  {
+    "lineid": 733,
+    "stationname": "7号线美兰湖",
+    "fid": 700,
+    "area_id": 1,
+    "lon": 121.349966,
+    "lat": 31.401949
+  },
+  {
+    "lineid": 801,
+    "stationname": "8号线沈杜公路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.512272,
+    "lat": 31.061427
+  },
+  {
+    "lineid": 802,
+    "stationname": "8号线联航路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.510594,
+    "lat": 31.073567
+  },
+  {
+    "lineid": 803,
+    "stationname": "8号线江月路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.508603,
+    "lat": 31.084253
+  },
+  {
+    "lineid": 804,
+    "stationname": "8号线浦江镇",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.506272,
+    "lat": 31.09659
+  },
+  {
+    "lineid": 805,
+    "stationname": "8号线芦恒路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.497842,
+    "lat": 31.119015
+  },
+  {
+    "lineid": 806,
+    "stationname": "8号线凌兆新村",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.489663,
+    "lat": 31.141301
+  },
+  {
+    "lineid": 807,
+    "stationname": "8号线东方体育中心",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.480304,
+    "lat": 31.153366
+  },
+  {
+    "lineid": 808,
+    "stationname": "8号线杨思",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.493443,
+    "lat": 31.161054
+  },
+  {
+    "lineid": 809,
+    "stationname": "8号线成山路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.49622,
+    "lat": 31.170735
+  },
+  {
+    "lineid": 810,
+    "stationname": "8号线耀华路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.494612,
+    "lat": 31.178513
+  },
+  {
+    "lineid": 811,
+    "stationname": "8号线中华艺术宫",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.493626,
+    "lat": 31.185242
+  },
+  {
+    "lineid": 812,
+    "stationname": "8号线西藏南路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.489555,
+    "lat": 31.201967
+  },
+  {
+    "lineid": 813,
+    "stationname": "8号线陆家浜路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.486115,
+    "lat": 31.211789
+  },
+  {
+    "lineid": 814,
+    "stationname": "8号线老西门",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.483679,
+    "lat": 31.218969
+  },
+  {
+    "lineid": 815,
+    "stationname": "8号线大世界",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.479326,
+    "lat": 31.227182
+  },
+  {
+    "lineid": 816,
+    "stationname": "8号线人民广场",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.475719,
+    "lat": 31.23277
+  },
+  {
+    "lineid": 817,
+    "stationname": "8号线曲阜路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.471543,
+    "lat": 31.242307
+  },
+  {
+    "lineid": 818,
+    "stationname": "8号线中兴路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.469026,
+    "lat": 31.253228
+  },
+  {
+    "lineid": 819,
+    "stationname": "8号线西藏北路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.468769,
+    "lat": 31.263505
+  },
+  {
+    "lineid": 820,
+    "stationname": "8号线虹口足球场",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.479229,
+    "lat": 31.271353
+  },
+  {
+    "lineid": 821,
+    "stationname": "8号线曲阳路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.491138,
+    "lat": 31.276524
+  },
+  {
+    "lineid": 822,
+    "stationname": "8号线四平路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.501488,
+    "lat": 31.27488
+  },
+  {
+    "lineid": 823,
+    "stationname": "8号线鞍山新村",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.509685,
+    "lat": 31.273242
+  },
+  {
+    "lineid": 824,
+    "stationname": "8号线江浦路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.518379,
+    "lat": 31.274946
+  },
+  {
+    "lineid": 825,
+    "stationname": "8号线黄兴路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.528401,
+    "lat": 31.278814
+  },
+  {
+    "lineid": 826,
+    "stationname": "8号线延吉中路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.534941,
+    "lat": 31.288543
+  },
+  {
+    "lineid": 827,
+    "stationname": "8号线黄兴公园",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.533168,
+    "lat": 31.295784
+  },
+  {
+    "lineid": 828,
+    "stationname": "8号线翔殷路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.531974,
+    "lat": 31.305002
+  },
+  {
+    "lineid": 829,
+    "stationname": "8号线嫩江路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.531954,
+    "lat": 31.314804
+  },
+  {
+    "lineid": 830,
+    "stationname": "8号线市光路",
+    "fid": 800,
+    "area_id": 1,
+    "lon": 121.531933,
+    "lat": 31.322724
+  },
+  {
+    "lineid": 901,
+    "stationname": "9号线杨高中路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.548664,
+    "lat": 31.22751
+  },
+  {
+    "lineid": 902,
+    "stationname": "9号线世纪大道",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.527221,
+    "lat": 31.228764
+  },
+  {
+    "lineid": 903,
+    "stationname": "9号线商城路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.516295,
+    "lat": 31.230327
+  },
+  {
+    "lineid": 904,
+    "stationname": "9号线小南门",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.498398,
+    "lat": 31.216866
+  },
+  {
+    "lineid": 905,
+    "stationname": "9号线陆家浜",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.486115,
+    "lat": 31.211789
+  },
+  {
+    "lineid": 906,
+    "stationname": "9号线马当路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.477256,
+    "lat": 31.20952
+  },
+  {
+    "lineid": 907,
+    "stationname": "9号线打浦桥",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.468681,
+    "lat": 31.206309
+  },
+  {
+    "lineid": 908,
+    "stationname": "9号线嘉善路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.460704,
+    "lat": 31.20282
+  },
+  {
+    "lineid": 909,
+    "stationname": "9号线肇嘉浜路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.450212,
+    "lat": 31.199436
+  },
+  {
+    "lineid": 910,
+    "stationname": "9号线徐家汇",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.436837,
+    "lat": 31.195338
+  },
+  {
+    "lineid": 911,
+    "stationname": "9号线宜山路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.427238,
+    "lat": 31.187082
+  },
+  {
+    "lineid": 912,
+    "stationname": "9号线桂林路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.418065,
+    "lat": 31.17476
+  },
+  {
+    "lineid": 913,
+    "stationname": "9号线漕河泾开发区",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.397823,
+    "lat": 31.170624
+  },
+  {
+    "lineid": 914,
+    "stationname": "9号线合川路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.384772,
+    "lat": 31.166542
+  },
+  {
+    "lineid": 915,
+    "stationname": "9号线星中路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.369146,
+    "lat": 31.158148
+  },
+  {
+    "lineid": 916,
+    "stationname": "9号线七宝",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.349221,
+    "lat": 31.155287
+  },
+  {
+    "lineid": 917,
+    "stationname": "9号线中春路",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.3377,
+    "lat": 31.149415
+  },
+  {
+    "lineid": 918,
+    "stationname": "9号线九亭",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.319423,
+    "lat": 31.137252
+  },
+  {
+    "lineid": 919,
+    "stationname": "9号线泗泾",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.260247,
+    "lat": 31.118272
+  },
+  {
+    "lineid": 920,
+    "stationname": "9号线佘山",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.229686,
+    "lat": 31.104097
+  },
+  {
+    "lineid": 921,
+    "stationname": "9号线洞泾",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.230473,
+    "lat": 31.084492
+  },
+  {
+    "lineid": 922,
+    "stationname": "9号线松江大学城",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.232577,
+    "lat": 31.053984
+  },
+  {
+    "lineid": 923,
+    "stationname": "9号线松江新城",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.230739,
+    "lat": 31.030295
+  },
+  {
+    "lineid": 924,
+    "stationname": "9号线松江体育中心",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.230488,
+    "lat": 31.015581
+  },
+  {
+    "lineid": 925,
+    "stationname": "9号线醉白池",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.229361,
+    "lat": 31.001125
+  },
+  {
+    "lineid": 926,
+    "stationname": "9号线松江南站",
+    "fid": 900,
+    "area_id": 1,
+    "lon": 121.230884,
+    "lat": 30.984818
+  },
+  {
+    "lineid": 1001,
+    "stationname": "10号线新江湾城",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.506951,
+    "lat": 31.328496
+  },
+  {
+    "lineid": 1002,
+    "stationname": "10号线殷高东路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.506797,
+    "lat": 31.321768
+  },
+  {
+    "lineid": 1003,
+    "stationname": "10号线三门路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.50834,
+    "lat": 31.313214
+  },
+  {
+    "lineid": 1004,
+    "stationname": "10号线江湾体育场",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.514222,
+    "lat": 31.302853
+  },
+  {
+    "lineid": 1005,
+    "stationname": "10号线五角场",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.514632,
+    "lat": 31.298043
+  },
+  {
+    "lineid": 1006,
+    "stationname": "10号线国权路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.510024,
+    "lat": 31.289276
+  },
+  {
+    "lineid": 1007,
+    "stationname": "10号线同济大学",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.506357,
+    "lat": 31.282086
+  },
+  {
+    "lineid": 1008,
+    "stationname": "10号线四平路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.501488,
+    "lat": 31.27488
+  },
+  {
+    "lineid": 1009,
+    "stationname": "10号线邮电新村",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.494362,
+    "lat": 31.268533
+  },
+  {
+    "lineid": 1010,
+    "stationname": "10号线海伦路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.488669,
+    "lat": 31.259278
+  },
+  {
+    "lineid": 1011,
+    "stationname": "10号线四川北路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.484208,
+    "lat": 31.252035
+  },
+  {
+    "lineid": 1012,
+    "stationname": "10号线天潼路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.482473,
+    "lat": 31.243829
+  },
+  {
+    "lineid": 1013,
+    "stationname": "10号线南京东路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.484628,
+    "lat": 31.238101
+  },
+  {
+    "lineid": 1014,
+    "stationname": "10号线豫园",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.487473,
+    "lat": 31.227801
+  },
+  {
+    "lineid": 1015,
+    "stationname": "10号线老西门",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.483679,
+    "lat": 31.218969
+  },
+  {
+    "lineid": 1016,
+    "stationname": "10号线新天地",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.475182,
+    "lat": 31.216367
+  },
+  {
+    "lineid": 1017,
+    "stationname": "10号线陕西南路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.459957,
+    "lat": 31.217231
+  },
+  {
+    "lineid": 1018,
+    "stationname": "10号线上海图书馆",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.444363,
+    "lat": 31.20796
+  },
+  {
+    "lineid": 1019,
+    "stationname": "10号线交通大学",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.435253,
+    "lat": 31.202213
+  },
+  {
+    "lineid": 1020,
+    "stationname": "10号线虹桥路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.420814,
+    "lat": 31.197524
+  },
+  {
+    "lineid": 1021,
+    "stationname": "10号线宋园路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.41208,
+    "lat": 31.19654
+  },
+  {
+    "lineid": 1022,
+    "stationname": "10号线伊犁路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.403899,
+    "lat": 31.19888
+  },
+  {
+    "lineid": 1023,
+    "stationname": "10号线水城路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.392259,
+    "lat": 31.199482
+  },
+  {
+    "lineid": 1024,
+    "stationname": "10号线龙溪路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.380034,
+    "lat": 31.1944
+  },
+  {
+    "lineid": 1025,
+    "stationname": "10号线上海动物园",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.368137,
+    "lat": 31.190246
+  },
+  {
+    "lineid": 1026,
+    "stationname": "10号线虹桥1号航站楼",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.347371,
+    "lat": 31.191363
+  },
+  {
+    "lineid": 1027,
+    "stationname": "10号线虹桥2号航站楼",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.326249,
+    "lat": 31.19423
+  },
+  {
+    "lineid": 1028,
+    "stationname": "10号线虹桥火车站",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.32155,
+    "lat": 31.19395
+  },
+  {
+    "lineid": 1029,
+    "stationname": "10号线龙柏新村",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.37048,
+    "lat": 31.176882
+  },
+  {
+    "lineid": 1030,
+    "stationname": "10号线紫藤路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.364502,
+    "lat": 31.169797
+  },
+  {
+    "lineid": 1031,
+    "stationname": "10号线航中路",
+    "fid": 1000,
+    "area_id": 1,
+    "lon": 121.355336,
+    "lat": 31.165417
+  },
+  {
+    "lineid": 1101,
+    "stationname": "11号线罗山路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.593152,
+    "lat": 31.153259
+  },
+  {
+    "lineid": 1102,
+    "stationname": "11号线御桥",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.570914,
+    "lat": 31.158131
+  },
+  {
+    "lineid": 1103,
+    "stationname": "11号线浦三路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.539005,
+    "lat": 31.150861
+  },
+  {
+    "lineid": 1104,
+    "stationname": "11号线三林东",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.522999,
+    "lat": 31.146459
+  },
+  {
+    "lineid": 1105,
+    "stationname": "11号线三林",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.511594,
+    "lat": 31.143172
+  },
+  {
+    "lineid": 1106,
+    "stationname": "11号线东方体育中心",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.480304,
+    "lat": 31.153366
+  },
+  {
+    "lineid": 1107,
+    "stationname": "11号线龙耀路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.459702,
+    "lat": 31.15972
+  },
+  {
+    "lineid": 1108,
+    "stationname": "11号线云锦路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.458567,
+    "lat": 31.166451
+  },
+  {
+    "lineid": 1109,
+    "stationname": "11号线龙华",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.452958,
+    "lat": 31.172672
+  },
+  {
+    "lineid": 1110,
+    "stationname": "11号线上海游泳馆",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.441424,
+    "lat": 31.179123
+  },
+  {
+    "lineid": 1111,
+    "stationname": "11号线徐家汇",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.436837,
+    "lat": 31.195338
+  },
+  {
+    "lineid": 1112,
+    "stationname": "11号线交通大学",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.435253,
+    "lat": 31.202213
+  },
+  {
+    "lineid": 1113,
+    "stationname": "11号线江苏路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.430635,
+    "lat": 31.220408
+  },
+  {
+    "lineid": 1114,
+    "stationname": "11号线隆德路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.423576,
+    "lat": 31.230509
+  },
+  {
+    "lineid": 1115,
+    "stationname": "11号线曹杨路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.417701,
+    "lat": 31.239302
+  },
+  {
+    "lineid": 1116,
+    "stationname": "11号线枫桥路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.411402,
+    "lat": 31.24185
+  },
+  {
+    "lineid": 1117,
+    "stationname": "11号线真如",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.407219,
+    "lat": 31.250767
+  },
+  {
+    "lineid": 1118,
+    "stationname": "11号线上海西站",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.400926,
+    "lat": 31.262693
+  },
+  {
+    "lineid": 1119,
+    "stationname": "11号线李子园",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.389969,
+    "lat": 31.26902
+  },
+  {
+    "lineid": 1120,
+    "stationname": "11号线祁连山路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.376035,
+    "lat": 31.27165
+  },
+  {
+    "lineid": 1121,
+    "stationname": "11号线武威路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.364678,
+    "lat": 31.276646
+  },
+  {
+    "lineid": 1122,
+    "stationname": "11号线桃浦新村",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.349623,
+    "lat": 31.281603
+  },
+  {
+    "lineid": 1123,
+    "stationname": "11号线南翔",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.3232,
+    "lat": 31.297057
+  },
+  {
+    "lineid": 1124,
+    "stationname": "11号线马陆",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.276906,
+    "lat": 31.319675
+  },
+  {
+    "lineid": 1125,
+    "stationname": "11号线嘉定新城",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.254294,
+    "lat": 31.330062
+  },
+  {
+    "lineid": 1126,
+    "stationname": "11号线白银路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.24535,
+    "lat": 31.345359
+  },
+  {
+    "lineid": 1127,
+    "stationname": "11号线嘉定西站",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.227872,
+    "lat": 31.377124
+  },
+  {
+    "lineid": 1128,
+    "stationname": "11号线嘉定北站",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.23735,
+    "lat": 31.391549
+  },
+  {
+    "lineid": 1129,
+    "stationname": "11号线上海赛车场",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.226098,
+    "lat": 31.331898
+  },
+  {
+    "lineid": 1130,
+    "stationname": "11号线昌吉东路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.200384,
+    "lat": 31.29362
+  },
+  {
+    "lineid": 1131,
+    "stationname": "11号线上海汽车城",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.180742,
+    "lat": 31.285403
+  },
+  {
+    "lineid": 1132,
+    "stationname": "11号线安亭",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.161985,
+    "lat": 31.28849
+  },
+  {
+    "lineid": 1133,
+    "stationname": "11号线兆丰路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.150315,
+    "lat": 31.289048
+  },
+  {
+    "lineid": 1134,
+    "stationname": "11号线光明路",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.117186,
+    "lat": 31.29621
+  },
+  {
+    "lineid": 1135,
+    "stationname": "11号线花桥",
+    "fid": 1100,
+    "area_id": 1,
+    "lon": 121.104407,
+    "lat": 31.29879
+  },
+  {
+    "lineid": 1201,
+    "stationname": "12号线金海路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.638659,
+    "lat": 31.26326
+  },
+  {
+    "lineid": 1202,
+    "stationname": "12号线申江路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.626863,
+    "lat": 31.280231
+  },
+  {
+    "lineid": 1203,
+    "stationname": "12号线金京路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.615477,
+    "lat": 31.279823
+  },
+  {
+    "lineid": 1204,
+    "stationname": "12号线杨高北路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.60296,
+    "lat": 31.280092
+  },
+  {
+    "lineid": 1205,
+    "stationname": "12号线巨峰路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.588365,
+    "lat": 31.280684
+  },
+  {
+    "lineid": 1206,
+    "stationname": "12号线东陆路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.579124,
+    "lat": 31.282533
+  },
+  {
+    "lineid": 1207,
+    "stationname": "12号线复兴岛",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.561207,
+    "lat": 31.28053
+  },
+  {
+    "lineid": 1208,
+    "stationname": "12号线爱国路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.552655,
+    "lat": 31.279788
+  },
+  {
+    "lineid": 1209,
+    "stationname": "12号线隆昌路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.544692,
+    "lat": 31.275213
+  },
+  {
+    "lineid": 1210,
+    "stationname": "12号线宁国路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.532328,
+    "lat": 31.268612
+  },
+  {
+    "lineid": 1211,
+    "stationname": "12号线江浦公园",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.523697,
+    "lat": 31.26457
+  },
+  {
+    "lineid": 1212,
+    "stationname": "12号线大连路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.513088,
+    "lat": 31.257938
+  },
+  {
+    "lineid": 1213,
+    "stationname": "12号线提篮桥",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.506801,
+    "lat": 31.253518
+  },
+  {
+    "lineid": 1214,
+    "stationname": "12号线国际客运中心",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.498158,
+    "lat": 31.25016
+  },
+  {
+    "lineid": 1215,
+    "stationname": "12号线天潼路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.482473,
+    "lat": 31.243829
+  },
+  {
+    "lineid": 1216,
+    "stationname": "12号线曲阜路",
+    "fid": 1200,
+    "area_id": 1,
+    "lon": 121.471543,
+    "lat": 31.242307
+  },
+  {
+    "lineid": 1301,
+    "stationname": "13号线金运路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.319308,
+    "lat": 31.240986
+  },
+  {
+    "lineid": 1302,
+    "stationname": "13号线金沙江西路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.335156,
+    "lat": 31.241152
+  },
+  {
+    "lineid": 1303,
+    "stationname": "13号线丰庄",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.355141,
+    "lat": 31.242553
+  },
+  {
+    "lineid": 1304,
+    "stationname": "13号线祁连山南路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.367275,
+    "lat": 31.237625
+  },
+  {
+    "lineid": 1305,
+    "stationname": "13号线真北路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.382049,
+    "lat": 31.232215
+  },
+  {
+    "lineid": 1306,
+    "stationname": "13号线大渡河路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.394509,
+    "lat": 31.231754
+  },
+  {
+    "lineid": 1307,
+    "stationname": "13号线金沙江路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.413257,
+    "lat": 31.232307
+  },
+  {
+    "lineid": 1308,
+    "stationname": "13号线隆德路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.423576,
+    "lat": 31.230509
+  },
+  {
+    "lineid": 1309,
+    "stationname": "13号线武宁路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.430504,
+    "lat": 31.234346
+  },
+  {
+    "lineid": 1310,
+    "stationname": "13号线长寿路",
+    "fid": 1300,
+    "area_id": 1,
+    "lon": 121.438435,
+    "lat": 31.24093
+  },
+  {
+    "lineid": 1401,
+    "stationname": "14号线封浜",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.297025,
+    "lat": 31.267496
+  },
+  {
+    "lineid": 1402,
+    "stationname": "14号线金园五路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.31382,
+    "lat": 31.265353
+  },
+  {
+    "lineid": 1403,
+    "stationname": "14号线临洮路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.331024,
+    "lat": 31.263116
+  },
+  {
+    "lineid": 1404,
+    "stationname": "14号线嘉怡路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.346512,
+    "lat": 31.25897
+  },
+  {
+    "lineid": 1405,
+    "stationname": "14号线曹安公路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.360755,
+    "lat": 31.256103
+  },
+  {
+    "lineid": 1406,
+    "stationname": "14号线真新新村",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.373672,
+    "lat": 31.255058
+  },
+  {
+    "lineid": 1407,
+    "stationname": "14号线真光路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.384022,
+    "lat": 31.253335
+  },
+  {
+    "lineid": 1408,
+    "stationname": "14号线铜川路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.397078,
+    "lat": 31.250743
+  },
+  {
+    "lineid": 1409,
+    "stationname": "14号线真如",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.407219,
+    "lat": 31.250767
+  },
+  {
+    "lineid": 1410,
+    "stationname": "14号线中宁路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.412843,
+    "lat": 31.246186
+  },
+  {
+    "lineid": 1411,
+    "stationname": "14号线东新路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 125.366161,
+    "lat": 43.892212
+  },
+  {
+    "lineid": 1412,
+    "stationname": "14号线武宁路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.430504,
+    "lat": 31.234346
+  },
+  {
+    "lineid": 1413,
+    "stationname": "14号线武定路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.436486,
+    "lat": 31.22703
+  },
+  {
+    "lineid": 1414,
+    "stationname": "14号线静安寺",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.446221,
+    "lat": 31.223083
+  },
+  {
+    "lineid": 1415,
+    "stationname": "14号线黄陂南路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.473306,
+    "lat": 31.222745
+  },
+  {
+    "lineid": 1416,
+    "stationname": "14号线大世界",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.479326,
+    "lat": 31.227182
+  },
+  {
+    "lineid": 1417,
+    "stationname": "14号线豫园",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.487473,
+    "lat": 31.227801
+  },
+  {
+    "lineid": 1418,
+    "stationname": "14号线陆家嘴",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.502262,
+    "lat": 31.238195
+  },
+  {
+    "lineid": 1419,
+    "stationname": "14号线浦东南路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.511824,
+    "lat": 31.238385
+  },
+  {
+    "lineid": 1420,
+    "stationname": "14号线浦东大道",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.519385,
+    "lat": 31.239974
+  },
+  {
+    "lineid": 1421,
+    "stationname": "14号线源深路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.530053,
+    "lat": 31.241076
+  },
+  {
+    "lineid": 1422,
+    "stationname": "14号线巨野路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.540751,
+    "lat": 31.244225
+  },
+  {
+    "lineid": 1423,
+    "stationname": "14号线歇浦路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.551222,
+    "lat": 31.250417
+  },
+  {
+    "lineid": 1424,
+    "stationname": "14号线龙居路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.558478,
+    "lat": 31.256966
+  },
+  {
+    "lineid": 1425,
+    "stationname": "14号线云山路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.572775,
+    "lat": 31.250413
+  },
+  {
+    "lineid": 1426,
+    "stationname": "14号线碧云路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.579221,
+    "lat": 31.239075
+  },
+  {
+    "lineid": 1427,
+    "stationname": "14号线黄杨路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.590982,
+    "lat": 31.234299
+  },
+  {
+    "lineid": 1428,
+    "stationname": "14号线红枫路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.599828,
+    "lat": 31.237018
+  },
+  {
+    "lineid": 1429,
+    "stationname": "14号线金港路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.614549,
+    "lat": 31.241468
+  },
+  {
+    "lineid": 1430,
+    "stationname": "14号线金粤路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.628022,
+    "lat": 31.242132
+  },
+  {
+    "lineid": 1431,
+    "stationname": "14号线金穗路",
+    "fid": 1400,
+    "area_id": 1,
+    "lon": 121.634885,
+    "lat": 31.252828
+  },
+  {
+    "lineid": 1501,
+    "stationname": "15号线祁华路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.373569,
+    "lat": 31.322315
+  },
+  {
+    "lineid": 1502,
+    "stationname": "15号线丰翔路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.331299,
+    "lat": 31.304783
+  },
+  {
+    "lineid": 1503,
+    "stationname": "15号线南大路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 125.364941,
+    "lat": 43.850712
+  },
+  {
+    "lineid": 1504,
+    "stationname": "15号线祁安路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.3862,
+    "lat": 31.293816
+  },
+  {
+    "lineid": 1505,
+    "stationname": "15号线古浪路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.385696,
+    "lat": 31.284618
+  },
+  {
+    "lineid": 1506,
+    "stationname": "15号线真南路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.383179,
+    "lat": 31.270395
+  },
+  {
+    "lineid": 1507,
+    "stationname": "15号线上海西站",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.400926,
+    "lat": 31.262693
+  },
+  {
+    "lineid": 1508,
+    "stationname": "15号线铜川路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.397078,
+    "lat": 31.250743
+  },
+  {
+    "lineid": 1509,
+    "stationname": "15号线梅岭北路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.408104,
+    "lat": 31.242357
+  },
+  {
+    "lineid": 1510,
+    "stationname": "15号线大渡河路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.394509,
+    "lat": 31.231754
+  },
+  {
+    "lineid": 1511,
+    "stationname": "15号线长风公园",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.400505,
+    "lat": 31.232075
+  },
+  {
+    "lineid": 1512,
+    "stationname": "15号线娄山关路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.404058,
+    "lat": 31.211158
+  },
+  {
+    "lineid": 1513,
+    "stationname": "15号线伊犁路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.403899,
+    "lat": 31.19888
+  },
+  {
+    "lineid": 1514,
+    "stationname": "15号线姚虹路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.406837,
+    "lat": 31.185013
+  },
+  {
+    "lineid": 1515,
+    "stationname": "15号线蒲汇塘",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.435714,
+    "lat": 31.185991
+  },
+  {
+    "lineid": 1516,
+    "stationname": "15号线桂林路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.418065,
+    "lat": 31.17476
+  },
+  {
+    "lineid": 1517,
+    "stationname": "15号线桂林公园",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 110.284073,
+    "lat": 25.261024
+  },
+  {
+    "lineid": 1518,
+    "stationname": "15号线钦州南路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.407501,
+    "lat": 31.158792
+  },
+  {
+    "lineid": 1519,
+    "stationname": "15号线上海南站",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.429489,
+    "lat": 31.153304
+  },
+  {
+    "lineid": 1520,
+    "stationname": "15号线华东理工大学",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.428886,
+    "lat": 31.143333
+  },
+  {
+    "lineid": 1521,
+    "stationname": "15号线罗秀路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.445602,
+    "lat": 31.133558
+  },
+  {
+    "lineid": 1522,
+    "stationname": "15号线华泾路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.457855,
+    "lat": 31.115816
+  },
+  {
+    "lineid": 1523,
+    "stationname": "15号线梅陇镇",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.442469,
+    "lat": 31.098644
+  },
+  {
+    "lineid": 1524,
+    "stationname": "15号线景联路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.442375,
+    "lat": 31.101654
+  },
+  {
+    "lineid": 1525,
+    "stationname": "15号线颛兴东路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.416473,
+    "lat": 31.071524
+  },
+  {
+    "lineid": 1526,
+    "stationname": "15号线元江路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.362289,
+    "lat": 31.040056
+  },
+  {
+    "lineid": 1527,
+    "stationname": "15号线放鹤路",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.466499,
+    "lat": 31.048529
+  },
+  {
+    "lineid": 1528,
+    "stationname": "15号线闵行大学城",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.40905,
+    "lat": 31.005261
+  },
+  {
+    "lineid": 1529,
+    "stationname": "15号线紫竹科学园区",
+    "fid": 1500,
+    "area_id": 1,
+    "lon": 121.440314,
+    "lat": 31.011164
+  },
+  {
+    "lineid": 1601,
+    "stationname": "16号线滴水湖",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.929583,
+    "lat": 30.907245
+  },
+  {
+    "lineid": 1602,
+    "stationname": "16号线临港大道",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.910851,
+    "lat": 30.923519
+  },
+  {
+    "lineid": 1603,
+    "stationname": "16号线书院",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.85052,
+    "lat": 30.959264
+  },
+  {
+    "lineid": 1604,
+    "stationname": "16号线惠南东",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.7938,
+    "lat": 31.026448
+  },
+  {
+    "lineid": 1605,
+    "stationname": "16号线惠南",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.761677,
+    "lat": 31.053828
+  },
+  {
+    "lineid": 1606,
+    "stationname": "16号线野生动物园",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.699218,
+    "lat": 31.050325
+  },
+  {
+    "lineid": 1607,
+    "stationname": "16号线新场",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 106.842061,
+    "lat": 28.292216
+  },
+  {
+    "lineid": 1608,
+    "stationname": "16号线航头东",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.617494,
+    "lat": 31.054919
+  },
+  {
+    "lineid": 1609,
+    "stationname": "16号线鹤沙航城",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.611239,
+    "lat": 31.077797
+  },
+  {
+    "lineid": 1610,
+    "stationname": "16号线周浦东",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.606946,
+    "lat": 31.11009
+  },
+  {
+    "lineid": 1611,
+    "stationname": "16号线罗山路",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.593152,
+    "lat": 31.153259
+  },
+  {
+    "lineid": 1612,
+    "stationname": "16号线华夏中路",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.583109,
+    "lat": 31.175759
+  },
+  {
+    "lineid": 1613,
+    "stationname": "16号线龙阳路",
+    "fid": 1600,
+    "area_id": 1,
+    "lon": 121.557634,
+    "lat": 31.203575
+  },
+  {
+    "lineid": 1701,
+    "stationname": "17号线虹桥火车站",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.32155,
+    "lat": 31.19395
+  },
+  {
+    "lineid": 1702,
+    "stationname": "17号线中国博览会北",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.561771,
+    "lat": 31.211005
+  },
+  {
+    "lineid": 1703,
+    "stationname": "17号线蟠龙路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.277679,
+    "lat": 31.187017
+  },
+  {
+    "lineid": 1704,
+    "stationname": "17号线徐盈路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.25795,
+    "lat": 31.179514
+  },
+  {
+    "lineid": 1705,
+    "stationname": "17号线徐泾北城",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.23714,
+    "lat": 31.182759
+  },
+  {
+    "lineid": 1706,
+    "stationname": "17号线嘉松中路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.219276,
+    "lat": 31.174879
+  },
+  {
+    "lineid": 1707,
+    "stationname": "17号线赵巷",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.195457,
+    "lat": 31.147995
+  },
+  {
+    "lineid": 1708,
+    "stationname": "17号线汇金路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.151802,
+    "lat": 31.163389
+  },
+  {
+    "lineid": 1709,
+    "stationname": "17号线外青松公路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.124428,
+    "lat": 31.137487
+  },
+  {
+    "lineid": 1710,
+    "stationname": "17号线漕盈路",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.09346,
+    "lat": 31.160048
+  },
+  {
+    "lineid": 1711,
+    "stationname": "17号线淀山湖大道",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.094757,
+    "lat": 31.142006
+  },
+  {
+    "lineid": 1712,
+    "stationname": "17号线朱家角",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.060234,
+    "lat": 31.108959
+  },
+  {
+    "lineid": 1713,
+    "stationname": "17号线东方绿舟",
+    "fid": 1700,
+    "area_id": 1,
+    "lon": 121.007406,
+    "lat": 31.099011
+  },
+  {
+    "lineid": 1801,
+    "stationname": "18号线长江南路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.491482,
+    "lat": 31.332062
+  },
+  {
+    "lineid": 1802,
+    "stationname": "18号线国权北路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.494583,
+    "lat": 31.315617
+  },
+  {
+    "lineid": 1803,
+    "stationname": "18号线武川路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.49939,
+    "lat": 31.308073
+  },
+  {
+    "lineid": 1804,
+    "stationname": "18号线复旦大学",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.504356,
+    "lat": 31.296497
+  },
+  {
+    "lineid": 1805,
+    "stationname": "18号线国权路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.510024,
+    "lat": 31.289276
+  },
+  {
+    "lineid": 1806,
+    "stationname": "18号线抚顺路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.517021,
+    "lat": 31.279913
+  },
+  {
+    "lineid": 1807,
+    "stationname": "18号线江浦路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.518379,
+    "lat": 31.274946
+  },
+  {
+    "lineid": 1808,
+    "stationname": "18号线江浦公园",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.523697,
+    "lat": 31.26457
+  },
+  {
+    "lineid": 1809,
+    "stationname": "18号线平凉路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.525848,
+    "lat": 31.258255
+  },
+  {
+    "lineid": 1810,
+    "stationname": "18号线杨树浦路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.51721,
+    "lat": 31.251935
+  },
+  {
+    "lineid": 1811,
+    "stationname": "18号线昌邑路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.543159,
+    "lat": 31.247301
+  },
+  {
+    "lineid": 1812,
+    "stationname": "18号线民生路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.543527,
+    "lat": 31.235851
+  },
+  {
+    "lineid": 1813,
+    "stationname": "18号线杨高中路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.548664,
+    "lat": 31.22751
+  },
+  {
+    "lineid": 1814,
+    "stationname": "18号线锦绣路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.540041,
+    "lat": 31.187592
+  },
+  {
+    "lineid": 1815,
+    "stationname": "18号线龙阳路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.557634,
+    "lat": 31.203575
+  },
+  {
+    "lineid": 1816,
+    "stationname": "18号线芳草路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.558716,
+    "lat": 31.194496
+  },
+  {
+    "lineid": 1817,
+    "stationname": "18号线北中路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.554497,
+    "lat": 31.183624
+  },
+  {
+    "lineid": 1818,
+    "stationname": "18号线莲溪路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.566177,
+    "lat": 31.168975
+  },
+  {
+    "lineid": 1819,
+    "stationname": "18号线御桥路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.570914,
+    "lat": 31.158131
+  },
+  {
+    "lineid": 1820,
+    "stationname": "18号线秀沿路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.617241,
+    "lat": 31.137968
+  },
+  {
+    "lineid": 1821,
+    "stationname": "18号线周浦",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.575485,
+    "lat": 31.118021
+  },
+  {
+    "lineid": 1822,
+    "stationname": "18号线繁荣路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.58168,
+    "lat": 31.104618
+  },
+  {
+    "lineid": 1823,
+    "stationname": "18号线沈梅路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.577568,
+    "lat": 31.092171
+  },
+  {
+    "lineid": 1824,
+    "stationname": "18号线沉香花苑",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.591316,
+    "lat": 31.074808
+  },
+  {
+    "lineid": 1825,
+    "stationname": "18号线鹤立西路",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.567651,
+    "lat": 31.052737
+  },
+  {
+    "lineid": 1826,
+    "stationname": "18号线航头",
+    "fid": 1800,
+    "area_id": 1,
+    "lon": 121.597275,
+    "lat": 31.02615
+  },
+  {
+    "lineid": 1901,
+    "stationname": "19号线川桥路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.624344,
+    "lat": 31.248346
+  },
+  {
+    "lineid": 1902,
+    "stationname": "19号线榕桥路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.631577,
+    "lat": 31.266584
+  },
+  {
+    "lineid": 1903,
+    "stationname": "19号线申江路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.626863,
+    "lat": 31.280231
+  },
+  {
+    "lineid": 1904,
+    "stationname": "19号线高东",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.618196,
+    "lat": 31.332408
+  },
+  {
+    "lineid": 1905,
+    "stationname": "19号线赵高公路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.633255,
+    "lat": 31.30695
+  },
+  {
+    "lineid": 1906,
+    "stationname": "19号线东跃路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.655501,
+    "lat": 31.309245
+  },
+  {
+    "lineid": 1907,
+    "stationname": "19号线长兴岛",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.72174,
+    "lat": 31.39713
+  },
+  {
+    "lineid": 1908,
+    "stationname": "19号线横沙岛",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.855059,
+    "lat": 31.294654
+  },
+  {
+    "lineid": 1909,
+    "stationname": "19号线陈家镇",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.786963,
+    "lat": 31.513053
+  },
+  {
+    "lineid": 1910,
+    "stationname": "19号线裕安现代园区",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.808924,
+    "lat": 31.593924
+  },
+  {
+    "lineid": 1911,
+    "stationname": "19号线主题乐园",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.512723,
+    "lat": 31.141369
+  },
+  {
+    "lineid": 1912,
+    "stationname": "19号线彷徨镇",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 0,
+    "lat": 0
+  },
+  {
+    "lineid": 1913,
+    "stationname": "19号线堡镇北路",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.631889,
+    "lat": 31.553707
+  },
+  {
+    "lineid": 1914,
+    "stationname": "19号线新河镇",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.521446,
+    "lat": 31.587288
+  },
+  {
+    "lineid": 1915,
+    "stationname": "19号线城桥",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.403795,
+    "lat": 31.634572
+  },
+  {
+    "lineid": 1916,
+    "stationname": "19号线东平森林公园",
+    "fid": 1900,
+    "area_id": 1,
+    "lon": 121.481522,
+    "lat": 31.675911
+  },
+  {
+    "lineid": 2001,
+    "stationname": "20号线嫩江路",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.531954,
+    "lat": 31.314804
+  },
+  {
+    "lineid": 2002,
+    "stationname": "20号线江湾体育场",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.514222,
+    "lat": 31.302853
+  },
+  {
+    "lineid": 2003,
+    "stationname": "20号线上海财经大学",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.497699,
+    "lat": 31.306419
+  },
+  {
+    "lineid": 2004,
+    "stationname": "20号线江湾镇",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.485082,
+    "lat": 31.305546
+  },
+  {
+    "lineid": 2005,
+    "stationname": "20号线彭浦新村",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.440455,
+    "lat": 31.305797
+  },
+  {
+    "lineid": 2006,
+    "stationname": "20号线场中路",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.421421,
+    "lat": 31.302937
+  },
+  {
+    "lineid": 2007,
+    "stationname": "20号线南大路",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.357259,
+    "lat": 31.29369
+  },
+  {
+    "lineid": 2008,
+    "stationname": "20号线南翔",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.308647,
+    "lat": 31.300236
+  },
+  {
+    "lineid": 2009,
+    "stationname": "20号线江桥",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.346397,
+    "lat": 31.259045
+  },
+  {
+    "lineid": 2010,
+    "stationname": "20号线华江路",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.326622,
+    "lat": 31.249782
+  },
+  {
+    "lineid": 2011,
+    "stationname": "20号线虹桥火车站",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.320876,
+    "lat": 31.194237
+  },
+  {
+    "lineid": 2012,
+    "stationname": "20号线七宝",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.359428,
+    "lat": 31.153669
+  },
+  {
+    "lineid": 2013,
+    "stationname": "20号线七莘路",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.341038,
+    "lat": 31.167476
+  },
+  {
+    "lineid": 2014,
+    "stationname": "20号线莘庄",
+    "fid": 2000,
+    "area_id": 1,
+    "lon": 121.3786,
+    "lat": 31.10633
+  },
+  {
+    "lineid": 2101,
+    "stationname": "21号线上海动物园",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.364576,
+    "lat": 31.192315
+  },
+  {
+    "lineid": 2102,
+    "stationname": "21号线哈密路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.367079,
+    "lat": 31.203051
+  },
+  {
+    "lineid": 2103,
+    "stationname": "21号线仙霞西",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.360678,
+    "lat": 31.20925
+  },
+  {
+    "lineid": 2104,
+    "stationname": "21号线淞虹路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.359588,
+    "lat": 31.218212
+  },
+  {
+    "lineid": 2105,
+    "stationname": "21号线云岭西路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.368107,
+    "lat": 31.229677
+  },
+  {
+    "lineid": 2106,
+    "stationname": "21号线祁连山南路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.367275,
+    "lat": 31.237625
+  },
+  {
+    "lineid": 2107,
+    "stationname": "21号线真新新村",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.37219,
+    "lat": 31.254964
+  },
+  {
+    "lineid": 2108,
+    "stationname": "21号线绥德路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.372038,
+    "lat": 31.265729
+  },
+  {
+    "lineid": 2109,
+    "stationname": "21号线交通路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.422413,
+    "lat": 31.259624
+  },
+  {
+    "lineid": 2110,
+    "stationname": "21号线上海西站",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.402955,
+    "lat": 31.262512
+  },
+  {
+    "lineid": 2111,
+    "stationname": "21号线大华路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.41567,
+    "lat": 31.266277
+  },
+  {
+    "lineid": 2112,
+    "stationname": "21号线新村路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.418961,
+    "lat": 31.265293
+  },
+  {
+    "lineid": 2113,
+    "stationname": "21号线运城路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.437735,
+    "lat": 31.272397
+  },
+  {
+    "lineid": 2114,
+    "stationname": "21号线上海马戏城",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.451565,
+    "lat": 31.278085
+  },
+  {
+    "lineid": 2115,
+    "stationname": "21号线凉城路",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.471146,
+    "lat": 31.295875
+  },
+  {
+    "lineid": 2116,
+    "stationname": "21号线虹口足球场",
+    "fid": 2100,
+    "area_id": 1,
+    "lon": 121.479229,
+    "lat": 31.271353
+  }
+]
