@@ -9,7 +9,12 @@ const selectTrajectory = createSelector(
 	selectDefault,
 	(globalState) => globalState.trajectories
 );
+const selectControls = createSelector(
+	selectDefault,
+	(globalState) => globalState.controls
+);
 
 export {
 	selectTrajectory,
+	selectControls
 };

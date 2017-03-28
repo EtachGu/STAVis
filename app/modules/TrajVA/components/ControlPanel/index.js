@@ -14,7 +14,7 @@ import 'antd/dist/antd.css';
 import styles from './styles.css';
 
 // Import Actions
-import { addTrajSetRequest, updateControlState } from '../../TrajVAActions';
+import { addTrajSetRequest, updateControls } from '../../TrajVAActions';
 
 // selectors
 import { selectControls } from './selectors';
@@ -138,7 +138,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     changeRoute: (url) => dispatch(push(url)),
 	  updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch),
-	  updateControlState: (controlData) => dispatch(updateControlState(controlData)),
+	  updateControlState: (controlData) => dispatch(updateControls(controlData)),
   };
 }
 

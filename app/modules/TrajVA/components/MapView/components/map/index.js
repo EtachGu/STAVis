@@ -119,7 +119,7 @@ const bmapShangHai = {
 class MapDiv extends Component {
 	static propTypes = {
 		className: PropTypes.string,
-		mapData: PropTypes.array
+		mapType: PropTypes.number,
 	};
 
 	constructor(props) {
@@ -308,6 +308,8 @@ class MapDiv extends Component {
 	componentDidUpdate() {
 		const chart = echarts.getInstanceByDom(document.getElementById('map'));
 
+		const mapType = this.props.mapType;  // 1 = geo 2 =bmap
+
 		if(this.state.currentDate != '' && chart) {
 
 			// update options
@@ -319,6 +321,8 @@ class MapDiv extends Component {
 			
 			const seriesData = [];
 
+			const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+
 			series.forEach((item,index) => {
 
 				seriesData.push({
@@ -326,7 +330,7 @@ class MapDiv extends Component {
 					type: 'lines',
 					polyline: true,
 					// coordinateSystem: 'geo',
-					coordinateSystem: 'bmap',
+					coordinateSystem: coordinateSystemName,
 					data:item,
 					// lineStyle: {
 					// 	normal: {
@@ -361,7 +365,7 @@ class MapDiv extends Component {
 				name: '基站',
 				type: 'scatter',
 				// coordinateSystem: 'geo',
-				coordinateSystem: 'bmap',
+				coordinateSystem: coordinateSystemName,
 				data:cellBaseStations.data,
 				itemStyle: {
 					normal: {
@@ -400,30 +404,31 @@ class MapDiv extends Component {
 
 			chart.clear();
 
+			mapType === 1 ?  chart.setOption({
+				geo:{
+					map: 'shanghai',
+					roam: true,
+					label: {
+						emphasis: {
+							show: true
+						}
+					},
+					itemStyle: {
+						normal: {
+							areaColor: '#323c48',
+							borderColor: '#111'
+						},
+						emphasis: {
+							areaColor: '#2a333d',
+							//areaColor: rgba(128, 128, 200, 0.5),
+						}
+					}
+				}
+			}) : chart.setOption({ bmap:bmapShangHai });
+
 			chart.setOption({
 				backgroundColor: '#404a59',
 				color:color,
-				// geo: {
-				// 	map: 'shanghai',
-				// 	roam: true,
-				// 	label: {
-				// 		emphasis: {
-				// 			show: true
-				// 		}
-				// 	},
-				// 	itemStyle: {
-				// 		normal: {
-				// 			// areaColor: '#323c48',
-				// 			areaColor: rgba(128, 128, 128, 0.5),
-				// 			borderColor: '#111'
-				// 		},
-				// 		emphasis: {
-				// 			areaColor: '#2a333d',
-				// 			areaColor: rgba(128, 128, 200, 0.5),
-				// 		}
-				// 	}
-				// },
-				bmap: bmapShangHai,
 				series:seriesData,
 				legend: {
 					orient: 'vertical',
@@ -435,6 +440,10 @@ class MapDiv extends Component {
 					}
 				},
 			});
+
+			
+
+			
 		}
 	}
 
