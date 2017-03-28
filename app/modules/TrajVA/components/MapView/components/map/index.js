@@ -314,137 +314,321 @@ class MapDiv extends Component {
 
 			// update options
 			const currentDate = this.state.currentDate;
-			const currentEchartsData = this.state.echartData.find(e => e.date == currentDate );
-
-			const legendData = currentEchartsData.legends;
-			const series = currentEchartsData.series;
 			
-			const seriesData = [];
+			// const currentEchartsData = this.state.echartData.find(e => e.date == currentDate );
+			const currentEchartsData = this.state.echartData;
 
-			const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+			// add Time line
+			if (currentEchartsData.length > 1) {
 
-			series.forEach((item,index) => {
+				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+				
+				const dateSet = currentEchartsData.map(e => e.date);
 
-				seriesData.push({
-					name: legendData[index],
-					type: 'lines',
-					polyline: true,
-					// coordinateSystem: 'geo',
-					coordinateSystem: coordinateSystemName,
-					data:item,
-					// lineStyle: {
-					// 	normal: {
-					// 		opacity: 0.2,
-					// 		width: 1
-					// 	}
-					// },
-					zlevel: 2,
-					effect: {
-						show: true,
-						period: 6,
-						trailLength: 0,
-						symbol: "pin",
-						symbolSize: 5
-					},
-					lineStyle: {
-						normal: {
-							width: 1,
-							opacity: 0.6,
+				// create Base option series
+				const baseSeriesData = [];   // for baseOption series
+				const baseLegends = [];     // for baseOption legends
+
+				currentEchartsData.map( currDateEcData =>{ 
+
+					const legendNameSet = currDateEcData.legends;
+
+					for (var i = 0; i < legendNameSet.length; i++) {
+
+						const legendName = legendNameSet[i];
+
+						if (baseLegends.indexOf(legendName) == -1) {
+							baseLegends.push(legendName);
+							baseSeriesData.push({
+								name: legendName,
+								type: 'lines',
+								polyline: true,
+								// coordinateSystem: 'geo',
+								coordinateSystem: coordinateSystemName,
+								// lineStyle: {
+								// 	normal: {
+								// 		opacity: 0.2,
+								// 		width: 1
+								// 	}
+								// },
+								zlevel: 2,
+								effect: {
+									show: true,
+									period: 6,
+									trailLength: 0,
+									symbol: "pin",
+									symbolSize: 5
+								},
+								lineStyle: {
+									normal: {
+										width: 1,
+										opacity: 0.6,
+									}
+								},
+								progressiveThreshold: 500,
+								progressive: 200
+							});
 						}
-					},
-					progressiveThreshold: 500,
-					progressive: 200
+					}
+					
+
 				});
 
-			});
+				// create Options data
+				const optionsData = [];
 
-			legendData.push('基站');
+				// 从每一天中 提出系列数据集合
+				
+				for (var i = 0; i < currentEchartsData.length; i++) {
+					
+					const currDateEcData = currentEchartsData[i];
 
-			// 绘制基站
-			seriesData.push({
-				name: '基站',
-				type: 'scatter',
-				// coordinateSystem: 'geo',
-				coordinateSystem: coordinateSystemName,
-				data:cellBaseStations.data,
-				itemStyle: {
-					normal: {
-						color: '#ff0000',
-						opacity: 0.2,
-					}
-				},
-				symbolSize:1
-			});
-			
-			const color = this.state.color;
+					const date = currDateEcData.date;
+					const legendData = currDateEcData.legends;
+					const series = currDateEcData.series;
 
-			// add 
-			// seriesData.push({
-			// 	mapType: 'shanghai',
-			// 	type: 'map',
-			// 	center: [121.487899486,31.24916171],
-			// 	roam: true,
-			// 	label: {
-			// 		emphasis: {
-			// 			show: true
-			// 		}
-			// 	},
-			// 	itemStyle: {
-			// 		normal: {
-			// 			// areaColor: '#323c48',
-			// 			areaColor: 'rgba(128, 128, 128, 0.5)',
-			// 			borderColor: '#111'
-			// 		},
-			// 		emphasis: {
-			// 			// areaColor: '#2a333d',
-			// 			areaColor: 'rgba(128, 128, 200, 0.5)',
-			// 		}
-			// 	}
-			// });
+					const seriesSet = baseLegends.map(legendName => {
 
-			chart.clear();
+						const indexSeries = legendData.indexOf(legendName);
+						if(indexSeries !== -1) {
+							// add 该系列数据
+							const seriesData = series[indexSeries];
 
-			mapType === 1 ?  chart.setOption({
-				geo:{
-					map: 'shanghai',
-					roam: true,
-					label: {
-						emphasis: {
-							show: true
+							return {data:seriesData};
 						}
-					},
+						return {};
+
+					});
+
+					// add BaseStation
+					seriesSet.push({data:cellBaseStations.data})
+
+					optionsData.push({
+						title: {
+				           	text: `${date}轨迹分布`
+				        },
+				        series: seriesSet
+					});
+
+				}
+
+				
+				// add BaseSation
+				baseLegends.push('基站');
+
+				baseSeriesData.push({
+					name: '基站',
+					type: 'scatter',
+					// coordinateSystem: 'geo',
+					coordinateSystem: coordinateSystemName,
 					itemStyle: {
 						normal: {
-							areaColor: '#323c48',
-							borderColor: '#111'
+							color: '#ff0000',
+							opacity: 0.2,
+						}
+					},
+					symbolSize:1
+				});
+				
+				// 判断底图 类型
+				mapType == 1 ? chart.setOption(
+				    {
+				        baseOption: {
+				            timeline: {
+				                data: dateSet
+				            },
+				            legend: {
+								orient: 'vertical',
+								y: 'top',
+								x:'left',
+								data:baseLegends,
+								textStyle: {
+									color: '#fff'
+								}
+							},
+				            title: {
+				            	text: `${dateSet[0]}轨迹分布`
+				            },
+				            geo:{
+								map: 'shanghai',
+								roam: true,
+								label: {
+									emphasis: {
+										show: true
+									}
+								},
+								itemStyle: {
+									normal: {
+										areaColor: '#323c48',
+										borderColor: '#111'
+									},
+									emphasis: {
+										areaColor: '#2a333d',
+										//areaColor: rgba(128, 128, 200, 0.5),
+									}
+								}
+							},
+				            series: baseSeriesData
+				        },
+				        options: optionsData
+				    }
+				) : chart.setOption(
+				    {
+				        baseOption: {
+				            timeline: {
+				                data: dateSet
+				            },
+				            legend: {
+								orient: 'vertical',
+								y: 'top',
+								x:'left',
+								data:baseLegends,
+								textStyle: {
+									color: '#fff'
+								}
+							},
+				            title: {
+				            	text: `${dateSet[0]}轨迹分布`
+				            },
+				            bmap:bmapShangHai,
+				            series: baseSeriesData
+				        },
+				        options: optionsData
+				    }
+				); // echartSetOption
+
+				
+
+			} else {
+				// one Date
+				const legendData = currentEchartsData[0].legends;
+				const series = currentEchartsData[0].series;
+				
+				const seriesData = [];
+
+				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+
+				series.forEach((item,index) => {
+
+					seriesData.push({
+						name: legendData[index],
+						type: 'lines',
+						polyline: true,
+						// coordinateSystem: 'geo',
+						coordinateSystem: coordinateSystemName,
+						data:item,
+						// lineStyle: {
+						// 	normal: {
+						// 		opacity: 0.2,
+						// 		width: 1
+						// 	}
+						// },
+						zlevel: 2,
+						effect: {
+							show: true,
+							period: 6,
+							trailLength: 0,
+							symbol: "pin",
+							symbolSize: 5
 						},
-						emphasis: {
-							areaColor: '#2a333d',
-							//areaColor: rgba(128, 128, 200, 0.5),
+						lineStyle: {
+							normal: {
+								width: 1,
+								opacity: 0.6,
+							}
+						},
+						progressiveThreshold: 500,
+						progressive: 200
+					});
+
+				});
+
+				legendData.push('基站');
+
+				// 绘制基站
+				seriesData.push({
+					name: '基站',
+					type: 'scatter',
+					// coordinateSystem: 'geo',
+					coordinateSystem: coordinateSystemName,
+					data:cellBaseStations.data,
+					itemStyle: {
+						normal: {
+							color: '#ff0000',
+							opacity: 0.2,
+						}
+					},
+					symbolSize:1
+				});
+				
+				const color = this.state.color;
+
+				// add 
+				// seriesData.push({
+				// 	mapType: 'shanghai',
+				// 	type: 'map',
+				// 	center: [121.487899486,31.24916171],
+				// 	roam: true,
+				// 	label: {
+				// 		emphasis: {
+				// 			show: true
+				// 		}
+				// 	},
+				// 	itemStyle: {
+				// 		normal: {
+				// 			// areaColor: '#323c48',
+				// 			areaColor: 'rgba(128, 128, 128, 0.5)',
+				// 			borderColor: '#111'
+				// 		},
+				// 		emphasis: {
+				// 			// areaColor: '#2a333d',
+				// 			areaColor: 'rgba(128, 128, 200, 0.5)',
+				// 		}
+				// 	}
+				// });
+
+				chart.clear();
+
+				mapType === 1 ?  chart.setOption({
+					geo:{
+						map: 'shanghai',
+						roam: true,
+						label: {
+							emphasis: {
+								show: true
+							}
+						},
+						itemStyle: {
+							normal: {
+								areaColor: '#323c48',
+								borderColor: '#111'
+							},
+							emphasis: {
+								areaColor: '#2a333d',
+								//areaColor: rgba(128, 128, 200, 0.5),
+							}
 						}
 					}
-				}
-			}) : chart.setOption({ bmap:bmapShangHai });
+				}) : chart.setOption({ bmap:bmapShangHai });
 
-			chart.setOption({
-				backgroundColor: '#404a59',
-				color:color,
-				series:seriesData,
-				legend: {
-					orient: 'vertical',
-					y: 'top',
-					x:'left',
-					data:legendData,
-					textStyle: {
-						color: '#fff'
-					}
-				},
-			});
+				chart.setOption({
+					backgroundColor: '#404a59',
+					color:color,
+					series:seriesData,
+					legend: {
+						orient: 'vertical',
+						y: 'top',
+						x:'left',
+						data:legendData,
+						textStyle: {
+							color: '#fff'
+						}
+					},
+				});
 
+			}// one date Echarts
 			
-
-			
-		}
+		}// end if  currentDate is validate
 	}
 
 	convertData =  (data) => {

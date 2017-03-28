@@ -60,7 +60,7 @@ class ControlPanel extends Component {
 						trajName: "cellPhoneTrack",
 						datetime: dateRange,
 						timeunit: "1hh",
-						id: [1,2,3,4,5,6]
+						id: ['(低)','(中)','(高)']//[1,2,3,4,5,6]
 					};
 					this.props.updateTrajectory(requestBody);
 				}
