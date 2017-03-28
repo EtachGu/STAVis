@@ -32,7 +32,7 @@ const PostReducer = (state = initialState, action) => {
 		  );
 	  case UPDATE_TASKS:
 		  return Object.assign({}, state, {tasks:action.data});
-	  case UPDATE_CONTROLS;
+	  case UPDATE_CONTROLS:
 	  	  return Object.assign({}, state, {controls:action.data});
     default:
       return state;
