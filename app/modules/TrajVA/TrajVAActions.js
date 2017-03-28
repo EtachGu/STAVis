@@ -75,3 +75,15 @@ export function updateTasks(data) {
 		data,
 	};
 }
+
+/**
+ *  Control
+ */
+ export const UPDATE_CONTROLS = 'UPDATE_CONTROLS';
+
+ export function updateControls(data) {
+  return {
+    type: UPDATE_CONTROLS,
+    data,
+  };
+ }

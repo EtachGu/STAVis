@@ -1,4 +1,4 @@
-import { ADD_TRACKDATA,ADD_STATISTICS,UPDATE_TASKS } from './TrajVAActions';
+import { ADD_TRACKDATA,ADD_STATISTICS,UPDATE_TASKS, UPDATE_CONTROLS } from './TrajVAActions';
 
 
 // Initial State
@@ -32,6 +32,8 @@ const PostReducer = (state = initialState, action) => {
 		  );
 	  case UPDATE_TASKS:
 		  return Object.assign({}, state, {tasks:action.data});
+	  case UPDATE_CONTROLS;
+	  	  return Object.assign({}, state, {controls:action.data});
     default:
       return state;
   }

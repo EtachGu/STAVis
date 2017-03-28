@@ -14,7 +14,10 @@ import 'antd/dist/antd.css';
 import styles from './styles.css';
 
 // Import Actions
-import { addTrajSetRequest } from '../../TrajVAActions';
+import { addTrajSetRequest, updateControlState } from '../../TrajVAActions';
+
+// selectors
+import { selectControls } from './selectors';
 
 class ControlPanel extends Component {
   static propTypes = {
@@ -24,6 +27,7 @@ class ControlPanel extends Component {
   constructor(props) {
     super(props);
 	  this.state = {
+	  	  radioMapValue:1,
 		  radioDataBaseValue:1,
 		  dateRange:['2016-03-01','2016-03-02']	// [startDate, endDate]  string type
 	  }
@@ -56,7 +60,7 @@ class ControlPanel extends Component {
 						trajName: "cellPhoneTrack",
 						datetime: dateRange,
 						timeunit: "1hh",
-						id: [2,3,4,5]//[1,2,3,4,5,6]
+						id: [1,2,3,4,5,6]
 					};
 					this.props.updateTrajectory(requestBody);
 				}
@@ -67,6 +71,17 @@ class ControlPanel extends Component {
 			default:
 		}
 	};
+
+	// handle for Map 
+	onRadioMapChange = (e) => {
+		this.setState({
+			radioMapValue: e.target.value,
+		});
+		//  update the control State
+		const controlsObject = this.props.controlsState;
+		controlsObject.mapType = e.target.value;
+		this.props.updateControlState(controlsObject);
+	}
 
   render() {
     const text = "control text";
@@ -96,7 +111,10 @@ class ControlPanel extends Component {
 			  <Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
           </Panel>
           <Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-            <p>{text}</p>
+             <RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
+				  <Radio style={radioStyle} value={1}>行政区图</Radio>
+				  <Radio style={radioStyle} value={2}>百度地图</Radio>
+			  </RadioGroup>
           </Panel>
           <Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
             <p>{text}</p>
@@ -113,12 +131,14 @@ ControlPanel.propTypes = {
 
 // Retrieve data from store as props
 const mapStateToProps = createStructuredSelector({
+	controlsState: selectControls
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
     changeRoute: (url) => dispatch(push(url)),
-	  updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch)
+	  updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch),
+	  updateControlState: (controlData) => dispatch(updateControlState(controlData)),
   };
 }
 
