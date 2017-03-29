@@ -4,6 +4,7 @@
 import { Router } from 'express';
 import * as trajectoryCtrls from '../controllers/trajectory.ctrl';
 import * as clusterCtrls from '../controllers/cluster.ctrl';
+import * as statisticsCtrls from '../controllers/statistics.ctrl';
 const router = new Router();
 
 /**
@@ -18,7 +19,7 @@ router.route('/trajectory').post(trajectoryCtrls.getTrackByConditions);
  * http://localhost:3000/statistics/:collectionName?type=_avg_&datetime=_datetime_&timeunit=_timeunit_&filed=_filed_
  */
 // router.route('/statistics/:collectionName').get(TaxiODController.getTaxiODs);
-// router.route('/statistics').get(TaxiODController.getTaxiODs);
+router.route('/statistics').post(statisticsCtrls.getStatisticByConditions);
 
 /**
  * Cluster API

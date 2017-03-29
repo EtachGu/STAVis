@@ -4,7 +4,7 @@ export function getMetroCount (type, startDate,endDate,timeunit,fields, callback
 	
 	const match = {
 		$match: {
-			Date:{
+			icdate:{
 				$gte: startDate,
 				$lt: endDate
 			}
