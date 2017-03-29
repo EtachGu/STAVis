@@ -151,9 +151,10 @@ class MapView extends Component {
   render() {
     const mapData = this.props.trajectories.data;
     const mapType = this.props.controlsState.mapType;
+    const geomType = this.props.controlsState.geomType;
     return (
       <div>
-        <MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} />
+        <MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>
       </div>
     );
   }

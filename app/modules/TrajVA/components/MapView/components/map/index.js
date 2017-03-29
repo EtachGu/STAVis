@@ -120,6 +120,7 @@ class MapDiv extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		mapType: PropTypes.number,
+		geomType: PropTypes.number,
 	};
 
 	constructor(props) {
