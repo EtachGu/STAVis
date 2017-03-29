@@ -6,6 +6,8 @@ import { createStructuredSelector } from 'reselect';
 
 // components
 import MapDiv from './components/map';
+import STMapDiv from './components/statisticMap';
+
 
 // styles
 import styles from './styles.css';
@@ -152,9 +154,10 @@ class MapView extends Component {
     const mapData = this.props.trajectories.data;
     const mapType = this.props.controlsState.mapType;
     const geomType = this.props.controlsState.geomType;
+    const mapDiv = geomType === 1 ? <STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/> : <MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>
     return (
       <div>
-        <MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>
+        {mapDiv}
       </div>
     );
   }

@@ -141,7 +141,7 @@ class MapDiv extends Component {
 		//this.initalECharts(buslines);
 		const convertData = function (data) {
 		    const res = [];
-		    for (const i = 0; i < data.length; i++) {
+		    for (let i = 0; i < data.length; i++) {
 		        const geoCoord = metroStations[data[i].name];
 		        if (geoCoord) {
 		            res.push({
@@ -153,17 +153,19 @@ class MapDiv extends Component {
 		    return res;
 		};
 
+		const mapType = this.props.mapType;
+
 		const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
 
 		// legend 图例
-		const legendData = [ '站点'];
+		const baseLegends = [ '站点'];
 
-		const baseOptionSeriesData =  [{
+		const baseSeriesData =  [{
 						name: '站点',
 						type: 'scatter',
 						coordinateSystem: coordinateSystemName,
 			            symbolSize: function (val) {
-			                return val[2] / 10;
+			                return val[2] * 30;
 			            },
 			            label: {
 			                normal: {
@@ -185,7 +187,7 @@ class MapDiv extends Component {
 						type: 'scatter',
 						coordinateSystem: coordinateSystemName,
 			            symbolSize: function (val) {
-			                return val[2] / 10;
+			                return val[2] * 30;
 			            },
 			            showEffectOn: 'render',
 			            rippleEffect: {
@@ -217,15 +219,30 @@ class MapDiv extends Component {
 
 			dateSet.push(index < 10 ? `0${index}` : `${index}`);
 
+			let itemSortData = item.data.sort(function (a, b) {
+				return b.value - a.value;
+			});
+			const maxCount = itemSortData[0].value;
+
+			if ( maxCount > 3000 ) {
+				itemSortData = itemSortData.map( e => {
+					e.value = e.value /maxCount;
+					return e;
+				})
+			} else {
+				itemSortData = itemSortData.map( e => {
+					e.value = e.value /3000;
+					return e;
+				})
+			}
+
 			optionsData.push({
 				series: [
 					{
-						data: convertData(item)
+						data: convertData(itemSortData)
 					},
 					{
-						data: convertData(data.sort(function (a, b) {
-			                return b.value - a.value;
-			            }).slice(0, 6))
+						data: convertData(itemSortData.slice(0, 6))
 					}
 				]
 			});
