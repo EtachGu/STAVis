@@ -80,7 +80,8 @@ class ControlPanel extends Component {
 		//  update the control State
 		const controlsObject = this.props.controlsState;
 		controlsObject.mapType = e.target.value;
-		this.props.updateControlState(controlsObject);
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
 	}
 
   render() {
