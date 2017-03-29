@@ -8,7 +8,8 @@ const initialState = {
 	controls:{
 	  	trajName:'cellPhoneTrack',
 	  	datetime:["2016-03-02","2016-03-03"],
-	  	mapType: 1
+	  	mapType: 1,
+	  	geomType: 2      // 1 = points,  2 = line
   	},
 	tasks:{
 		steps:[{name:'概览',status:'finish'},{name:'分析',status:'process'},{name:'结论',status:'wait'},{name:'完成',status:'wait'}]

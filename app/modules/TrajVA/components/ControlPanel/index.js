@@ -29,6 +29,7 @@ class ControlPanel extends Component {
 	  this.state = {
 	  	  radioMapValue:1,
 		  radioDataBaseValue:1,
+		  radioGeomTypeValue: 2,
 		  dateRange:['2016-03-01','2016-03-02']	// [startDate, endDate]  string type
 	  }
   };
@@ -84,6 +85,18 @@ class ControlPanel extends Component {
 		this.props.updateControlState(controlsNew);
 	}
 
+	// handle geomTpe
+	onRadioGeomTypeChange = (e) => {
+		this.setState({
+			radioGeomTypeValue: e.target.value,
+		});
+		//  update the control State
+		const controlsObject = this.props.controlsState;
+		controlsObject.geomType = e.target.value;
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
+	}
+
   render() {
     const text = "control text";
 	  const radioStyle = {
@@ -100,6 +113,11 @@ class ControlPanel extends Component {
 				  <Radio style={radioStyle} value={1}>手机数据</Radio>
 				  <Radio style={radioStyle} value={2}>公交卡数据</Radio>
 				  <Radio style={radioStyle} value={3}>出租车数据</Radio>
+			  </RadioGroup>
+			  <hr/>
+			    <RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
+				  <Radio.Button value={1}>点集</Radio.Button>
+				  <Radio.Button value={2}>线集</Radio.Button>
 			  </RadioGroup>
 			  <div>
 				 <RangePicker
