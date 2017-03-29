@@ -148,7 +148,11 @@ export function getTrackByClusterId (clusterid,startDate, endDate, timeunit, cal
 		}
 	};
 
-	CellPhoneTrack.aggregate([match, project, group]).exec((err, data) => {
+	const sort = {
+		$sort : { _id : 1 }
+	}
+
+	CellPhoneTrack.aggregate([match, project, group, sort]).exec((err, data) => {
 		if (err) {
 			callback({err});
 		} else {
