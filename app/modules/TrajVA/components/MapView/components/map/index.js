@@ -437,6 +437,7 @@ class MapDiv extends Component {
 				    {
 				        baseOption: {
 				        	backgroundColor: '#404a59',
+				        	color: this.state.color,
 				            timeline: {
 				            	axisType: 'category',
 				            	top: 25,
@@ -505,6 +506,7 @@ class MapDiv extends Component {
 				) : chart.setOption(
 				    {
 				        baseOption: {
+				        	color: this.state.color,
 				            timeline: {
 				            	axisType: 'category',
 				            	top: 25,
