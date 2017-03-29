@@ -323,7 +323,7 @@ class MapDiv extends Component {
 
 				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
 				
-				const dateSet = currentEchartsData.map(e => e.date);
+				const dateSet = currentEchartsData.map(e => `${e.date}`);
 
 				// create Base option series
 				const baseSeriesData = [];   // for baseOption series
@@ -438,6 +438,7 @@ class MapDiv extends Component {
 				        baseOption: {
 				        	backgroundColor: '#404a59',
 				            timeline: {
+				            	axisType: 'category',
 				            	top: 25,
 				            	left: 'center',
 				                data: dateSet,
@@ -456,7 +457,8 @@ class MapDiv extends Component {
 				                		color: '#ffffff',
 				                		borderColor: '#ffffff'
 				                	}
-				                }
+				                },
+				                zlevel: 3    //  new Canvas level = 3
 
 				            },
 				            legend: {
@@ -474,7 +476,8 @@ class MapDiv extends Component {
 				            	text: `${dateSet[0]}轨迹分布`,
 				            	textStyle: {
 				            		color: '#ffffff'
-				            	}
+				            	},
+				            	zlevel: 3    //  new Canvas level = 3
 				            },
 				            geo:{
 								map: 'shanghai',
@@ -503,7 +506,11 @@ class MapDiv extends Component {
 				    {
 				        baseOption: {
 				            timeline: {
-				                data: dateSet
+				            	axisType: 'category',
+				            	top: 25,
+				            	left: 'center',
+				                data: dateSet,
+				                zlevel: 3    //  new Canvas level = 3
 				            },
 				            legend: {
 								orient: 'vertical',
@@ -515,7 +522,10 @@ class MapDiv extends Component {
 								}
 							},
 				            title: {
-				            	text: `${dateSet[0]}轨迹分布`
+				            	top: 0,
+				            	left: 'center',
+				            	text: `${dateSet[0]}轨迹分布`,
+				            	zlevel: 3    //  new Canvas level = 3
 				            },
 				            bmap:bmapShangHai,
 				            series: baseSeriesData
