@@ -429,13 +429,35 @@ class MapDiv extends Component {
 					},
 					symbolSize:1
 				});
+
+				chart.clear();
 				
 				// 判断底图 类型
 				mapType == 1 ? chart.setOption(
 				    {
 				        baseOption: {
+				        	backgroundColor: '#404a59',
 				            timeline: {
-				                data: dateSet
+				            	top: 25,
+				            	left: 'center',
+				                data: dateSet,
+				                lineStyle: {
+				                	color: '#ffffff'
+				                },
+				                label: {
+				                	normal : {
+				                		textStyle: {
+				                			color : '#ffffff'
+				                		}
+				                	}
+				                },
+				                controlStyle: {
+				                	normal: {
+				                		color: '#ffffff',
+				                		borderColor: '#ffffff'
+				                	}
+				                }
+
 				            },
 				            legend: {
 								orient: 'vertical',
@@ -447,7 +469,12 @@ class MapDiv extends Component {
 								}
 							},
 				            title: {
-				            	text: `${dateSet[0]}轨迹分布`
+				            	top: 0,
+				            	left: 'center',
+				            	text: `${dateSet[0]}轨迹分布`,
+				            	textStyle: {
+				            		color: '#ffffff'
+				            	}
 				            },
 				            geo:{
 								map: 'shanghai',
