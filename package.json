@@ -6,7 +6,7 @@
   "scripts": {
     "start-inspector": "cross-env NODE_ENV=development node-inspector index.js",
     "start-node": "cross-env NODE_ENV=development node index.js",
-    "start": "cross-env NODE_ENV=development nodemon %NODE_DEBUG_OPTION% index.js",
+    "start": "cross-env NODE_ENV=development nodemon index.js",
     "start-front": "cross-env NODE_ENV=development node ./server/server-front.js",
     "server": "cross-env NODE_ENV=development PORT=8088 nodemon %NODE_DEBUG_OPTION% index-server.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --color -p --progress",
