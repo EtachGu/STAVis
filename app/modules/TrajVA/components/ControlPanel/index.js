@@ -151,7 +151,7 @@ class ControlPanel extends Component {
 			});
 
 		} else {
-			echarts.disconnect('group1');
+			// echarts.disconnect('group1');
 			const barCharts = echarts.getInstanceByDom(document.getElementById('barCharts'));
 			const pieCharts = echarts.getInstanceByDom(document.getElementById('pieCharts'));
 			const mapCharts = echarts.getInstanceByDom(document.getElementById('map'));
