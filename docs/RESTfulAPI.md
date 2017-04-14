@@ -93,6 +93,8 @@
 
 ####`GET` http://localhost:3000/statistics/:collectionName?type=_avg_&datetime=_datetime_&timeunit=_timeunit_&filed=_filed_
 
+统计轨迹中的属性数据
+
 **Resquest 参数说明**
 
 + collectionName: 为数据集的名称，例如MongoDB中collection的名称
