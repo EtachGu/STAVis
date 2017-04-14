@@ -35,6 +35,10 @@ class BarCharts extends Component {
 	initalECharts = () => {
 		if(this.props.barData === undefined) return;
 		const myChart = echarts.init(document.getElementById('barCharts'));
+
+		// 将统计图表的联动
+		myChart.group = 'group1';
+
 		const barData = this.props.barData;
 		const dataAxis = barData.fields ? barData.fields :[];
 		const data = barData.data ? barData.data : [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];

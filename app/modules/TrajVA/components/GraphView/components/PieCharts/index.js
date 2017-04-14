@@ -30,6 +30,10 @@ class BarCharts extends Component {
     // 不同群体的特点
     initalECharts = () => {
         const myChart = echarts.init(document.getElementById('pieCharts'));
+        
+        // 将统计图表的联动
+        myChart.group = 'group1';
+
 		if(this.props.pieData === undefined) return;
         myChart.title = '嵌套环形图';
 		const legend = this.props.pieData.legend;   //  series and row of data

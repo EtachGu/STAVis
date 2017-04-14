@@ -3,8 +3,19 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import moment from 'moment';
 
+import echarts from 'echarts';
+
 // import components
-import { Input, Icon, Collapse, Radio, DatePicker, Button }  from 'antd';
+import {
+	Input,
+	Icon,
+	Collapse,
+	Radio,
+	DatePicker,
+	Button,
+	Switch
+}  from 'antd';
+
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
@@ -61,7 +72,7 @@ class ControlPanel extends Component {
 						trajName: "cellPhoneTrack",
 						datetime: dateRange,
 						timeunit: "1hh",
-						id: ['(低)','(中)','(高)']//[1,2,3,4,5,6]
+						id: [2,3,4,5,6]//['(低)','(中)','(高)']//
 					};
 					this.props.updateTrajectory(requestBody);
 				}
@@ -97,6 +108,59 @@ class ControlPanel extends Component {
 		this.props.updateControlState(controlsNew);
 	}
 
+	// handle change of Switch 
+	onSwitchChangeConnect = (checked) => {
+		if (checked) {
+			echarts.connect('group1');
+			const barCharts = echarts.getInstanceByDom(document.getElementById('barCharts'));
+			const pieCharts = echarts.getInstanceByDom(document.getElementById('pieCharts'));
+			const mapCharts = echarts.getInstanceByDom(document.getElementById('map'));
+			
+			pieCharts.on('legendselectchanged', (event) => {
+				const legendName = event.name;
+				const isSelected = event.selected[legendName];
+				
+				mapCharts.dispatchAction({
+					type: isSelected ? 'legendSelect' : 'legendUnSelect',
+				    // 图例名称
+				    name: legendName
+				});
+
+				barCharts.dispatchAction({
+					type: isSelected ? 'legendSelect' : 'legendUnSelect',
+				    // 图例名称
+				    name: legendName
+				});
+			});
+
+			mapCharts.on('legendselectchanged', (event) => {
+				const legendName = event.name;
+				const isSelected = event.selected[legendName];
+				
+				pieCharts.dispatchAction({
+					type: isSelected ? 'legendSelect' : 'legendUnSelect',
+				    // 图例名称
+				    name: legendName
+				});
+
+				barCharts.dispatchAction({
+					type: isSelected ? 'legendSelect' : 'legendUnSelect',
+				    // 图例名称
+				    name: legendName
+				});
+			});
+
+		} else {
+			echarts.disconnect('group1');
+			const barCharts = echarts.getInstanceByDom(document.getElementById('barCharts'));
+			const pieCharts = echarts.getInstanceByDom(document.getElementById('pieCharts'));
+			const mapCharts = echarts.getInstanceByDom(document.getElementById('map'));
+			pieCharts.off('legendselectchanged');
+			mapCharts.off('legendselectchanged');
+
+		}		
+	}
+
   render() {
     const text = "control text";
 	  const radioStyle = {
@@ -130,10 +194,16 @@ class ControlPanel extends Component {
 			  <Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
           </Panel>
           <Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-             <RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
-				  <Radio style={radioStyle} value={1}>行政区图</Radio>
-				  <Radio style={radioStyle} value={2}>百度地图</Radio>
-			  </RadioGroup>
+            <RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
+				<Radio style={radioStyle} value={1}>行政区图</Radio>
+				<Radio style={radioStyle} value={2}>百度地图</Radio>
+			</RadioGroup>
+			<div>
+				<label>
+					视图联动
+					<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
+				</label>
+			</div>			
           </Panel>
           <Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
             <p>{text}</p>
