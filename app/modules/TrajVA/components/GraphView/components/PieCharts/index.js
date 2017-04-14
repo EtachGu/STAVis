@@ -103,7 +103,7 @@ class BarCharts extends Component {
                 data:legendData
             },{
 				orient:'horizontal',
-				bottom: 100,
+				bottom: 20,
 				data: fields
 			}],
 			series: seriesData
