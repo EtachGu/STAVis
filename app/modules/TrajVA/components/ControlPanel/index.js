@@ -13,12 +13,17 @@ import {
 	Radio,
 	DatePicker,
 	Button,
-	Switch
+	Switch,
+	Popover,
+	Select,
+	Row,
+	Col,
 }  from 'antd';
 
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
+const Option = Select.Option;
 
 // css styles
 import 'antd/dist/antd.css';
@@ -31,23 +36,30 @@ import { addTrajSetRequest, updateControls } from '../../TrajVAActions';
 import { selectControls } from './selectors';
 
 class ControlPanel extends Component {
-  static propTypes = {
-    name: React.PropTypes.string,
-  };
+	static propTypes = {
+		name: React.PropTypes.string,
+	};
 
-  constructor(props) {
-    super(props);
-	  this.state = {
-	  	  radioMapValue:1,
-		  radioDataBaseValue:1,
-		  radioGeomTypeValue: 2,
-		  dateRange:['2016-03-01','2016-03-02']	// [startDate, endDate]  string type
-	  }
-  };
+	constructor(props) {
+		super(props);
+		this.state = {
+			radioMapValue:1,
+			radioDataBaseValue:1,
+			radioGeomTypeValue: 2,
+			dateRange:['2016-03-01','2016-03-02'],	// [startDate, endDate]  string type
+			adSettingVisible: false,
+			adSettingData:{
+				timeunit: "1hh",
+				id: [2,3,4,5,6],
+			},
+			timeunit: '1hh',
+			id: '2,3,4,5,6',
+		}
+	};
 
-  callback = (key) => {
-    console.log(key);
-  };
+	callback = (key) => {
+		console.log(key);
+	};
 	// on DataBase change
 	onRadioDataBaseChange =  (e) => {
 		this.setState({
@@ -64,6 +76,8 @@ class ControlPanel extends Component {
 	confirmQueryTrack = () => {
 		const dataType = this.state.radioDataBaseValue;
 		const dateRange = this.state.dateRange;
+		const timeunit = this.state.adSettingData.timeunit;
+		const id = this.state.adSettingData.id;
 		switch (dataType) {
 			case 1:
 				// emit the event for query the cellPhoneTrack
@@ -71,8 +85,8 @@ class ControlPanel extends Component {
 					const requestBody = {
 						trajName: "cellPhoneTrack",
 						datetime: dateRange,
-						timeunit: "1hh",
-						id: [2,3,4,5,6]//['(低)','(中)','(高)']//
+						timeunit: timeunit,
+						id: id, // [2,3,4,5,6]//['(低)','(中)','(高)']//
 					};
 					this.props.updateTrajectory(requestBody);
 				}
@@ -122,14 +136,14 @@ class ControlPanel extends Component {
 				
 				mapCharts.dispatchAction({
 					type: isSelected ? 'legendSelect' : 'legendUnSelect',
-				    // 图例名称
-				    name: legendName
+					// 图例名称
+					name: legendName
 				});
 
 				barCharts.dispatchAction({
 					type: isSelected ? 'legendSelect' : 'legendUnSelect',
-				    // 图例名称
-				    name: legendName
+					// 图例名称
+					name: legendName
 				});
 			});
 
@@ -139,14 +153,14 @@ class ControlPanel extends Component {
 				
 				pieCharts.dispatchAction({
 					type: isSelected ? 'legendSelect' : 'legendUnSelect',
-				    // 图例名称
-				    name: legendName
+					// 图例名称
+					name: legendName
 				});
 
 				barCharts.dispatchAction({
 					type: isSelected ? 'legendSelect' : 'legendUnSelect',
-				    // 图例名称
-				    name: legendName
+					// 图例名称
+					name: legendName
 				});
 			});
 
@@ -161,61 +175,132 @@ class ControlPanel extends Component {
 		}		
 	}
 
-  render() {
-    const text = "control text";
-	  const radioStyle = {
-		  display: 'block',
-		  height: '30px',
-		  lineHeight: '30px',
-	  };
-    return (
-      <div>
-        <Input prefix={<Icon type="user" />} />
-        <Collapse defaultActiveKey={['1']} onChange={this.callback}>
-          <Panel header={<span><Icon type="database"/> 数据集</span>} key="1">
-			  <RadioGroup onChange={this.onRadioDataBaseChange} value={this.state.radioDataBaseValue}>
-				  <Radio style={radioStyle} value={1}>手机数据</Radio>
-				  <Radio style={radioStyle} value={2}>公交卡数据</Radio>
-				  <Radio style={radioStyle} value={3}>出租车数据</Radio>
-			  </RadioGroup>
-			  <hr/>
-			    <RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
-				  <Radio.Button value={1}>点集</Radio.Button>
-				  <Radio.Button value={2}>线集</Radio.Button>
-			  </RadioGroup>
-			  <div>
-				 <RangePicker
-					 defaultValue={
-					 	[moment(this.state.dateRange[0]), moment(this.state.dateRange[1])]
-					 }
-					 onChange={this.onDatePickerChange}
-				 />
-			  </div>
-			  <Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
-          </Panel>
-          <Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-            <RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
-				<Radio style={radioStyle} value={1}>行政区图</Radio>
-				<Radio style={radioStyle} value={2}>百度地图</Radio>
-			</RadioGroup>
+	// handle Advance Setting Poper
+	handlePopVisibleChange = (visible) => {
+		this.setState({
+			adSettingVisible: visible
+		});
+	}
+
+	onRadioTimeUnitChange = (e) => {
+		this.setState({ timeunit: e.target.value });
+	}
+
+	confirmSetting = () => {
+		const id = this.state.id;
+		const timeunit = this.state.timeunit;
+
+		const adSettingData = {
+				timeunit: timeunit,
+				id: id.split(',').map((item) => {
+					if (/^[0-9]+$/.test(item)) {
+						return +item;
+					}
+					return item;
+				}), //[2,3,4,5,6]
+			};
+		this.setState({ adSettingData });
+		this.setState({
+			adSettingVisible: false
+		});
+	}
+
+	cancelSetting = () => {
+		this.setState({
+			adSettingVisible: false
+		});
+	}
+
+	render() {
+		const text = "control text";
+		const radioStyle = {
+			display: 'block',
+			height: '30px',
+			lineHeight: '30px',
+		};
+		const advanceSetting = (
 			<div>
-				<label>
-					视图联动
-					<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
-				</label>
-			</div>			
-          </Panel>
-          <Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
-            <p>{text}</p>
-          </Panel>
-        </Collapse>
-      </div>
-    );
-  }
+				<Row>
+					<label>
+						时间粒度
+						<RadioGroup
+							defaultValue={this.state.adSettingData.timeunit}
+							onChange={this.onRadioTimeUnitChange}
+						>
+							<Radio.Button value="1mm">1mm</Radio.Button>
+							<Radio.Button value="1hh">1hh</Radio.Button>
+							<Radio.Button value="1dd">1dd</Radio.Button>			
+						</RadioGroup>
+					</label>
+				</Row>
+				<Row>
+					<label>
+						ID
+						<Input placeholder={this.state.adSettingData.id}/>
+					</label>
+				</Row>
+				<Button type="primary" onClick={this.confirmSetting}>确定</Button>
+				<Button type="primary" onClick={this.cancelSetting}>取消</Button>
+			</div>
+		);
+		return (
+			<div>
+				<Input prefix={<Icon type="user" />} />
+				<Collapse defaultActiveKey={['1']} onChange={this.callback}>
+				<Panel header={<span><Icon type="database"/> 数据集</span>} key="1">
+					<RadioGroup onChange={this.onRadioDataBaseChange} value={this.state.radioDataBaseValue}>
+						<Radio style={radioStyle} value={1}>手机数据</Radio>
+						<Radio style={radioStyle} value={2}>公交卡数据</Radio>
+						<Radio style={radioStyle} value={3}>出租车数据</Radio>
+					</RadioGroup>
+					<hr/>
+					<RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
+						<Radio.Button value={1}>点集</Radio.Button>
+						<Radio.Button value={2}>线集</Radio.Button>
+					</RadioGroup>
+					<div>
+						<RangePicker
+							defaultValue={
+								[moment(this.state.dateRange[0]), moment(this.state.dateRange[1])]
+							}
+							onChange={this.onDatePickerChange}
+						/>
+					</div>
+					<Popover
+						placement="right"
+						title="设置"
+						content={advanceSetting}
+						trigger="click"
+						visible={this.state.adSettingVisible}
+        				onVisibleChange={this.handlePopVisibleChange}
+					>
+						<Button>高级设置</Button>
+					</Popover>
+					<Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
+				</Panel>
+				<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+					<RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
+						<Radio style={radioStyle} value={1}>行政区图</Radio>
+						<Radio style={radioStyle} value={2}>百度地图</Radio>
+					</RadioGroup>
+					<div>
+						<label>
+							视图联动
+							<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
+						</label>
+					</div>
+				</Panel>
+				<Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
+					<p>{text}</p>
+				</Panel>
+				</Collapse>
+			</div>
+		);
+	}
 }
 
 ControlPanel.propTypes = {
-  tt: PropTypes.func,
+	tt: PropTypes.func,
 };
 
 // Retrieve data from store as props
@@ -224,11 +309,11 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export function mapDispatchToProps(dispatch) {
-  return {
-    changeRoute: (url) => dispatch(push(url)),
-	  updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch),
-	  updateControlState: (controlData) => dispatch(updateControls(controlData)),
-  };
+	return {
+	changeRoute: (url) => dispatch(push(url)),
+		updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch),
+		updateControlState: (controlData) => dispatch(updateControls(controlData)),
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
