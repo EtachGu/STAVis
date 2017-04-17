@@ -7,9 +7,9 @@ import styles from './styles.css';
 
 // data
 import shanghaiJson from 'data/shanghai.json';
-import cellTracks from 'data/cellTrack_geo_collection.json';
+// import cellTracks from 'data/cellTrack_geo_collection.json';
 import cellBaseStations from 'data/cellPhoneBaseStation.json';
-import metroStations from 'data/shMetroStations.json';
+// import metroStations from 'data/shMetroStations.json';
 
 const bmapShangHai = {
     center: [121.487899486,31.24916171],
@@ -140,6 +140,9 @@ class MapDiv extends Component {
   //       }
   //       reader.readAsText(file);
 		//this.initalECharts(buslines);
+		
+		// init data from static File
+
 		const convertData = function (data) {
 			const dataSeries = [];
 			for (let i = 0; i < data.length; i++) {
@@ -161,38 +164,38 @@ class MapDiv extends Component {
 		// legend 图例
 		const legendData = [ '基站'];
 		const seriesData = [];
-		convertData(cellTracks).forEach((item,index) => {
-			legendData.push(`轨迹${index}`)
-			seriesData.push({
-				name: `轨迹${index}`,
-				type: 'lines',
-				polyline: true,
-				coordinateSystem: 'geo',
-				data:item,
-				lineStyle: {
-					normal: {
-						opacity: 0.2,
-						width: 1
-					}
-				},
-				// zlevel: 2,
-				// effect: {
-				// 	show: true,
-				// 	period: 6,
-				// 	trailLength: 0,
-				// 	symbol: "arrow",
-				// 	symbolSize: 15
-				// },
-				// lineStyle: {
-				// 	normal: {
-				// 		width: 1,
-				// 		opacity: 0.6,
-				// 	}
-				// },
-				progressiveThreshold: 500,
-				progressive: 200
-			})
-		});
+		// convertData(cellTracks).forEach((item,index) => {
+		// 	legendData.push(`轨迹${index}`)
+		// 	seriesData.push({
+		// 		name: `轨迹${index}`,
+		// 		type: 'lines',
+		// 		polyline: true,
+		// 		coordinateSystem: 'geo',
+		// 		data:item,
+		// 		lineStyle: {
+		// 			normal: {
+		// 				opacity: 0.2,
+		// 				width: 1
+		// 			}
+		// 		},
+		// 		// zlevel: 2,
+		// 		// effect: {
+		// 		// 	show: true,
+		// 		// 	period: 6,
+		// 		// 	trailLength: 0,
+		// 		// 	symbol: "arrow",
+		// 		// 	symbolSize: 15
+		// 		// },
+		// 		// lineStyle: {
+		// 		// 	normal: {
+		// 		// 		width: 1,
+		// 		// 		opacity: 0.6,
+		// 		// 	}
+		// 		// },
+		// 		progressiveThreshold: 500,
+		// 		progressive: 200
+		// 	})
+		// });
 		// 绘制基站
 		seriesData.push({
 			name: '基站',
