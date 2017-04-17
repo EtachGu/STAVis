@@ -365,8 +365,8 @@ class MapDiv extends Component {
 								},
 								lineStyle: {
 									normal: {
-										width: 1,
-										opacity: 0.6,
+										width: 0.5,
+										opacity: 0.1,
 									}
 								},
 								progressiveThreshold: 500,
@@ -576,8 +576,8 @@ class MapDiv extends Component {
 						},
 						lineStyle: {
 							normal: {
-								width: 1,
-								opacity: 0.6,
+								width: 0.5,
+								opacity: 0.1,
 							}
 						},
 						progressiveThreshold: 500,
