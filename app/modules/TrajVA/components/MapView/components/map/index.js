@@ -322,6 +322,24 @@ class MapDiv extends Component {
 			// const currentEchartsData = this.state.echartData.find(e => e.date == currentDate );
 			const currentEchartsData = this.state.echartData;
 
+
+			// toolbox option
+			const toolboxOtpion = {
+				show: true,
+				iconStyle: {
+		            normal: {
+		                borderColor: '#ddd'
+		            }
+		        },
+				feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        },
+		        right: 20
+			};
+
 			// add Time line
 			if (currentEchartsData.length > 1) {
 
@@ -466,6 +484,7 @@ class MapDiv extends Component {
 				                zlevel: 3    //  new Canvas level = 3
 
 				            },
+				            toolbox: toolboxOtpion,
 				            legend: {
 								orient: 'vertical',
 								y: 'top',
@@ -518,6 +537,7 @@ class MapDiv extends Component {
 				                data: dateSet,
 				                zlevel: 3    //  new Canvas level = 3
 				            },
+				            toolbox: toolboxOtpion,
 				            legend: {
 								orient: 'vertical',
 								y: 'top',
@@ -658,6 +678,7 @@ class MapDiv extends Component {
 					backgroundColor: '#404a59',
 					color:color,
 					series:seriesData,
+				 	toolbox: toolboxOtpion,
 					legend: {
 						orient: 'vertical',
 						y: 'top',
