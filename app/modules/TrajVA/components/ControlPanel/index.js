@@ -58,7 +58,7 @@ class ControlPanel extends Component {
 	};
 
 	callback = (key) => {
-		console.log(key);
+		// console.log(key);
 	};
 	// on DataBase change
 	onRadioDataBaseChange =  (e) => {
@@ -187,7 +187,8 @@ class ControlPanel extends Component {
 	}
 
 	confirmSetting = () => {
-		const id = this.state.id;
+		const id = document.getElementById('IDValues').value;
+		// const id = this.state.id;
 		const timeunit = this.state.timeunit;
 
 		const adSettingData = {
@@ -236,7 +237,7 @@ class ControlPanel extends Component {
 				<Row>
 					<label>
 						ID
-						<Input placeholder={this.state.adSettingData.id}/>
+						<Input id="IDValues" defaultValue={this.state.adSettingData.id}/>
 					</label>
 				</Row>
 				<Button type="primary" onClick={this.confirmSetting}>确定</Button>
@@ -247,52 +248,52 @@ class ControlPanel extends Component {
 			<div>
 				<Input prefix={<Icon type="user" />} />
 				<Collapse defaultActiveKey={['1']} onChange={this.callback}>
-				<Panel header={<span><Icon type="database"/> 数据集</span>} key="1">
-					<RadioGroup onChange={this.onRadioDataBaseChange} value={this.state.radioDataBaseValue}>
-						<Radio style={radioStyle} value={1}>手机数据</Radio>
-						<Radio style={radioStyle} value={2}>公交卡数据</Radio>
-						<Radio style={radioStyle} value={3}>出租车数据</Radio>
-					</RadioGroup>
-					<hr/>
-					<RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
-						<Radio.Button value={1}>点集</Radio.Button>
-						<Radio.Button value={2}>线集</Radio.Button>
-					</RadioGroup>
-					<div>
-						<RangePicker
-							defaultValue={
-								[moment(this.state.dateRange[0]), moment(this.state.dateRange[1])]
-							}
-							onChange={this.onDatePickerChange}
-						/>
-					</div>
-					<Popover
-						placement="right"
-						title="设置"
-						content={advanceSetting}
-						trigger="click"
-						visible={this.state.adSettingVisible}
-        				onVisibleChange={this.handlePopVisibleChange}
-					>
-						<Button>高级设置</Button>
-					</Popover>
-					<Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
-				</Panel>
-				<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-					<RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
-						<Radio style={radioStyle} value={1}>行政区图</Radio>
-						<Radio style={radioStyle} value={2}>百度地图</Radio>
-					</RadioGroup>
-					<div>
-						<label>
-							视图联动
-							<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
-						</label>
-					</div>
-				</Panel>
-				<Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
-					<p>{text}</p>
-				</Panel>
+					<Panel header={<span><Icon type="database"/> 数据集</span>} key="1">
+						<RadioGroup onChange={this.onRadioDataBaseChange} value={this.state.radioDataBaseValue}>
+							<Radio style={radioStyle} value={1}>手机数据</Radio>
+							<Radio style={radioStyle} value={2}>公交卡数据</Radio>
+							<Radio style={radioStyle} value={3}>出租车数据</Radio>
+						</RadioGroup>
+						<hr/>
+						<RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
+							<Radio.Button value={1}>点集</Radio.Button>
+							<Radio.Button value={2}>线集</Radio.Button>
+						</RadioGroup>
+						<div>
+							<RangePicker
+								defaultValue={
+									[moment(this.state.dateRange[0]), moment(this.state.dateRange[1])]
+								}
+								onChange={this.onDatePickerChange}
+							/>
+						</div>
+						<Popover
+							placement="right"
+							title="设置"
+							content={advanceSetting}
+							trigger="click"
+							visible={this.state.adSettingVisible}
+	        				onVisibleChange={this.handlePopVisibleChange}
+						>
+							<Button>高级设置</Button>
+						</Popover>
+						<Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
+					</Panel>
+					<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+						<RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
+							<Radio style={radioStyle} value={1}>行政区图</Radio>
+							<Radio style={radioStyle} value={2}>百度地图</Radio>
+						</RadioGroup>
+						<div>
+							<label>
+								视图联动
+								<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
+							</label>
+						</div>
+					</Panel>
+					<Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
+						<p>{text}</p>
+					</Panel>
 				</Collapse>
 			</div>
 		);
