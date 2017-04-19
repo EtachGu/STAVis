@@ -18,6 +18,8 @@ import {
 	Select,
 	Row,
 	Col,
+	Slider,
+	InputNumber,
 }  from 'antd';
 
 const Panel = Collapse.Panel;
@@ -54,6 +56,13 @@ class ControlPanel extends Component {
 			},
 			timeunit: '1hh',
 			id: '2,3,4,5,6',
+			isClstSettingOpen: false, // Cluster 开关
+			clstPointMin: 5,   //  cluster 点集 的 核心数
+			clstPointDis: 500,  //  cluster 点集 的 核心距离
+			clstTrjMin: 10, 	// LCS-DBSCAN 线集合 核心数
+			clstTrjDis: 500,   // LCS-DBSCAN 线集合  线段之间距离
+			clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
+			clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
 		}
 	};
 
@@ -175,6 +184,9 @@ class ControlPanel extends Component {
 		}		
 	}
 
+	/**
+	 * handle Advance Setting Poper
+	 */
 	// handle Advance Setting Poper
 	handlePopVisibleChange = (visible) => {
 		this.setState({
@@ -184,6 +196,31 @@ class ControlPanel extends Component {
 
 	onRadioTimeUnitChange = (e) => {
 		this.setState({ timeunit: e.target.value });
+	}
+
+	// handle slider of DBSCAN setting
+	onChangeClstPointMin = (vale) => {
+		this.setState({ clstPointMin: value });
+	}
+
+	onChangeClstPointDis = (value) => {
+		this.setState({ clstPointDis: value });
+	}
+
+	onChangeClstTrjMin = (value) => {
+		this.setState({ clstTrjMin: value });
+	}
+
+	onChangeClstTrjDis = (value) => {
+		this.setState({ clstTrjDis: value });
+	}
+
+	onChangeClstTrjNearNum = (value) => {
+		this.setState({ clstTrjNearNum: value });
+	}
+
+	onChangeClstTrjMinLength = (value) => {
+		this.setState({ clstTrjMinLength: value });
 	}
 
 	confirmSetting = () => {
@@ -204,6 +241,10 @@ class ControlPanel extends Component {
 		this.setState({
 			adSettingVisible: false
 		});
+	}
+
+	onSwitchClusterSetting = (checked) => {
+		this.setState({ isClstSettingOpen: checked });
 	}
 
 	cancelSetting = () => {
@@ -240,6 +281,174 @@ class ControlPanel extends Component {
 						<Input id="IDValues" defaultValue={this.state.adSettingData.id}/>
 					</label>
 				</Row>
+				{
+					// 判断是否 为点 集
+					this.state.radioGeomTypeValue === 1 ? (
+						<div className={styles.clustersetting}>
+							<Row type="flex" justify="space-between">
+								<Col span={16}>
+									<h4> DBSCAN聚类参数	</h4>
+								</Col>
+								<Col span={8}>
+									<Switch
+										style={{ float: "right" }}
+										defaultChecked={this.state.isClstSettingOpen} 
+										onChange={this.onSwitchClusterSetting}
+									/>	
+								</Col>
+							</Row>
+							<hr style={{ marginTop: 2, marginBottom: 2 }} />
+							<Row> 核心数 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={1}
+										max={50}
+										onChange={this.onChangeClstPointMin}
+										value={this.state.clstPointMin}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={1}
+										max={50}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstPointMin}
+										onChange={this.onChangeClstPointMin}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+							<Row> 核心距离 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={100}
+										max={1000}
+										onChange={this.onChangeClstPointDis}
+										value={this.state.clstPointDis}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={100}
+										max={1000}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstPointDis}
+										onChange={this.onChangeClstPointDis}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+						</div>
+					) : (
+						<div className={styles.clustersetting}>
+							<Row type="flex" justify="space-between">
+								<Col span={16}>
+									<h4> LCS-DBSCAN聚类参数	</h4>
+								</Col>
+								<Col span={8}>
+									<Switch
+										style={{ float: "right" }}
+										defaultChecked={this.state.isClstSettingOpen} 
+										onChange={this.onSwitchClusterSetting}
+									/>	
+								</Col>
+							</Row>
+							<hr style={{ marginTop: 2, marginBottom: 2 }} />
+							<Row> 核心数 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={1}
+										max={50}
+										onChange={this.onChangeClstTrjMin}
+										value={this.state.clstTrjMin}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={1}
+										max={50}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstTrjMin}
+										onChange={this.onChangeClstTrjMin}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+							<Row> 核心距离 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={100}
+										max={1000}
+										onChange={this.onChangeClstTrjDis}
+										value={this.state.clstTrjDis}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={100}
+										max={1000}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstTrjDis}
+										onChange={this.onChangeClstTrjDis}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+							<Row> 轨迹邻近个数 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={1}
+										max={1000}
+										onChange={this.onChangeClstTrjNearNum}
+										value={this.state.clstTrjNearNum}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={1}
+										max={1000}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstTrjNearNum}
+										onChange={this.onChangeClstTrjNearNum}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+							<Row> 轨迹最小长度 </Row>
+							<Row>
+								<Col span={12}>
+									<Slider
+										min={100}
+										max={1000}
+										onChange={this.onChangeClstTrjMinLength}
+										value={this.state.clstTrjMinLength}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+								<Col span={4}>
+									<InputNumber
+										min={100}
+										max={1000}
+										style={{ marginLeft: 16 }}
+										value={this.state.clstTrjMinLength}
+										onChange={this.onChangeClstTrjMinLength}
+										disabled={!this.state.isClstSettingOpen}
+									/>
+								</Col>
+							</Row>
+						</div>
+					)
+				}
 				<Button type="primary" onClick={this.confirmSetting}>确定</Button>
 				<Button type="primary" onClick={this.cancelSetting}>取消</Button>
 			</div>
@@ -273,7 +482,7 @@ class ControlPanel extends Component {
 							content={advanceSetting}
 							trigger="click"
 							visible={this.state.adSettingVisible}
-	        				onVisibleChange={this.handlePopVisibleChange}
+							onVisibleChange={this.handlePopVisibleChange}
 						>
 							<Button>高级设置</Button>
 						</Popover>
