@@ -199,7 +199,7 @@ class ControlPanel extends Component {
 	}
 
 	// handle slider of DBSCAN setting
-	onChangeClstPointMin = (vale) => {
+	onChangeClstPointMin = (value) => {
 		this.setState({ clstPointMin: value });
 	}
 
@@ -223,6 +223,10 @@ class ControlPanel extends Component {
 		this.setState({ clstTrjMinLength: value });
 	}
 
+	onSwitchClusterSetting = (checked) => {
+		this.setState({ isClstSettingOpen: checked });
+	}
+
 	confirmSetting = () => {
 		const id = document.getElementById('IDValues').value;
 		// const id = this.state.id;
@@ -238,17 +242,36 @@ class ControlPanel extends Component {
 				}), //[2,3,4,5,6]
 			};
 		this.setState({ adSettingData });
+	
 		this.setState({
 			adSettingVisible: false
 		});
-	}
+		
+		const controlsObject = this.props.controlsState;
+		controlsObject.timeunit = adSettingData.timeunit;
+		controlsObject.id = adSettingData.id;
+		controlsObject.isClstSettingOpen = this.state.isClstSettingOpen; // Cluster 开关
+		controlsObject.clstPointMin = this.state.clstPointMin;   //  cluster 点集 的 核心数
+		controlsObject.clstPointDis = this.state.clstPointDis;  //  cluster 点集 的 核心距离
+		controlsObject.clstTrjMin = this.state.clstTrjMin; 	// LCS-DBSCAN 线集合 核心数
+		controlsObject.clstTrjDis = this.state.clstTrjDis;   // LCS-DBSCAN 线集合  线段之间距离
+		controlsObject.clstTrjNearNum = this.state.clstTrjNearNum;    // LCS-DBSCAN 线集合 邻近数
+		controlsObject.clstTrjMinLength = this.state.clstTrjMinLength;  //  LCS-DBSCAN 线集合 最短的长度
 
-	onSwitchClusterSetting = (checked) => {
-		this.setState({ isClstSettingOpen: checked });
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
 	}
 
 	cancelSetting = () => {
+		const controlsObject = this.props.controlsState;
 		this.setState({
+			isClstSettingOpen: controlsObject.isClstSettingOpen, // Cluster 开关
+			clstPointMin: controlsObject.clstPointMin,   //  cluster 点集 的 核心数
+			clstPointDis: controlsObject.clstPointDis,  //  cluster 点集 的 核心距离
+			clstTrjMin: controlsObject.clstTrjMin, 	// LCS-DBSCAN 线集合 核心数
+			clstTrjDis: controlsObject.clstTrjDis,   // LCS-DBSCAN 线集合  线段之间距离
+			clstTrjNearNum: controlsObject.clstTrjNearNum,    // LCS-DBSCAN 线集合 邻近数
+			clstTrjMinLength: controlsObject.clstTrjMinLength,  //  LCS-DBSCAN 线集合 最短的长度
 			adSettingVisible: false
 		});
 	}
@@ -292,7 +315,7 @@ class ControlPanel extends Component {
 								<Col span={8}>
 									<Switch
 										style={{ float: "right" }}
-										defaultChecked={this.state.isClstSettingOpen} 
+										checked={this.state.isClstSettingOpen} 
 										onChange={this.onSwitchClusterSetting}
 									/>	
 								</Col>
@@ -352,7 +375,7 @@ class ControlPanel extends Component {
 								<Col span={8}>
 									<Switch
 										style={{ float: "right" }}
-										defaultChecked={this.state.isClstSettingOpen} 
+										checked={this.state.isClstSettingOpen} 
 										onChange={this.onSwitchClusterSetting}
 									/>	
 								</Col>

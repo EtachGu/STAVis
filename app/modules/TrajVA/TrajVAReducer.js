@@ -8,6 +8,15 @@ const initialState = {
 	controls:{
 	  	trajName:'cellPhoneTrack',
 	  	datetime:["2016-03-02","2016-03-03"],
+	  	timeunit: "1hh",
+		id: [2,3,4,5,6],
+	  	isClstSettingOpen: false, // Cluster 开关
+		clstPointMin: 5,   //  cluster 点集 的 核心数
+		clstPointDis: 500,  //  cluster 点集 的 核心距离
+		clstTrjMin: 10, 	// LCS-DBSCAN 线集合 核心数
+		clstTrjDis: 500,   // LCS-DBSCAN 线集合  线段之间距离
+		clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
+		clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
 	  	mapType: 1,
 	  	geomType: 2      // 1 = points,  2 = line
   	},
