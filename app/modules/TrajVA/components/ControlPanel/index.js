@@ -50,12 +50,8 @@ class ControlPanel extends Component {
 			radioGeomTypeValue: 2,
 			dateRange:['2016-03-01','2016-03-02'],	// [startDate, endDate]  string type
 			adSettingVisible: false,
-			adSettingData:{
-				timeunit: "1hh",
-				id: [2,3,4,5,6],
-			},
 			timeunit: '1hh',
-			id: '2,3,4,5,6',
+			id: [2,3,4,5,6],
 			isClstSettingOpen: false, // Cluster 开关
 			clstPointMin: 5,   //  cluster 点集 的 核心数
 			clstPointDis: 500,  //  cluster 点集 的 核心距离
@@ -85,8 +81,8 @@ class ControlPanel extends Component {
 	confirmQueryTrack = () => {
 		const dataType = this.state.radioDataBaseValue;
 		const dateRange = this.state.dateRange;
-		const timeunit = this.state.adSettingData.timeunit;
-		const id = this.state.adSettingData.id;
+		const timeunit = this.state.timeunit;
+		const id = this.state.id;
 		switch (dataType) {
 			case 1:
 				// emit the event for query the cellPhoneTrack
@@ -198,6 +194,17 @@ class ControlPanel extends Component {
 		this.setState({ timeunit: e.target.value });
 	}
 
+	onChangeInputID = (e) => {
+		this.setState({
+			id: e.target.value.split(',').map((item) => {
+						if (/^[0-9]+$/.test(item)) {
+							return +item;
+						}
+						return item;
+					}), //[2,3,4,5,6]
+		});		
+	}
+
 	// handle slider of DBSCAN setting
 	onChangeClstPointMin = (value) => {
 		this.setState({ clstPointMin: value });
@@ -227,29 +234,15 @@ class ControlPanel extends Component {
 		this.setState({ isClstSettingOpen: checked });
 	}
 
-	confirmSetting = () => {
-		const id = document.getElementById('IDValues').value;
-		// const id = this.state.id;
-		const timeunit = this.state.timeunit;
-
-		const adSettingData = {
-				timeunit: timeunit,
-				id: id.split(',').map((item) => {
-					if (/^[0-9]+$/.test(item)) {
-						return +item;
-					}
-					return item;
-				}), //[2,3,4,5,6]
-			};
-		this.setState({ adSettingData });
+	confirmSetting = () => {	
 	
 		this.setState({
 			adSettingVisible: false
 		});
 		
 		const controlsObject = this.props.controlsState;
-		controlsObject.timeunit = adSettingData.timeunit;
-		controlsObject.id = adSettingData.id;
+		controlsObject.timeunit = this.state.timeunit;
+		controlsObject.id = this.state.id;
 		controlsObject.isClstSettingOpen = this.state.isClstSettingOpen; // Cluster 开关
 		controlsObject.clstPointMin = this.state.clstPointMin;   //  cluster 点集 的 核心数
 		controlsObject.clstPointDis = this.state.clstPointDis;  //  cluster 点集 的 核心距离
@@ -265,6 +258,8 @@ class ControlPanel extends Component {
 	cancelSetting = () => {
 		const controlsObject = this.props.controlsState;
 		this.setState({
+			timeunit: controlsObject.timeunit,
+			id: controlsObject.id,
 			isClstSettingOpen: controlsObject.isClstSettingOpen, // Cluster 开关
 			clstPointMin: controlsObject.clstPointMin,   //  cluster 点集 的 核心数
 			clstPointDis: controlsObject.clstPointDis,  //  cluster 点集 的 核心距离
@@ -289,7 +284,7 @@ class ControlPanel extends Component {
 					<label>
 						时间粒度
 						<RadioGroup
-							defaultValue={this.state.adSettingData.timeunit}
+							value={this.state.timeunit}
 							onChange={this.onRadioTimeUnitChange}
 						>
 							<Radio.Button value="1mm">1mm</Radio.Button>
@@ -301,7 +296,10 @@ class ControlPanel extends Component {
 				<Row>
 					<label>
 						ID
-						<Input id="IDValues" defaultValue={this.state.adSettingData.id}/>
+						<Input
+							value={this.state.id}
+							onChange={this.onChangeInputID}
+						/>
 					</label>
 				</Row>
 				{
