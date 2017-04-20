@@ -107,8 +107,9 @@ export function addClusterTrackRequest(reqBody) {
       datetime: reqBody.datetime,
       fields: reqBody.fields,
       parameter: {
-        distance: 500,
-        minTrs: 5
+        distance: reqBody.parameter.distance,
+        minTrs: reqBody.parameter.minTrs
+        
       }
     }).then(data => {
     if(!data.err) {

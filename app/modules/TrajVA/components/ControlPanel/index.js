@@ -95,8 +95,8 @@ class ControlPanel extends Component {
 							datetime: dateRange,
 							fields: "",
 							parameter: {
-								distance: this.props.clstPointDis,
-								minTrs: this.props.clstPointMin
+								distance: this.props.controlsState.clstPointDis,
+								minTrs: this.props.controlsState.clstPointMin
 							}
 						}
 
@@ -405,7 +405,7 @@ class ControlPanel extends Component {
 								<Col span={14}>
 									<Slider
 										min={100}
-										max={1000}
+										max={10000}
 										onChange={this.onChangeClstPointDis}
 										value={this.state.clstPointDis}
 										disabled={!this.state.isClstSettingOpen}
@@ -414,7 +414,7 @@ class ControlPanel extends Component {
 								<Col span={10}>
 									<InputNumber
 										min={100}
-										max={1000}
+										max={10000}
 										style={{ float: "right" }}
 										value={this.state.clstPointDis}
 										onChange={this.onChangeClstPointDis}
@@ -466,7 +466,7 @@ class ControlPanel extends Component {
 								<Col span={14}>
 									<Slider
 										min={100}
-										max={1000}
+										max={10000}
 										onChange={this.onChangeClstTrjDis}
 										value={this.state.clstTrjDis}
 										disabled={!this.state.isClstSettingOpen}
@@ -475,7 +475,7 @@ class ControlPanel extends Component {
 								<Col span={10}>
 									<InputNumber
 										min={100}
-										max={1000}
+										max={10000}
 										style={{ float: "right" }}
 										value={this.state.clstTrjDis}
 										onChange={this.onChangeClstTrjDis}
@@ -510,7 +510,7 @@ class ControlPanel extends Component {
 								<Col span={14}>
 									<Slider
 										min={100}
-										max={1000}
+										max={10000}
 										onChange={this.onChangeClstTrjMinLength}
 										value={this.state.clstTrjMinLength}
 										disabled={!this.state.isClstSettingOpen}
@@ -519,7 +519,7 @@ class ControlPanel extends Component {
 								<Col span={10}>
 									<InputNumber
 										min={100}
-										max={1000}
+										max={10000}
 										style={{ float: "right" }}
 										value={this.state.clstTrjMinLength}
 										onChange={this.onChangeClstTrjMinLength}
