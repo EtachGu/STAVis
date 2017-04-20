@@ -279,19 +279,22 @@ class ControlPanel extends Component {
 			lineHeight: '30px',
 		};
 		const advanceSetting = (
-			<div>
+			<div className={styles.advancsetting}>
 				<Row>
 					<label>
 						时间粒度
-						<RadioGroup
-							value={this.state.timeunit}
-							onChange={this.onRadioTimeUnitChange}
-						>
-							<Radio.Button value="1mm">1mm</Radio.Button>
-							<Radio.Button value="1hh">1hh</Radio.Button>
-							<Radio.Button value="1dd">1dd</Radio.Button>			
-						</RadioGroup>
+						<div>
+							<RadioGroup
+									value={this.state.timeunit}
+									onChange={this.onRadioTimeUnitChange}
+								>
+									<Radio.Button value="1mm">1mm</Radio.Button>
+									<Radio.Button value="1hh">1hh</Radio.Button>
+									<Radio.Button value="1dd">1dd</Radio.Button>			
+							</RadioGroup>
+						</div>
 					</label>
+					
 				</Row>
 				<Row>
 					<label>
