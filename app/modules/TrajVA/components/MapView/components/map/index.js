@@ -364,36 +364,10 @@ class MapDiv extends Component {
 						const legendName = legendNameSet[i];
 
 						if (baseLegends.indexOf(legendName) == -1) {
+
 							baseLegends.push(legendName);
-							baseSeriesData.push({
-								name: legendName,
-								type: seriesType,
-								polyline: true,
-								// coordinateSystem: 'geo',
-								coordinateSystem: coordinateSystemName,
-								// lineStyle: {
-								// 	normal: {
-								// 		opacity: 0.2,
-								// 		width: 1
-								// 	}
-								// },
-								zlevel: 2,
-								effect: {
-									show: true,
-									period: 6,
-									trailLength: 0,
-									symbol: "pin",
-									symbolSize: 5
-								},
-								lineStyle: {
-									normal: {
-										width: 0.5,
-										opacity: 0.1,
-									}
-								},
-								progressiveThreshold: 500,
-								progressive: 200
-							});
+
+							this.generateBaseSeriesOptionSet(seriesType, legendName, coordinateSystemName, baseSeriesData);
 						}
 					}
 					
@@ -418,8 +392,13 @@ class MapDiv extends Component {
 						const indexSeries = legendData.indexOf(legendName);
 						if(indexSeries !== -1) {
 							// add 该系列数据
-							const seriesData = series[indexSeries];
-
+							let seriesData = series[indexSeries];
+							switch (seriesType) {
+								case 'scatter': seriesData = _.flatten(seriesData.map((points) => points.coords)); break;
+								case 'lines':
+								default: break;
+							}
+							
 							return {data:seriesData};
 						}
 						return {};
@@ -575,55 +554,7 @@ class MapDiv extends Component {
 
 				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
 
-				switch (seriesType) {
-					case 'scatter' : 
-						// add Scatter seriesData
-						series.forEach((item,index) => {
-							seriesData.push({
-								name: legendData[index],
-								type: seriesType,
-								coordinateSystem: coordinateSystemName,
-								data:_.flatten(item.map((points) => points.coords)),
-							})
-						}); break;
-					case 'lines': 
-						// add Lines seriesData
-						series.forEach((item,index) => {
-
-							seriesData.push({
-								name: legendData[index],
-								type: seriesType,
-								polyline: true,
-								// coordinateSystem: 'geo',
-								coordinateSystem: coordinateSystemName,
-								data:item,
-								// lineStyle: {
-								// 	normal: {
-								// 		opacity: 0.2,
-								// 		width: 1
-								// 	}
-								// },
-								zlevel: 2,
-								effect: {
-									show: true,
-									period: 6,
-									trailLength: 0,
-									symbol: "pin",
-									symbolSize: 5
-								},
-								lineStyle: {
-									normal: {
-										width: 0.5,
-										opacity: 0.1,
-									}
-								},
-								progressiveThreshold: 500,
-								progressive: 200
-							});
-
-						}); break;
-					default: break;
-				}
+				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData);
 
 				if (!legendData.includes('基站')) {
 					
@@ -764,6 +695,50 @@ class MapDiv extends Component {
 						progressive: 200
 					});
 
+				}); break;
+			default: break;
+		}
+	}
+
+	generateBaseSeriesOptionSet = (seriesType, legendName, coordinateSystemName, outputbaseSeriesData) => {
+
+		switch (seriesType) {
+			case 'scatter' : 
+				// add Scatter seriesData
+				outputbaseSeriesData.push({
+					name: legendName,
+					type: seriesType,
+					coordinateSystem: coordinateSystemName,
+				}); break;
+			case 'lines': 
+				// add Lines seriesData
+				outputbaseSeriesData.push({
+					name: legendName,
+					type: seriesType,
+					polyline: true,
+					coordinateSystem: coordinateSystemName,
+					// lineStyle: {
+					// 	normal: {
+					// 		opacity: 0.2,
+					// 		width: 1
+					// 	}
+					// },
+					zlevel: 2,
+					effect: {
+						show: true,
+						period: 6,
+						trailLength: 0,
+						symbol: "pin",
+						symbolSize: 5
+					},
+					lineStyle: {
+						normal: {
+							width: 0.5,
+							opacity: 0.1,
+						}
+					},
+					progressiveThreshold: 500,
+					progressive: 200
 				}); break;
 			default: break;
 		}
