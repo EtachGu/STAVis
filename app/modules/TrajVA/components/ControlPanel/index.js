@@ -334,7 +334,7 @@ class ControlPanel extends Component {
 				</Row>
 				<Row>
 					<label>
-						ID
+						人群ID
 						<Input
 							value={this.state.id}
 							onChange={this.onChangeInputID}
