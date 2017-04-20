@@ -298,6 +298,15 @@ class ControlPanel extends Component {
 		
 	}
 
+	onSwitchVisibleGraphView = (checked) => {
+
+		const controlsObject = this.props.controlsState;
+		controlsObject.isGraphViewVisible = checked;
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
+		
+	}
+
 	render() {
 		const text = "control text";
 		const radioStyle = {
@@ -343,6 +352,7 @@ class ControlPanel extends Component {
 								<Col span={8}>
 									<Switch
 										style={{ float: "right" }}
+										size="small"
 										checked={this.state.isClstSettingOpen} 
 										onChange={this.onSwitchClusterSetting}
 									/>	
@@ -403,6 +413,7 @@ class ControlPanel extends Component {
 								<Col span={8}>
 									<Switch
 										style={{ float: "right" }}
+										size="small"
 										checked={this.state.isClstSettingOpen} 
 										onChange={this.onSwitchClusterSetting}
 									/>	
@@ -548,18 +559,39 @@ class ControlPanel extends Component {
 						<div>
 							<label>
 								视图联动
-								<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
+								<Switch
+									style={{ float: "right" }}
+									size="small"
+									defaultChecked={false}
+									onChange={this.onSwitchChangeConnect}
+								/>	
 							</label>
 						</div>
 						
 						<h4>通用设置</h4>
 						<hr style={{ marginTop: 5, marginBottom: 5 }} />
-						<div>
+						<Row>
 							<label>
-								Time视图开关
-								<Switch defaultChecked={true} onChange={this.onSwitchVisibleTimeView} />	
+								时间视图开关
+								<Switch
+									style={{ float: "right" }}
+									size="small"
+									defaultChecked={true}
+									onChange={this.onSwitchVisibleTimeView}
+								/>	
 							</label>
-						</div>
+						</Row>
+						<Row>
+							<label>
+								统计视图开关
+								<Switch
+									style={{ float: "right" }}
+									size="small"
+									defaultChecked={true}
+									onChange={this.onSwitchVisibleGraphView}
+								/>	
+							</label>
+						</Row>
 					</Panel>
 					<Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
 						<p>{text}</p>

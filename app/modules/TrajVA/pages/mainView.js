@@ -70,9 +70,14 @@ class MainView extends Component {
 						{ this.props.control.isTimeViewVisible ? <TimeView /> : <div /> }
 					</Footer>
 				</Layout>
-				<div className={styles['sider-right']}>
-					<GraphView />
-				</div>
+				{ 
+					this.props.control.isGraphViewVisible ?
+						<div className={styles['sider-right']}>
+							 <GraphView /> 
+						</div>
+					: 
+						<div />
+				}
 			</Layout>
 		);
 	}

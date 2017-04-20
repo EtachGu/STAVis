@@ -22,6 +22,7 @@ const initialState = {
 
 	  	// ParamSetting
 	  	isTimeViewVisible: true, // TimeView visiblity
+	  	isGraphViewVisible: true, // GraphView visiblity
 
   	},
 	tasks:{
