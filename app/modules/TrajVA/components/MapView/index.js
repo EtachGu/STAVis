@@ -154,7 +154,15 @@ class MapView extends Component {
     const mapData = this.props.trajectories.data;
     const mapType = this.props.controlsState.mapType;
     const geomType = this.props.controlsState.geomType;
-    const mapDiv = geomType === 1 ? <STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/> : <MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>
+    let mapEChartsSeriesType;
+    switch (geomType) {
+      // case 1: mapDiv = (<STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
+      // case 2: mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
+      case 1: mapEChartsSeriesType = 'scatter'; break;
+      case 2: mapEChartsSeriesType = 'lines'; break;
+      default: break; 
+    }
+    const mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>);
     return (
       <div>
         {mapDiv}

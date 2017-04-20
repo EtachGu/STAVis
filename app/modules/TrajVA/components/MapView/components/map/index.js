@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import bmap from 'echarts/extension/bmap/bmap';
+import _ from 'lodash';
 
 import buslines from 'data/bus_lines.json';
 import styles from './styles.css';
@@ -120,7 +121,7 @@ class MapDiv extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		mapType: PropTypes.number,
-		geomType: PropTypes.number,
+		geomType: PropTypes.string,
 	};
 
 	constructor(props) {
@@ -340,6 +341,9 @@ class MapDiv extends Component {
 		        right: 20
 			};
 
+			// series Type
+			const seriesType = this.props.geomType;
+
 			// add Time line
 			if (currentEchartsData.length > 1) {
 
@@ -363,7 +367,7 @@ class MapDiv extends Component {
 							baseLegends.push(legendName);
 							baseSeriesData.push({
 								name: legendName,
-								type: 'lines',
+								type: seriesType,
 								polyline: true,
 								// coordinateSystem: 'geo',
 								coordinateSystem: coordinateSystemName,
@@ -571,59 +575,77 @@ class MapDiv extends Component {
 
 				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
 
-				series.forEach((item,index) => {
+				switch (seriesType) {
+					case 'scatter' : 
+						// add Scatter seriesData
+						series.forEach((item,index) => {
+							seriesData.push({
+								name: legendData[index],
+								type: seriesType,
+								coordinateSystem: coordinateSystemName,
+								data:_.flatten(item.map((points) => points.coords)),
+							})
+						}); break;
+					case 'lines': 
+						// add Lines seriesData
+						series.forEach((item,index) => {
 
+							seriesData.push({
+								name: legendData[index],
+								type: seriesType,
+								polyline: true,
+								// coordinateSystem: 'geo',
+								coordinateSystem: coordinateSystemName,
+								data:item,
+								// lineStyle: {
+								// 	normal: {
+								// 		opacity: 0.2,
+								// 		width: 1
+								// 	}
+								// },
+								zlevel: 2,
+								effect: {
+									show: true,
+									period: 6,
+									trailLength: 0,
+									symbol: "pin",
+									symbolSize: 5
+								},
+								lineStyle: {
+									normal: {
+										width: 0.5,
+										opacity: 0.1,
+									}
+								},
+								progressiveThreshold: 500,
+								progressive: 200
+							});
+
+						}); break;
+					default: break;
+				}
+
+				if (!legendData.includes('基站')) {
+					
+					legendData.push('基站');
+
+					// 绘制基站
 					seriesData.push({
-						name: legendData[index],
-						type: 'lines',
-						polyline: true,
+						name: '基站',
+						type: 'scatter',
 						// coordinateSystem: 'geo',
 						coordinateSystem: coordinateSystemName,
-						data:item,
-						// lineStyle: {
-						// 	normal: {
-						// 		opacity: 0.2,
-						// 		width: 1
-						// 	}
-						// },
-						zlevel: 2,
-						effect: {
-							show: true,
-							period: 6,
-							trailLength: 0,
-							symbol: "pin",
-							symbolSize: 5
-						},
-						lineStyle: {
+						data:cellBaseStations.data,
+						itemStyle: {
 							normal: {
-								width: 0.5,
-								opacity: 0.1,
+								color: '#ff0000',
+								opacity: 0.2,
 							}
 						},
-						progressiveThreshold: 500,
-						progressive: 200
+						symbolSize:1
 					});
+				}
 
-				});
-
-				legendData.push('基站');
-
-				// 绘制基站
-				seriesData.push({
-					name: '基站',
-					type: 'scatter',
-					// coordinateSystem: 'geo',
-					coordinateSystem: coordinateSystemName,
-					data:cellBaseStations.data,
-					itemStyle: {
-						normal: {
-							color: '#ff0000',
-							opacity: 0.2,
-						}
-					},
-					symbolSize:1
-				});
-				
 				const color = this.state.color;
 
 				// add 
@@ -693,6 +715,58 @@ class MapDiv extends Component {
 			}// one date Echarts
 			
 		}// end if  currentDate is validate
+	}
+
+	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData) => {
+
+		switch (seriesType) {
+			case 'scatter' : 
+				// add Scatter seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						coordinateSystem: coordinateSystemName,
+						data:_.flatten(item.map((points) => points.coords)),
+					})
+				}); break;
+			case 'lines': 
+				// add Lines seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						polyline: true,
+						// coordinateSystem: 'geo',
+						coordinateSystem: coordinateSystemName,
+						data:item,
+						// lineStyle: {
+						// 	normal: {
+						// 		opacity: 0.2,
+						// 		width: 1
+						// 	}
+						// },
+						zlevel: 2,
+						effect: {
+							show: true,
+							period: 6,
+							trailLength: 0,
+							symbol: "pin",
+							symbolSize: 5
+						},
+						lineStyle: {
+							normal: {
+								width: 0.5,
+								opacity: 0.1,
+							}
+						},
+						progressiveThreshold: 500,
+						progressive: 200
+					});
+
+				}); break;
+			default: break;
+		}
 	}
 
 	convertData =  (data) => {
