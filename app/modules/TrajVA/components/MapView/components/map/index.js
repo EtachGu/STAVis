@@ -208,26 +208,11 @@ class MapDiv extends Component {
 
 		echarts.registerMap('shanghai', shanghaiJson);
 		const chart = echarts.init(document.getElementById('map'));
+
+		this.setEChartGeoOption(chart);
+
 		chart.setOption({
 			backgroundColor: '#404a59',
-			geo: {
-				map: 'shanghai',
-				roam: true,
-				label: {
-					emphasis: {
-						show: true
-					}
-				},
-				itemStyle: {
-					normal: {
-						areaColor: '#323c48',
-						borderColor: '#111'
-					},
-					emphasis: {
-						areaColor: '#2a333d'
-					}
-				}
-			},
 			series:seriesData,
 			legend: {
 				orient: 'vertical',
@@ -239,6 +224,8 @@ class MapDiv extends Component {
 				}
 			},
 		});
+
+		
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -486,25 +473,7 @@ class MapDiv extends Component {
 				            	},
 				            	zlevel: 3    //  new Canvas level = 3
 				            },
-				            geo:{
-								map: 'shanghai',
-								roam: true,
-								label: {
-									emphasis: {
-										show: true
-									}
-								},
-								itemStyle: {
-									normal: {
-										areaColor: '#323c48',
-										borderColor: '#111'
-									},
-									emphasis: {
-										areaColor: '#2a333d',
-										//areaColor: rgba(128, 128, 200, 0.5),
-									}
-								}
-							},
+				            geo: this.setEChartGeoOption(),
 				            series: baseSeriesData
 				        },
 				        options: optionsData
@@ -605,27 +574,7 @@ class MapDiv extends Component {
 
 				chart.clear();
 
-				mapType === 1 ?  chart.setOption({
-					geo:{
-						map: 'shanghai',
-						roam: true,
-						label: {
-							emphasis: {
-								show: true
-							}
-						},
-						itemStyle: {
-							normal: {
-								areaColor: '#323c48',
-								borderColor: '#111'
-							},
-							emphasis: {
-								areaColor: '#2a333d',
-								//areaColor: rgba(128, 128, 200, 0.5),
-							}
-						}
-					}
-				}) : chart.setOption({ bmap:bmapShangHai });
+				mapType === 1 ?  this.setEChartGeoOption(chart) : chart.setOption({ bmap:bmapShangHai });
 
 				chart.setOption({
 					backgroundColor: '#404a59',
@@ -741,6 +690,43 @@ class MapDiv extends Component {
 					progressive: 200
 				}); break;
 			default: break;
+		}
+	}
+
+	setEChartGeoOption = (echartsInstance) => {
+		const geoOption =  {
+			map: 'shanghai',
+			roam: true,
+			label: {
+				emphasis: {
+					show: true
+				}
+			},
+			itemStyle: {
+				normal: {
+					areaColor: '#323c48',
+					borderColor: '#111'
+				},
+				emphasis: {
+					areaColor: '#2a333d',
+					//areaColor: rgba(128, 128, 200, 0.5),
+				}
+			},
+			silent: true,
+		};
+
+		if (echartsInstance) {
+			echartsInstance.setOption({
+				geo: geoOption
+			});	
+		}
+
+		return geoOption;
+	}
+
+	setEChartBmapOption = (echartsInstance) => {
+		if (echartsInstance) {
+			echartsInstance.setOption({ bmap:bmapShangHai });
 		}
 	}
 
