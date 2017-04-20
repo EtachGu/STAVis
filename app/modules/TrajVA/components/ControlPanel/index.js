@@ -188,6 +188,20 @@ class ControlPanel extends Component {
 		this.setState({
 			adSettingVisible: visible
 		});
+		if (visible) {
+			const controlsObject = this.props.controlsState;
+			this.setState({
+				timeunit: controlsObject.timeunit,
+				id: controlsObject.id,
+				isClstSettingOpen: controlsObject.isClstSettingOpen, // Cluster 开关
+				clstPointMin: controlsObject.clstPointMin,   //  cluster 点集 的 核心数
+				clstPointDis: controlsObject.clstPointDis,  //  cluster 点集 的 核心距离
+				clstTrjMin: controlsObject.clstTrjMin, 	// LCS-DBSCAN 线集合 核心数
+				clstTrjDis: controlsObject.clstTrjDis,   // LCS-DBSCAN 线集合  线段之间距离
+				clstTrjNearNum: controlsObject.clstTrjNearNum,    // LCS-DBSCAN 线集合 邻近数
+				clstTrjMinLength: controlsObject.clstTrjMinLength,  //  LCS-DBSCAN 线集合 最短的长度
+			});
+		}
 	}
 
 	onRadioTimeUnitChange = (e) => {
