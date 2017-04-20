@@ -324,7 +324,7 @@ class ControlPanel extends Component {
 							<hr style={{ marginTop: 2, marginBottom: 2 }} />
 							<Row> 核心数 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={1}
 										max={50}
@@ -333,11 +333,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={1}
 										max={50}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstPointMin}
 										onChange={this.onChangeClstPointMin}
 										disabled={!this.state.isClstSettingOpen}
@@ -346,7 +346,7 @@ class ControlPanel extends Component {
 							</Row>
 							<Row> 核心距离 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={100}
 										max={1000}
@@ -355,11 +355,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={100}
 										max={1000}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstPointDis}
 										onChange={this.onChangeClstPointDis}
 										disabled={!this.state.isClstSettingOpen}
@@ -384,7 +384,7 @@ class ControlPanel extends Component {
 							<hr style={{ marginTop: 2, marginBottom: 2 }} />
 							<Row> 核心数 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={1}
 										max={50}
@@ -393,11 +393,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={1}
 										max={50}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstTrjMin}
 										onChange={this.onChangeClstTrjMin}
 										disabled={!this.state.isClstSettingOpen}
@@ -406,7 +406,7 @@ class ControlPanel extends Component {
 							</Row>
 							<Row> 核心距离 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={100}
 										max={1000}
@@ -415,11 +415,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={100}
 										max={1000}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstTrjDis}
 										onChange={this.onChangeClstTrjDis}
 										disabled={!this.state.isClstSettingOpen}
@@ -428,7 +428,7 @@ class ControlPanel extends Component {
 							</Row>
 							<Row> 轨迹邻近个数 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={1}
 										max={1000}
@@ -437,11 +437,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={1}
 										max={1000}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstTrjNearNum}
 										onChange={this.onChangeClstTrjNearNum}
 										disabled={!this.state.isClstSettingOpen}
@@ -450,7 +450,7 @@ class ControlPanel extends Component {
 							</Row>
 							<Row> 轨迹最小长度 </Row>
 							<Row>
-								<Col span={12}>
+								<Col span={14}>
 									<Slider
 										min={100}
 										max={1000}
@@ -459,11 +459,11 @@ class ControlPanel extends Component {
 										disabled={!this.state.isClstSettingOpen}
 									/>
 								</Col>
-								<Col span={4}>
+								<Col span={10}>
 									<InputNumber
 										min={100}
 										max={1000}
-										style={{ marginLeft: 16 }}
+										style={{ float: "right" }}
 										value={this.state.clstTrjMinLength}
 										onChange={this.onChangeClstTrjMinLength}
 										disabled={!this.state.isClstSettingOpen}
