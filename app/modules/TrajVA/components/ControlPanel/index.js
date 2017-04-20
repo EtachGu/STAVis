@@ -32,7 +32,7 @@ import 'antd/dist/antd.css';
 import styles from './styles.css';
 
 // Import Actions
-import { addTrajSetRequest, updateControls } from '../../TrajVAActions';
+import { addTrajSetRequest, updateControls, addClusterTrackRequest } from '../../TrajVAActions';
 
 // selectors
 import { selectControls } from './selectors';
@@ -87,13 +87,32 @@ class ControlPanel extends Component {
 			case 1:
 				// emit the event for query the cellPhoneTrack
 				if(dateRange[0] !== '' && dateRange[0] !== ''){
-					const requestBody = {
-						trajName: "cellPhoneTrack",
-						datetime: dateRange,
-						timeunit: timeunit,
-						id: id, // [2,3,4,5,6]//['(低)','(中)','(高)']//
-					};
-					this.props.updateTrajectory(requestBody);
+					
+					if (this.props.controlsState.isClstSettingOpen) {
+
+						const requestBody = {
+							collectionName: "",
+							datetime: dateRange,
+							fields: "",
+							parameter: {
+								distance: this.props.clstPointDis,
+								minTrs: this.props.clstPointMin
+							}
+						}
+
+						this.props.updateClusterTraj(requestBody);
+						
+					} else {
+
+						const requestBody = {
+							trajName: "cellPhoneTrack",
+							datetime: dateRange,
+							timeunit: timeunit,
+							id: id, // [2,3,4,5,6]//['(低)','(中)','(高)']//
+						};
+
+						this.props.updateTrajectory(requestBody);
+					}
 				}
 				break;
 			case 2:break;
@@ -616,6 +635,7 @@ export function mapDispatchToProps(dispatch) {
 	changeRoute: (url) => dispatch(push(url)),
 		updateTrajectory: (requestBody) => addTrajSetRequest(requestBody)(dispatch),
 		updateControlState: (controlData) => dispatch(updateControls(controlData)),
+		updateClusterTraj: (requestBody) => addClusterTrackRequest(requestBody)(dispatch),
 	};
 }
 

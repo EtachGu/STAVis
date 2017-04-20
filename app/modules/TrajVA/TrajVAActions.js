@@ -1,4 +1,4 @@
-import callApi from '../../util/apiCaller';
+import { callApi, callApiURL } from '../../util/apiCaller';
 
 // Export Constants
 export const ADD_TRACKDATA = 'ADD_TRACKDATA';
@@ -87,3 +87,33 @@ export function updateTasks(data) {
     data,
   };
  }
+
+/**
+ *  Cluster
+ */
+export const ADD_CLUSTERTRACKS = 'ADD_CLUSTERTRACKS';
+
+export function addClusterTracks(data) {
+  return {
+    type: ADD_CLUSTERTRACKS,
+    data,
+  };
+}
+
+export function addClusterTrackRequest(reqBody) {
+  return (dispatch) => {
+    return callApiURL('http://localhost:8080/DataVisualor/ClusterServlet', 'post', {
+      collectionName: reqBody.trajName,
+      datetime: reqBody.datetime,
+      fields: reqBody.fields,
+      parameter: {
+        distance: 500,
+        minTrs: 5
+      }
+    }).then(data => {
+    if(!data.err) {
+      dispatch(addClusterTracks(data.data));
+    }
+  });
+  };
+}

@@ -20,7 +20,7 @@ function checkStatus(response) {
 	throw error;
 }
 
-export default function callApi(endpoint, method = 'get', body) {
+export function callApi(endpoint, method = 'get', body) {
   return fetch(`${API_URL}/${endpoint}`, {
     headers: { 'Content-Type': 'application/json' },
 	  mode: 'core',
@@ -35,4 +35,26 @@ export default function callApi(endpoint, method = 'get', body) {
   .catch((err) => ({
 	  err,
   }));
+}
+
+export function callApiURL(URL, method = 'get', body) {
+  return fetch(URL, {
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'core',
+    method,
+    body: JSON.stringify(body),
+  })
+  .then(checkStatus)
+  .then(parseJSON)
+  .then((data) => ({
+    data,
+  }))
+  .catch((err) => ({
+    err,
+  }));
+}
+
+export default {
+  callApi,
+  callApiURL
 }
