@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 
-class BarCharts extends Component {
+class PieCharts extends Component {
     static propTypes = {
         className: PropTypes.string,
         width: PropTypes.number.isRequired,
@@ -29,6 +29,7 @@ class BarCharts extends Component {
 
     // 不同群体的特点
     initalECharts = () => {
+        if(this.props.pieData === undefined) return;
         const myChart = echarts.init(document.getElementById('pieCharts'));
         
         // 将统计图表的联动
@@ -162,4 +163,4 @@ class BarCharts extends Component {
     }
 }
 
-export default BarCharts;
+export default PieCharts;
