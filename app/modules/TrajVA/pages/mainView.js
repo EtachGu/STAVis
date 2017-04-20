@@ -67,7 +67,7 @@ class MainView extends Component {
 						<MapView />
 					</Content>
 					<Footer>
-						<TimeView />
+						{ this.props.control.isTimeViewVisible ? <TimeView /> : <div /> }
 					</Footer>
 				</Layout>
 				<div className={styles['sider-right']}>
@@ -80,7 +80,7 @@ class MainView extends Component {
 
 MainView.propTypes = {
 	ee: React.PropTypes.any,
-	control: PropTypes.array.isRequired
+	control: PropTypes.object.isRequired
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。

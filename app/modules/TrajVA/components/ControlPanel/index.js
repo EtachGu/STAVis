@@ -285,6 +285,19 @@ class ControlPanel extends Component {
 		});
 	}
 
+	/**
+	 * onSwitchVisibleTimeView
+	 *
+	 **/
+	onSwitchVisibleTimeView = (checked) => {
+
+		const controlsObject = this.props.controlsState;
+		controlsObject.isTimeViewVisible = checked;
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
+		
+	}
+
 	render() {
 		const text = "control text";
 		const radioStyle = {
@@ -501,7 +514,7 @@ class ControlPanel extends Component {
 							<Radio style={radioStyle} value={2}>公交卡数据</Radio>
 							<Radio style={radioStyle} value={3}>出租车数据</Radio>
 						</RadioGroup>
-						<hr/>
+						<hr style={{ marginTop: 5, marginBottom: 5 }} />
 						<RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
 							<Radio.Button value={1}>点集</Radio.Button>
 							<Radio.Button value={2}>线集</Radio.Button>
@@ -531,10 +544,20 @@ class ControlPanel extends Component {
 							<Radio style={radioStyle} value={1}>行政区图</Radio>
 							<Radio style={radioStyle} value={2}>百度地图</Radio>
 						</RadioGroup>
+						<hr style={{ marginTop: 5, marginBottom: 5 }} />
 						<div>
 							<label>
 								视图联动
 								<Switch defaultChecked={false} onChange={this.onSwitchChangeConnect} />	
+							</label>
+						</div>
+						
+						<h4>通用设置</h4>
+						<hr style={{ marginTop: 5, marginBottom: 5 }} />
+						<div>
+							<label>
+								Time视图开关
+								<Switch defaultChecked={true} onChange={this.onSwitchVisibleTimeView} />	
 							</label>
 						</div>
 					</Panel>

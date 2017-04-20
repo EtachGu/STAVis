@@ -18,7 +18,11 @@ const initialState = {
 		clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
 		clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
 	  	mapType: 1,
-	  	geomType: 2      // 1 = points,  2 = line
+	  	geomType: 2,      // 1 = points,  2 = line
+
+	  	// ParamSetting
+	  	isTimeViewVisible: true, // TimeView visiblity
+
   	},
 	tasks:{
 		steps:[{name:'概览',status:'finish'},{name:'分析',status:'process'},{name:'结论',status:'wait'},{name:'完成',status:'wait'}]
