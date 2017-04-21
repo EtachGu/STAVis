@@ -638,6 +638,7 @@ class MapDiv extends Component {
 							normal: {
 								width: 0.5,
 								opacity: 0.1,
+								curveness: 0.2,
 							}
 						},
 						progressiveThreshold: 500,
@@ -684,6 +685,7 @@ class MapDiv extends Component {
 						normal: {
 							width: 0.5,
 							opacity: 0.1,
+							curveness: 0.2
 						}
 					},
 					progressiveThreshold: 500,
