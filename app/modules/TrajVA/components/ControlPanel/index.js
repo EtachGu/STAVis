@@ -91,9 +91,10 @@ class ControlPanel extends Component {
 					if (this.props.controlsState.isClstSettingOpen) {
 
 						const requestBody = {
-							collectionName: "",
+							collectionName: "cellPhoneTrack",
 							datetime: dateRange,
 							fields: "",
+							"id": this.props.controlsState.id,
 							parameter: {
 								distance: this.props.controlsState.clstPointDis,
 								minTrs: this.props.controlsState.clstPointMin

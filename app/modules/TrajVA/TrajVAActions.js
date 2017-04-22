@@ -103,9 +103,10 @@ export function addClusterTracks(data) {
 export function addClusterTrackRequest(reqBody) {
   return (dispatch) => {
     return callApiURL('http://localhost:8080/DataVisualor/ClusterServlet', 'post', {
-      collectionName: reqBody.trajName,
+      collectionName: reqBody.collectionName,
       datetime: reqBody.datetime,
       fields: reqBody.fields,
+      id: reqBody.id,
       parameter: {
         distance: reqBody.parameter.distance,
         minTrs: reqBody.parameter.minTrs
