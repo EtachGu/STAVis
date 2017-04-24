@@ -5,6 +5,7 @@
 A framework for Visual Analytics of spatio-temporal movement.
 
 ![Alt text](./docs/img/interface.jpg)
+![Alt text](./docs/img/interface2.png)
 
 ## Quickstart
 

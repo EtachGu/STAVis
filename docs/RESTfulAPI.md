@@ -208,6 +208,7 @@ data 中元素按照时间粒度依次排列
     collectionName: _collectionsName_,
     datetime:_datetime_,
     fields: _fields_,
+    id: _ids_
     parameter: {
         distance: _dis_,
         minTrs : _minTrs_
