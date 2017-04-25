@@ -15,7 +15,6 @@ import styles from './styles.css';
 // select
 import {
   selectTrajectory,
-  selectControls,
   selectControlsGeomType,
   selectControlsMapType
 } from './selectors';
@@ -189,7 +188,6 @@ class MapView extends Component {
 MapView.propTypes = {
   ij: React.PropTypes.any,
   trajectories: React.PropTypes.object,
-  controlsState: React.PropTypes.object,
   geomType: React.PropTypes.number,
   mapType: React.PropTypes.number
 };
@@ -197,7 +195,6 @@ MapView.propTypes = {
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = createStructuredSelector({
   trajectories:selectTrajectory,
-  controlsState: selectControls,
   geomType: selectControlsGeomType,
   mapType: selectControlsMapType
 });
