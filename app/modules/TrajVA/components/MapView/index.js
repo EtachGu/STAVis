@@ -13,13 +13,28 @@ import STMapDiv from './components/statisticMap';
 import styles from './styles.css';
 
 // select
-import { selectTrajectory, selectControls } from './selectors';
+import {
+  selectTrajectory,
+  selectControls,
+  selectControlsGeomType,
+  selectControlsMapType
+} from './selectors';
 
 class MapView extends Component {
 
   constructor(props) {
     super(props);
 
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.mapType !== nextProps.mapType || this.props.geomType !== nextProps.geomType) {
+      return true;
+    }
+    if (this.props.trajectories !== nextProps.trajectories) {
+      return true;
+    }
+    return false;
   }
 
   initialMap() {
@@ -152,8 +167,8 @@ class MapView extends Component {
 
   render() {
     const mapData = this.props.trajectories.data;
-    const mapType = this.props.controlsState.mapType;
-    const geomType = this.props.controlsState.geomType;
+    const mapType = this.props.mapType;
+    const geomType = this.props.geomType;
     let mapEChartsSeriesType;
     switch (geomType) {
       // case 1: mapDiv = (<STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
@@ -174,13 +189,17 @@ class MapView extends Component {
 MapView.propTypes = {
   ij: React.PropTypes.any,
   trajectories: React.PropTypes.object,
-  controlsState: React.PropTypes.object
+  controlsState: React.PropTypes.object,
+  geomType: React.PropTypes.number,
+  mapType: React.PropTypes.number
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = createStructuredSelector({
   trajectories:selectTrajectory,
-  controlsState: selectControls
+  controlsState: selectControls,
+  geomType: selectControlsGeomType,
+  mapType: selectControlsMapType
 });
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
