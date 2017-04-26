@@ -451,7 +451,7 @@ class MapDiv extends Component {
 				                		borderColor: '#ffffff'
 				                	}
 				                },
-				                zlevel: 3    //  new Canvas level = 3
+				                zlevel: 1    //  new Canvas level = 3
 
 				            },
 				            toolbox: toolboxOtpion,
@@ -471,7 +471,7 @@ class MapDiv extends Component {
 				            	textStyle: {
 				            		color: '#ffffff'
 				            	},
-				            	zlevel: 3    //  new Canvas level = 3
+				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            geo: this.setEChartGeoOption(),
 				            series: baseSeriesData
@@ -487,7 +487,7 @@ class MapDiv extends Component {
 				            	top: 25,
 				            	left: 'center',
 				                data: dateSet,
-				                zlevel: 3    //  new Canvas level = 3
+				                zlevel: 1    //  new Canvas level = 3
 				            },
 				            toolbox: toolboxOtpion,
 				            legend: {
@@ -503,7 +503,7 @@ class MapDiv extends Component {
 				            	top: 0,
 				            	left: 'center',
 				            	text: `${dateSet[0]}轨迹分布`,
-				            	zlevel: 3    //  new Canvas level = 3
+				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            bmap:bmapShangHai,
 				            series: baseSeriesData
@@ -626,7 +626,7 @@ class MapDiv extends Component {
 						// 		width: 1
 						// 	}
 						// },
-						zlevel: 2,
+						// zlevel: 2,
 						effect: {
 							show: true,
 							period: 6,
@@ -673,7 +673,7 @@ class MapDiv extends Component {
 					// 		width: 1
 					// 	}
 					// },
-					zlevel: 2,
+					// zlevel: 2,
 					effect: {
 						show: true,
 						period: 6,
