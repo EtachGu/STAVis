@@ -257,10 +257,11 @@ class MapDiv extends Component {
 							everyCluster = {};
 							everyCluster.name = clusterName;
 							everyCluster.geoms = [];
+							everyCluster.count = 0;
 							nowTracksByCluster.push(everyCluster);
 						}
-
-						const coord = JSON.parse(item).coordinates;
+						const geojson = JSON.parse(item);
+						const coord = geojson.coordinates;
 						const coord_e = [];
 						for(let index = 0; index < coord.length; index++){
 							const lon = coord[index][0];
@@ -271,17 +272,26 @@ class MapDiv extends Component {
 
 						// 将该类别的轨迹 添加到集合
 						everyCluster.geoms.push(geom_e);
+
+						// 添加每个系列的属性
+						if (geojson.count) {
+							everyCluster.count = geojson.count;
+						}
+						
 					});
 
 					const legendData = nowTracksByCluster.map( e => e.name);
 
 					const seriesData = nowTracksByCluster.map( e => e.geoms);
 
+					const seriesProperty = nowTracksByCluster.map( e => e.count);
+
 					// 将每个时间粒度下的 数据添加到 集合
 					trajDataSet.push({
 						date:groupName,
 						legends:legendData,
-						series:seriesData
+						series:seriesData,
+						seriesProperty: seriesProperty
 					});
 				}
 
@@ -346,6 +356,8 @@ class MapDiv extends Component {
 
 					const legendNameSet = currDateEcData.legends;
 
+					const linesWidths = currDateEcData.seriesProperty;
+
 					for (var i = 0; i < legendNameSet.length; i++) {
 
 						const legendName = legendNameSet[i];
@@ -354,7 +366,7 @@ class MapDiv extends Component {
 
 							baseLegends.push(legendName);
 
-							this.generateBaseSeriesOptionSet(seriesType, legendName, coordinateSystemName, baseSeriesData);
+							this.generateBaseSeriesOptionSet(seriesType, legendName, coordinateSystemName, baseSeriesData,linesWidths[i]);
 						}
 					}
 					
@@ -518,12 +530,14 @@ class MapDiv extends Component {
 				// one Date
 				const legendData = currentEchartsData[0].legends;
 				const series = currentEchartsData[0].series;
+
+				const linesWidths = currentEchartsData[0].seriesProperty;
 				
 				const seriesData = [];
 
 				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
 
-				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData);
+				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData, linesWidths);
 
 				if (!legendData.includes('基站')) {
 					
@@ -597,7 +611,7 @@ class MapDiv extends Component {
 		}// end if  currentDate is validate
 	}
 
-	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData) => {
+	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData, linesWidths) => {
 
 		switch (seriesType) {
 			case 'scatter' : 
@@ -636,7 +650,7 @@ class MapDiv extends Component {
 						},
 						lineStyle: {
 							normal: {
-								width: 0.5,
+								width: linesWidths[index] || 0.5,
 								opacity: 0.1,
 								curveness: 0.2,
 							}
@@ -650,7 +664,7 @@ class MapDiv extends Component {
 		}
 	}
 
-	generateBaseSeriesOptionSet = (seriesType, legendName, coordinateSystemName, outputbaseSeriesData) => {
+	generateBaseSeriesOptionSet = (seriesType, legendName, coordinateSystemName, outputbaseSeriesData,linesWidth) => {
 
 		switch (seriesType) {
 			case 'scatter' : 
@@ -683,7 +697,7 @@ class MapDiv extends Component {
 					},
 					lineStyle: {
 						normal: {
-							width: 0.5,
+							width: linesWidth || 0.5,
 							opacity: 0.1,
 							curveness: 0.2
 						}
