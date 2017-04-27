@@ -129,7 +129,8 @@ class MapDiv extends Component {
 		this.state = {
 			echartData:[],
 			currentDate:'',
-			color:['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f']
+			color:['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f'],
+			isEChartDataNew: false,
 		}
 	}
 
@@ -229,7 +230,7 @@ class MapDiv extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		if(this.props.mapData && this.props.mapData != nextProps.mapData){
+		if(this.props.mapData && this.props.mapData != nextProps.mapData) {
 			
 			if(nextProps.mapData) {
 				
@@ -301,13 +302,38 @@ class MapDiv extends Component {
 
 				this.setState({
 					currentDate: startDate, 
-					echartData: trajDataSet
-				})		
+					echartData: trajDataSet,
+					isEChartDataNew: true
+				})
 			}// if mapdata valid
 		}// if props updated
+
+		if(this.props.geomType && this.props.geomType != nextProps.geomType) {
+			this.setState({
+				isEChartDataNew: true
+			})
+		}
 	}
 
 	componentDidUpdate() {
+
+		//  update Map ECharts
+		if (this.state.isEChartDataNew) {
+			
+			this.updateMapECharts();
+
+			this.setState({
+				isEChartDataNew: false
+			})	
+		}
+		
+
+		this.updateMapEChartsStyle();
+	}
+
+	// update Trajectories ECharts
+	updateMapECharts = () => {
+
 		const chart = echarts.getInstanceByDom(document.getElementById('map'));
 
 		const mapType = this.props.mapType;  // 1 = geo 2 =bmap
@@ -609,6 +635,15 @@ class MapDiv extends Component {
 			}// one date Echarts
 			
 		}// end if  currentDate is validate
+	}
+
+	updateMapEChartsStyle = () => {
+
+		const chart = echarts.getInstanceByDom(document.getElementById('map'));
+
+		const option = chart.getOption();
+
+
 	}
 
 	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData, linesWidths) => {
