@@ -18,7 +18,7 @@ const initialState = {
 		clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
 		clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
 		mapType: 1,
-		geomType: 2,      // 1 = points,  2 = line
+		geomType: 2,      // 1 = points,  2 = line  3 = heatmap
 
 		// ParamSetting
 		isTimeViewVisible: true, // TimeView visiblity
