@@ -551,6 +551,7 @@ class ControlPanel extends Component {
 						<RadioGroup onChange={this.onRadioGeomTypeChange} value={this.state.radioGeomTypeValue} size="small">
 							<Radio.Button value={1}>点集</Radio.Button>
 							<Radio.Button value={2}>线集</Radio.Button>
+							<Radio.Button value={3}>热力图</Radio.Button>
 						</RadioGroup>
 						<div>
 							<RangePicker
