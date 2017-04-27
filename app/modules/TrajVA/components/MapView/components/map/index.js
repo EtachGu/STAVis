@@ -555,7 +555,7 @@ class MapDiv extends Component {
 
 			} else {
 				// one Date
-				const legendData = currentEchartsData[0].legends;
+				const legendData = currentEchartsData[0].legends.map( e => e);
 				const series = currentEchartsData[0].series;
 
 				const linesWidths = currentEchartsData[0].seriesProperty;
@@ -566,26 +566,22 @@ class MapDiv extends Component {
 
 				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData, linesWidths);
 
-				if (!legendData.includes('基站')) {
-					
-					legendData.push('基站');
-
-					// 绘制基站
-					seriesData.push({
-						name: '基站',
-						type: 'scatter',
-						// coordinateSystem: 'geo',
-						coordinateSystem: coordinateSystemName,
-						data:cellBaseStations.data,
-						itemStyle: {
-							normal: {
-								color: '#ff0000',
-								opacity: 0.2,
-							}
-						},
-						symbolSize:1
-					});
-				}
+				// 绘制基站
+				legendData.push('基站');
+				seriesData.push({
+					name: '基站',
+					type: 'scatter',
+					// coordinateSystem: 'geo',
+					coordinateSystem: coordinateSystemName,
+					data:cellBaseStations.data,
+					itemStyle: {
+						normal: {
+							color: '#ff0000',
+							opacity: 0.2,
+						}
+					},
+					symbolSize:1
+				});
 
 				const color = this.state.color;
 
