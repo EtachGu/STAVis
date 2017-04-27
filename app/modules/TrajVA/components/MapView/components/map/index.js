@@ -566,6 +566,10 @@ class MapDiv extends Component {
 
 				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData, linesWidths);
 
+				//create VisualMap array
+
+				const visualMapOption = this.generateVisualMap(series,legendData);
+
 				// 绘制基站
 				legendData.push('基站');
 				seriesData.push({
@@ -767,20 +771,35 @@ class MapDiv extends Component {
 		}
 	}
 
-	generateVisualMap = () => {
-		const visualMap = {
-			show: false,
-            top: 'top',
-            min: 0,
-            max: 5,
-            seriesIndex: 0,
-            calculable: true,
-            inRange: {
-                color: ['blue', 'blue', 'green', 'yellow', 'red']
-            }
-		};
+	generateVisualMap = (series, legendData) => {
 
-		return visualMap;
+	// const visualMap = legendData.map( (item, index) => {
+	// 	const visualMapItem = {
+	// 		show: false,
+	//            top: 'top',
+	//            min: 0,
+	//            max: 5,
+	//            seriesIndex: index,
+	//            calculable: true,
+	//            inRange: {
+	//                color: ['blue', 'blue', 'green', 'yellow', 'red']
+	//            }
+	// 	};
+	// 	return visualMapItem;
+	// });
+		
+		const visualMapItem = {
+				show: false,
+	            top: 'top',
+	            min: 0,
+	            max: 5,
+	            calculable: true,
+	            inRange: {
+	                color: ['blue', 'blue', 'green', 'yellow', 'red']
+	            }
+			};
+
+		return visualMapItem;
 	}
 
 	setEChartGeoOption = (echartsInstance) => {
