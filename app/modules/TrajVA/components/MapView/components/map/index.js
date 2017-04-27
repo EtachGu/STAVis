@@ -514,7 +514,7 @@ class MapDiv extends Component {
 				            },
 				            geo: this.setEChartGeoOption(),
 				            series: baseSeriesData,
-				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
+				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				        },
 				        options: optionsData
 				    }
@@ -547,7 +547,7 @@ class MapDiv extends Component {
 				            },
 				            bmap:bmapShangHai,
 				            series: baseSeriesData,
-				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
+				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				        },
 				        options: optionsData
 				    }
@@ -627,7 +627,7 @@ class MapDiv extends Component {
 							color: '#fff'
 						}
 					},
-					visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
+					visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				});
 				
 
