@@ -93,6 +93,7 @@ class ControlPanel extends Component {
 						const requestBody = {
 							collectionName: "cellPhoneTrack",
 							datetime: dateRange,
+							timeunit: timeunit,
 							fields: "",
 							"id": this.props.controlsState.id,
 							parameter: {
@@ -344,9 +345,10 @@ class ControlPanel extends Component {
 									value={this.state.timeunit}
 									onChange={this.onRadioTimeUnitChange}
 								>
-									<Radio.Button value="1mm">1mm</Radio.Button>
-									<Radio.Button value="1hh">1hh</Radio.Button>
-									<Radio.Button value="1dd">1dd</Radio.Button>			
+									<Radio.Button value="1mm">分钟</Radio.Button>
+									<Radio.Button value="1hh">小时</Radio.Button>
+									<Radio.Button value="1dd">一天</Radio.Button>
+									<Radio.Button value="1week">一周</Radio.Button>
 							</RadioGroup>
 						</div>
 					</label>

@@ -105,6 +105,7 @@ export function addClusterTrackRequest(reqBody) {
     return callApiURL('http://localhost:8080/DataVisualor/ClusterServlet', 'post', {
       collectionName: reqBody.collectionName,
       datetime: reqBody.datetime,
+      timeunit: reqBody.timeunit,
       fields: reqBody.fields,
       id: reqBody.id,
       parameter: {
