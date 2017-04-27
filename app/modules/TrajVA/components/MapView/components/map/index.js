@@ -420,7 +420,8 @@ class MapDiv extends Component {
 							let seriesData = series[indexSeries];
 							switch (seriesType) {
 								case 'scatter': seriesData = _.flatten(seriesData.map((points) => points.coords)); break;
-								case 'lines':
+								case 'lines': break;
+								case 'heatmap': seriesData = _.flatten(seriesData.map((points) => points.coords)).map( c => c.concat([1]) ); break;
 								default: break;
 							}
 							
@@ -512,7 +513,8 @@ class MapDiv extends Component {
 				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            geo: this.setEChartGeoOption(),
-				            series: baseSeriesData
+				            series: baseSeriesData,
+				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
 				        },
 				        options: optionsData
 				    }
@@ -544,13 +546,12 @@ class MapDiv extends Component {
 				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            bmap:bmapShangHai,
-				            series: baseSeriesData
+				            series: baseSeriesData,
+				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
 				        },
 				        options: optionsData
 				    }
 				); // echartSetOption
-
-				
 
 			} else {
 				// one Date
@@ -614,7 +615,7 @@ class MapDiv extends Component {
 
 				chart.clear();
 
-				mapType === 1 ?  this.setEChartGeoOption(chart) : chart.setOption({ bmap:bmapShangHai });
+				mapType === 1 ?  this.setEChartGeoOption(chart) : chart.setOption({ bmap:bmapShangHai });			
 
 				chart.setOption({
 					backgroundColor: '#404a59',
@@ -630,7 +631,9 @@ class MapDiv extends Component {
 							color: '#fff'
 						}
 					},
+					visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : {}
 				});
+				
 
 			}// one date Echarts
 			
@@ -695,6 +698,18 @@ class MapDiv extends Component {
 					});
 
 				}); break;
+			case 'heatmap' : 
+				// add Scatter seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						coordinateSystem: coordinateSystemName,
+						data:_.flatten(item.map((points) => points.coords)).map(e => e.concat([1])),
+						pointSize: 5,
+						blurSize: 6
+					})
+				}); break;
 			default: break;
 		}
 	}
@@ -702,7 +717,7 @@ class MapDiv extends Component {
 	generateBaseSeriesOptionSet = (seriesType, legendName, coordinateSystemName, outputbaseSeriesData,linesWidth) => {
 
 		switch (seriesType) {
-			case 'scatter' : 
+			case 'scatter': 
 				// add Scatter seriesData
 				outputbaseSeriesData.push({
 					name: legendName,
@@ -740,8 +755,36 @@ class MapDiv extends Component {
 					progressiveThreshold: 500,
 					progressive: 200
 				}); break;
+			case 'heatmap':
+				// add Scatter seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						coordinateSystem: coordinateSystemName,
+						data:_.flatten(item.map((points) => points.coords)).map(e => e.concat([1])),
+						pointSize: 5,
+						blurSize: 6
+					})
+				}); break;
 			default: break;
 		}
+	}
+
+	generateVisualMap = () => {
+		const visualMap = {
+			show: false,
+            top: 'top',
+            min: 0,
+            max: 5,
+            seriesIndex: 0,
+            calculable: true,
+            inRange: {
+                color: ['blue', 'blue', 'green', 'yellow', 'red']
+            }
+		};
+
+		return visualMap;
 	}
 
 	setEChartGeoOption = (echartsInstance) => {

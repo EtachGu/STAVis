@@ -174,6 +174,7 @@ class MapView extends Component {
       // case 2: mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
       case 1: mapEChartsSeriesType = 'scatter'; break;
       case 2: mapEChartsSeriesType = 'lines'; break;
+      case 3: mapEChartsSeriesType = 'heatmap'; break;
       default: break; 
     }
     const mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>);
