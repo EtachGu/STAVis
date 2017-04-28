@@ -226,6 +226,10 @@ class MapDiv extends Component {
 			},
 		});
 
+		//
+		console.log(document.getElementById('map').clientWidth);
+		chart.resize();
+		window.addEventListener('resize', this.handleResize);
 		
 	}
 
@@ -330,6 +334,10 @@ class MapDiv extends Component {
 
 		this.updateMapEChartsStyle();
 	}
+
+	componentWillUnmount() {
+    	window.removeEventListener('resize', this.handleResize);
+  	}
 
 	// update Trajectories ECharts
 	updateMapECharts = () => {
@@ -1181,6 +1189,10 @@ class MapDiv extends Component {
 		});
 	}
 
+	handleResize = () => {
+		const chart = echarts.getInstanceByDom(document.getElementById('map'));
+		chart.resize();
+	}
 
 	render() {
 		return (
