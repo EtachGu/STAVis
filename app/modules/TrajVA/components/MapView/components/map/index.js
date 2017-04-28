@@ -228,7 +228,12 @@ class MapDiv extends Component {
 
 		//
 		console.log(document.getElementById('map').clientWidth);
-		chart.resize();
+		const width = document.getElementById('map').clientWidth;
+		const height =  width * 0.80;
+		chart.resize({
+			width,
+			height
+		});
 		window.addEventListener('resize', this.handleResize);
 		
 	}
@@ -1191,7 +1196,12 @@ class MapDiv extends Component {
 
 	handleResize = () => {
 		const chart = echarts.getInstanceByDom(document.getElementById('map'));
-		chart.resize();
+		const width = document.getElementById('map').clientWidth;
+		const height =  width * 0.8;
+		chart.resize({
+			width,
+			height
+		});
 	}
 
 	render() {
