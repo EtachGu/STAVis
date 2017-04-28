@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 // Import Components
-import { Layout } from 'antd';
+import { Layout, Icon } from 'antd';
 import ControlPanel from '../components/ControlPanel';
 import GraphView from '../components/GraphView';
 import MapView from '../components/MapView';
@@ -29,6 +29,9 @@ const { Header, Footer, Sider, Content } = Layout;
 class MainView extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			slideCollapse: false,
+		};
 	}
 	
 	componentDidMount() {
@@ -52,16 +55,31 @@ class MainView extends Component {
 		this.props.requestStatistics(requestStatistic);
 	}
 
+	tgeSlideCollapse = () => {
+		this.setState({
+			slideCollapse:!this.state.slideCollapse
+		});
+	}
+
 	render() {
 		return (
 			<Layout className={styles.mainview} >
-				<Sider className={styles.content}>
+				<Sider
+					className={this.state.slideCollapse ? styles.content : styles['sider-hidden']}
+				>
 					<TaskPanel />
 					<ControlPanel />
 				</Sider>
 				<Layout className={styles.content} >
 					<Header className={styles.header}>
-						<TaskSteps></TaskSteps>
+						<Icon
+							className={styles.trgmenu}
+							type={this.state.slideCollapse ? 'menu-unfold' : 'menu-fold'}
+							onClick={this.tgeSlideCollapse}
+						/>
+						<div className={styles.tasktree}>
+							<TaskSteps></TaskSteps>	
+						</div>
 					</Header>
 					<Content className={styles.content}>
 						<MapView />

@@ -21,3 +21,21 @@
 	background: rgb(255,255,255);
 	width: 400px;
 }
+.sider-hidden {
+	display: none;
+}
+.trgmenu {
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: color .3s;
+    vertical-align: top
+}
+.trgmenu:hover {
+	color: #108ee9;
+}
+.tasktree {
+	display: inline-table;
+	width: 85%;
+}
