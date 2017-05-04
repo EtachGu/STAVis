@@ -14,17 +14,28 @@ import styles from './styles.css';
 import cellTrackDisAvg from 'data/cellTrackDistanceAvg.json';
 
 class TimeView extends Component {
-  static propTypes = {
-	name: React.PropTypes.string,
-  };
+	static propTypes = {
+		name: React.PropTypes.string,
+	};
 
-  constructor(props) {
-	super(props);
-  }
+	constructor(props) {
+		super(props);
+	}
 
 	componentDidMount() {
-	  this.initalECharts();
-  }
+		this.initalECharts();
+
+		// resize
+		const myChart = echarts.getInstanceByDom(document.getElementById('timeCharts'));
+		const width = document.getElementById('timeCharts').clientWidth;
+		const height = document.getElementById('timeCharts').clientHeight;
+		myChart.resize({
+			width,
+			height
+		});
+		window.addEventListener('resize', this.handleResize);
+	}
+
 	componentDidUpdate() {
 		this.initalECharts();
 	}
@@ -149,17 +160,22 @@ class TimeView extends Component {
 		});
 	}
 
+	handleResize = () => {
+		const myChart = echarts.getInstanceByDom(document.getElementById('timeCharts'));
+		const width = document.getElementById('timeCharts').clientWidth;
+		const height = document.getElementById('timeCharts').clientHeight;
+		myChart.resize({
+			width,
+			height
+		});
+	}
+
 
   render() {
-	  const timeChartsStyle = {
-		  width:1000,
-		  height: 250
-	  };
-	  const button = <Button className={styles['timedisplayer-button']} shape="circle" icon="play-circle" />;
+	
+	const button = <Button className={styles['timedisplayer-button']} shape="circle" icon="play-circle" />;
 	return (
-	  <div className={styles.timeview}>
-		  <div id="timeCharts" style={timeChartsStyle} className={styles.timecharts}></div>
-	  </div>
+		<div id="timeCharts" className={styles.timeview}></div>
 	);
   }
 }

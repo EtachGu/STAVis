@@ -1,14 +1,16 @@
 .timeview {
-	position: absolute;
 	height: 250px;
-	width: 1000px;
-	left:200px;
-  	bottom: 0px;
-  	z-index: 100;
-  	/*background: #323c48;*/
-  	opacity:0.9;
+  max-height: 250px;
+	width: 100%;
+	bottom: 300px;
+	z-index: 100;
+	/*background: #323c48;*/
+	opacity:0.9;
 }
 .timecharts {
+    height: 250px;
+    max-height: 250px;
+    width: 100%;
     opacity:1;
 }
 .timedisplayer-button {

@@ -65,7 +65,7 @@ class MainView extends Component {
 		return (
 			<Layout className={styles.mainview} >
 				<Sider
-					className={this.state.slideCollapse ? styles.content : styles['sider-hidden']}
+					className={this.state.slideCollapse ? styles['sider-hidden'] : styles.content }
 				>
 					<TaskPanel />
 					<ControlPanel />
@@ -83,9 +83,10 @@ class MainView extends Component {
 					</Header>
 					<Content className={styles.content}>
 						<MapView />
+						{ this.props.control.isTimeViewVisible ? <TimeView /> : <div /> }
 					</Content>
 					<Footer>
-						{ this.props.control.isTimeViewVisible ? <TimeView /> : <div /> }
+						
 					</Footer>
 				</Layout>
 				{ 
