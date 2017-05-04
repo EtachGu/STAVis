@@ -322,6 +322,12 @@ class MapDiv extends Component {
 				isEChartDataNew: true
 			})
 		}
+
+		if(this.props.mapType && this.props.mapType != nextProps.mapType) {
+			this.setState({
+				isEChartDataNew: true
+			})
+		}
 	}
 
 	componentDidUpdate() {
@@ -347,7 +353,7 @@ class MapDiv extends Component {
 	// update Trajectories ECharts
 	updateMapECharts = () => {
 
-		const chart = echarts.getInstanceByDom(document.getElementById('map'));
+		const chart = echarts.init(document.getElementById('map'));
 
 		const mapType = this.props.mapType;  // 1 = geo 2 =bmap
 
@@ -651,6 +657,8 @@ class MapDiv extends Component {
 			}// one date Echarts
 			
 		}// end if  currentDate is validate
+
+		this.handleResize();
 	}
 
 	updateMapEChartsStyle = () => {
@@ -1202,6 +1210,11 @@ class MapDiv extends Component {
 			width,
 			height
 		});
+
+		const bmapDiv = document.getElementsByClassName('ec-extension-bmap').item(0);
+		// if (bmapDiv) bmapDiv.setAttribute('style',`width: 100%;height: ${height}px;position: relative;overflow: hidden;`);
+		if (bmapDiv) bmapDiv.style.height = `${height}px`;
+
 	}
 
 	render() {
