@@ -1,0 +1,19 @@
+.taskmenu {
+	display: none;
+	position:absolute;
+	height: 100px;
+	width: 80px;
+	border-style: solid;
+    border-width: thin;
+    border-color: #eee;;
+	background-color: #fff;
+	z-index: 2;
+}
+
+.menuli {
+	padding: 5px 10px;
+}
+
+.menuli:hover {
+	background-color: #eee;
+}

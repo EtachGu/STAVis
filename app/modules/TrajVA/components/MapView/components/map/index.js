@@ -666,8 +666,6 @@ class MapDiv extends Component {
 		const chart = echarts.getInstanceByDom(document.getElementById('map'));
 
 		const option = chart.getOption();
-
-
 	}
 
 	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData, linesWidths) => {
