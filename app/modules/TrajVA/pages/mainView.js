@@ -55,6 +55,12 @@ class MainView extends Component {
 		this.props.requestStatistics(requestStatistic);
 	}
 
+	componentDidUpdate() {
+		// 触发 Window resize
+		const e = new Event("resize");
+		window.setTimeout(window.dispatchEvent(e),2000);
+	}
+
 	tgeSlideCollapse = () => {
 		this.setState({
 			slideCollapse:!this.state.slideCollapse
