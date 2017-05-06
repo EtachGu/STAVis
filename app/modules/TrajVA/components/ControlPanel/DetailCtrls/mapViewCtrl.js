@@ -117,7 +117,7 @@ export class MapViewCtrl extends React.Component {
 					视觉系列列表
 				</label>
 				<div>
-					{[...visualMapArray.map((itemVM, index)=> (<span styel={{ float: 'left', backgroundColor: COLOR_BAR[ index / COLOR_BAR.length ], width: '20px', height: '20px', margin: '5px 5px' }} ></span>))]}
+					{[...visualMapArray.map((itemVM, index)=> (<span style={{ float: "left", backgroundColor: COLOR_BAR[ index / COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} ></span>))]}
 				</div>
 			</Row>
 			<Button type="primary" onClick={this.confirmSetting}>确定</Button>
