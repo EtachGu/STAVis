@@ -50,13 +50,13 @@ class ControlPanel extends Component {
 			radioGeomTypeValue: 2,
 			dateRange:['2016-03-01','2016-03-02'],	// [startDate, endDate]  string type
 			adSettingVisible: false,
-			timeunit: '1hh',
+			timeunit: '1dd',
 			id: [2,3,4,5,6],
 			isClstSettingOpen: false, // Cluster 开关
-			clstPointMin: 5,   //  cluster 点集 的 核心数
-			clstPointDis: 500,  //  cluster 点集 的 核心距离
+			clstPointMin: 10,   //  cluster 点集 的 核心数
+			clstPointDis: 3000,  //  cluster 点集 的 核心距离
 			clstTrjMin: 10, 	// LCS-DBSCAN 线集合 核心数
-			clstTrjDis: 500,   // LCS-DBSCAN 线集合  线段之间距离
+			clstTrjDis: 2000,   // LCS-DBSCAN 线集合  线段之间距离
 			clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
 			clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
 		}
