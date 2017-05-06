@@ -394,8 +394,7 @@ class ControlPanel extends Component {
 					<label>
 						地图视图
 						<Button
-							style={{ float: "right" }}
-							className={styles['btn-detail']}
+							style={{ float: "right", 'border-width': 0 }}
 							size="small"
 							icon="right"
 							onClick={this.toViewDetail}
@@ -406,8 +405,7 @@ class ControlPanel extends Component {
 					<label>
 						时间视图
 						<Button
-							style={{ float: "right" }}
-							className={styles['btn-detail']}
+							style={{ float: "right", 'border-width': 0 }}
 							size="small"
 							icon="right"
 							onClick={this.toViewDetail}
@@ -418,8 +416,7 @@ class ControlPanel extends Component {
 					<label>
 						统计视图
 						<Button
-							style={{ float: "right" }}
-							className={styles['btn-detail']}
+							style={{ float: "right", 'border-width': 0 }}
 							size="small"
 							icon="right"
 							onClick={this.toViewDetail}

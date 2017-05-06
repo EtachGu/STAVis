@@ -92,17 +92,19 @@ export class MapViewCtrl extends React.Component {
 	return (
 		<div>
 			<Row>
-				<label>
+				<label style={{ fontWeight:'bold' }}>
 					地图视图设置
-					<Button
-						style={{ float: "left" }}
-						className={styles['btn-detail']}
-						size="small"
-						icon="left"
-						onClick={this.props.toBack}
-					/>
 				</label>
+				<Button
+					style={{ float: "right" }}
+					size="small"
+					icon="left"
+					onClick={this.props.toBack}
+				>
+					返回
+				</Button>
 			</Row>
+			<hr style={{ marginTop: 5, marginBottom: 5 }} />
 			<Row>
 				<label>
 					 视觉映射
@@ -115,8 +117,7 @@ export class MapViewCtrl extends React.Component {
 						onVisibleChange={this.handlePopVisibleChange}
 					>
 						<Button
-							style={{ float: "right" }}
-							className={styles['btn-detail']}
+							style={{ float: "right", 'border-width': 0 }}
 							size="small"
 							icon="caret-right"
 							onClick={this.showDetail}
