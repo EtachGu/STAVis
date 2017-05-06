@@ -114,6 +114,10 @@ class TaskPanel extends Component {
 
 			event.target.parentNode.removeChild(event.target);
 
+			element.innerHTML = oldInnerHTML;
+
+			element.text = newName;
+
 			// find key node
 			const overviewTrData = this.state.overviewTrData;
 			let node = overviewTrData.find((item) => item.key === key);
@@ -146,7 +150,7 @@ class TaskPanel extends Component {
 				return;
 			}
 
-			element.innerHTML = oldInnerHTML;
+			
 
 		}, true);
 
