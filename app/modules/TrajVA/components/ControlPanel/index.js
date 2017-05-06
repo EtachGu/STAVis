@@ -539,7 +539,6 @@ class ControlPanel extends Component {
 		);
 		return (
 			<div>
-				<Input prefix={<Icon type="user" />} />
 				<Collapse defaultActiveKey={['1']} onChange={this.callback}>
 					<Panel header={<span><Icon type="database"/> 数据集</span>} key="1">
 						<RadioGroup onChange={this.onRadioDataBaseChange} value={this.state.radioDataBaseValue}>
@@ -591,7 +590,7 @@ class ControlPanel extends Component {
 							</label>
 						</div>
 						
-						<h4>通用设置</h4>
+						<h4 style={{ marginTop: 10, marginBottom: 5 }}>通用设置</h4>
 						<hr style={{ marginTop: 5, marginBottom: 5 }} />
 						<Row>
 							<label>
@@ -613,6 +612,45 @@ class ControlPanel extends Component {
 									defaultChecked={true}
 									onChange={this.onSwitchVisibleGraphView}
 								/>	
+							</label>
+						</Row>
+
+						<h4 style={{ marginTop: 10, marginBottom: 5 }}>视图设置</h4>
+						<hr style={{ marginTop: 5, marginBottom: 5 }} />
+						<Row>
+							<label>
+								地图视图
+								<Button
+									style={{ float: "right" }}
+									className={styles['btn-detail']}
+									size="small"
+									icon="right"
+									onClick={this.toViewDetail}
+								/>
+							</label>
+						</Row>
+						<Row>
+							<label>
+								时间视图
+								<Button
+									style={{ float: "right" }}
+									className={styles['btn-detail']}
+									size="small"
+									icon="right"
+									onClick={this.toViewDetail}
+								/>
+							</label>
+						</Row>
+						<Row>
+							<label>
+								统计视图
+								<Button
+									style={{ float: "right" }}
+									className={styles['btn-detail']}
+									size="small"
+									icon="right"
+									onClick={this.toViewDetail}
+								/>
 							</label>
 						</Row>
 					</Panel>
