@@ -22,6 +22,8 @@ import {
 	InputNumber,
 }  from 'antd';
 
+import MapViewCtrl from './DetailCtrls/mapViewCtrl';
+
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
@@ -59,8 +61,16 @@ class ControlPanel extends Component {
 			clstTrjDis: 2000,   // LCS-DBSCAN 线集合  线段之间距离
 			clstTrjNearNum: 20,    // LCS-DBSCAN 线集合 邻近数
 			clstTrjMinLength: 500,  //  LCS-DBSCAN 线集合 最短的长度
+
+			panelFilter: null
 		}
 	};
+
+	componentWillMount() {
+		this.setState({
+			panelFilter: this.generatePanelFilter()
+		});
+	}
 
 	callback = (key) => {
 		// console.log(key);
@@ -328,6 +338,122 @@ class ControlPanel extends Component {
 		
 	}
 
+	generatePanelFilter = () => {
+		const radioStyle = {
+			display: 'block',
+			height: '30px',
+			lineHeight: '30px',
+		};
+		const panelFilter = (
+			<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+				<RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
+					<Radio style={radioStyle} value={1}>行政区图</Radio>
+					<Radio style={radioStyle} value={2}>百度地图</Radio>
+				</RadioGroup>
+				<hr style={{ marginTop: 5, marginBottom: 5 }} />
+				<div>
+					<label>
+						视图联动
+						<Switch
+							style={{ float: "right" }}
+							size="small"
+							defaultChecked={false}
+							onChange={this.onSwitchChangeConnect}
+						/>	
+					</label>
+				</div>
+				
+				<h4 style={{ marginTop: 10, marginBottom: 5 }}>通用设置</h4>
+				<hr style={{ marginTop: 5, marginBottom: 5 }} />
+				<Row>
+					<label>
+						时间视图开关
+						<Switch
+							style={{ float: "right" }}
+							size="small"
+							defaultChecked={true}
+							onChange={this.onSwitchVisibleTimeView}
+						/>	
+					</label>
+				</Row>
+				<Row>
+					<label>
+						统计视图开关
+						<Switch
+							style={{ float: "right" }}
+							size="small"
+							defaultChecked={true}
+							onChange={this.onSwitchVisibleGraphView}
+						/>	
+					</label>
+				</Row>
+
+				<h4 style={{ marginTop: 10, marginBottom: 5 }}>视图设置</h4>
+				<hr style={{ marginTop: 5, marginBottom: 5 }} />
+				<Row>
+					<label>
+						地图视图
+						<Button
+							style={{ float: "right" }}
+							className={styles['btn-detail']}
+							size="small"
+							icon="right"
+							onClick={this.toViewDetail}
+						/>
+					</label>
+				</Row>
+				<Row>
+					<label>
+						时间视图
+						<Button
+							style={{ float: "right" }}
+							className={styles['btn-detail']}
+							size="small"
+							icon="right"
+							onClick={this.toViewDetail}
+						/>
+					</label>
+				</Row>
+				<Row>
+					<label>
+						统计视图
+						<Button
+							style={{ float: "right" }}
+							className={styles['btn-detail']}
+							size="small"
+							icon="right"
+							onClick={this.toViewDetail}
+						/>
+					</label>
+				</Row>
+			</Panel>
+		);
+
+		return panelFilter;
+	}
+
+	toViewDetail = (index) => {
+
+		const panelFilter = (
+			<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+				<MapViewCtrl
+					toBack={this.toBack}
+				/>
+			</Panel>
+		);
+
+		this.setState({
+			panelFilter: panelFilter
+		});
+	}
+
+	toBack = () => {
+		
+		this.setState({
+			panelFilter: this.generatePanelFilter()
+		});
+	}
+
 	render() {
 		const text = "control text";
 		const radioStyle = {
@@ -572,88 +698,7 @@ class ControlPanel extends Component {
 						</Popover>
 						<Button type="primary" icon="search" onClick={this.confirmQueryTrack}>确定</Button>
 					</Panel>
-					<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-						<RadioGroup onChange={this.onRadioMapChange} value={this.state.radioMapValue}>
-							<Radio style={radioStyle} value={1}>行政区图</Radio>
-							<Radio style={radioStyle} value={2}>百度地图</Radio>
-						</RadioGroup>
-						<hr style={{ marginTop: 5, marginBottom: 5 }} />
-						<div>
-							<label>
-								视图联动
-								<Switch
-									style={{ float: "right" }}
-									size="small"
-									defaultChecked={false}
-									onChange={this.onSwitchChangeConnect}
-								/>	
-							</label>
-						</div>
-						
-						<h4 style={{ marginTop: 10, marginBottom: 5 }}>通用设置</h4>
-						<hr style={{ marginTop: 5, marginBottom: 5 }} />
-						<Row>
-							<label>
-								时间视图开关
-								<Switch
-									style={{ float: "right" }}
-									size="small"
-									defaultChecked={true}
-									onChange={this.onSwitchVisibleTimeView}
-								/>	
-							</label>
-						</Row>
-						<Row>
-							<label>
-								统计视图开关
-								<Switch
-									style={{ float: "right" }}
-									size="small"
-									defaultChecked={true}
-									onChange={this.onSwitchVisibleGraphView}
-								/>	
-							</label>
-						</Row>
-
-						<h4 style={{ marginTop: 10, marginBottom: 5 }}>视图设置</h4>
-						<hr style={{ marginTop: 5, marginBottom: 5 }} />
-						<Row>
-							<label>
-								地图视图
-								<Button
-									style={{ float: "right" }}
-									className={styles['btn-detail']}
-									size="small"
-									icon="right"
-									onClick={this.toViewDetail}
-								/>
-							</label>
-						</Row>
-						<Row>
-							<label>
-								时间视图
-								<Button
-									style={{ float: "right" }}
-									className={styles['btn-detail']}
-									size="small"
-									icon="right"
-									onClick={this.toViewDetail}
-								/>
-							</label>
-						</Row>
-						<Row>
-							<label>
-								统计视图
-								<Button
-									style={{ float: "right" }}
-									className={styles['btn-detail']}
-									size="small"
-									icon="right"
-									onClick={this.toViewDetail}
-								/>
-							</label>
-						</Row>
-					</Panel>
+					{ this.state.panelFilter ? this.state.panelFilter : <div></div>}
 					<Panel header={<span><Icon type="setting" /> 其他</span>} key="3">
 						<p>{text}</p>
 					</Panel>
