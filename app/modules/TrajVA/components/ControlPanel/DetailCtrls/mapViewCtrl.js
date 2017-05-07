@@ -54,7 +54,9 @@ export class MapViewCtrl extends React.Component {
 			markLineVisibe: false,
 			markPointVisible: false,
 
-			visualMapType: 'piecewise'
+			visualMapType: 'piecewise',
+
+			seriesIndex: 0
 		}
 	}
 
@@ -143,7 +145,7 @@ export class MapViewCtrl extends React.Component {
 				</div>);
 		});
 
-		let serieInfo = everySerieInfo[0] ? everySerieInfo[0] : null;
+		let serieInfo = everySerieInfo[this.state.seriesIndex] ? everySerieInfo[this.state.seriesIndex] : everySerieInfo[0] ;
 
 		const advanceSetting = (
 			<div className={styles.advancsetting}>
@@ -154,8 +156,16 @@ export class MapViewCtrl extends React.Component {
 					<div>
 						{
 							[...seriesArray.map((itemVM, index)=> (
-									<span style={{ float: "left", backgroundColor: COLOR_BAR[ index % COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} 
-									onClick={() =>  serieInfo = everySerieInfo[index]}></span>
+									<span
+										style={{ float: "left", backgroundColor: COLOR_BAR[ index % COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} 
+										onClick={ () =>  {
+												serieInfo = everySerieInfo[index];
+												this.setState({
+													seriesIndex: index
+												});
+											}
+										}
+									></span>
 								)
 							)]
 						}
