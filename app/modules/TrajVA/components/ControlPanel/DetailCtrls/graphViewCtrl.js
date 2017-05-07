@@ -120,7 +120,7 @@ export class GraphViewCtrl extends React.Component {
 	}
 
 	// generate VisualMap setting
-	generateSeries = (seriesArray) => {
+	generateSeries = (seriesArray, color) => {
 
 		const everySerieInfo = seriesArray.map( item => {
 
@@ -158,7 +158,7 @@ export class GraphViewCtrl extends React.Component {
 						{
 							[...seriesArray.map((itemVM, index)=> (
 									<span
-										style={{ float: "left", backgroundColor: COLOR_BAR[ index % COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} 
+										style={{ float: "left", backgroundColor: color[ index % color.length ], width: 20, height: 20, margin: "5px 5px" }} 
 										onClick={ () =>  {
 												serieInfo = everySerieInfo[index];
 												this.setState({
@@ -299,7 +299,7 @@ export class GraphViewCtrl extends React.Component {
 
   	const graphOption = graphCharts.getOption();
 
-  	const seriesSetting =  this.generateSeries(graphOption.series);
+  	const seriesSetting =  this.generateSeries(graphOption.series, graphOption.color);
 
 	const visualMapSetting = this.generateVisualMap(graphOption.visualMap);
 

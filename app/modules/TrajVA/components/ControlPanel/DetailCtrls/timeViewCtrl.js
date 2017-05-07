@@ -119,7 +119,7 @@ export class TimeViewCtrl extends React.Component {
 	}
 
 	// generate VisualMap setting
-	generateSeries = (seriesArray) => {
+	generateSeries = (seriesArray, color) => {
 
 		const everySerieInfo = seriesArray.map( item => {
 
@@ -157,7 +157,7 @@ export class TimeViewCtrl extends React.Component {
 						{
 							[...seriesArray.map((itemVM, index)=> (
 									<span
-										style={{ float: "left", backgroundColor: COLOR_BAR[ index % COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} 
+										style={{ float: "left", backgroundColor: color[ index % color.length ], width: 20, height: 20, margin: "5px 5px" }} 
 										onClick={ () =>  {
 												serieInfo = everySerieInfo[index];
 												this.setState({
@@ -298,7 +298,7 @@ export class TimeViewCtrl extends React.Component {
 
   	const timeOption = timeCharts.getOption();
 
-  	const seriesSetting =  this.generateSeries(timeOption.series);
+  	const seriesSetting =  this.generateSeries(timeOption.series, timeOption.color);
 
 	const visualMapSetting = this.generateVisualMap(timeOption.visualMap);
 
