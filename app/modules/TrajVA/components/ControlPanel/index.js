@@ -24,6 +24,7 @@ import {
 
 import MapViewCtrl from './DetailCtrls/mapViewCtrl';
 import TimeViewCtrl from './DetailCtrls/timeViewCtrl';
+import GraphViewCtrl from './DetailCtrls/graphViewCtrl';
 
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
@@ -458,14 +459,25 @@ class ControlPanel extends Component {
 					</Panel>
 				);
 				break;
-			case DETAIL_GRAPH: break;
+			case DETAIL_GRAPH: 
+				panelFilter = (
+					<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+						<GraphViewCtrl
+							toBack={this.toBack}
+						/>
+					</Panel>
+				);
+				break;
 			default:break;
 
 		}
 
-		this.setState({
-			panelFilter: panelFilter
-		});
+		if (panelFilter) {
+			this.setState({
+				panelFilter: panelFilter
+			});	
+		}
+		
 	}
 
 	toBack = () => {
