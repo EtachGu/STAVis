@@ -23,6 +23,7 @@ import {
 }  from 'antd';
 
 import MapViewCtrl from './DetailCtrls/mapViewCtrl';
+import TimeViewCtrl from './DetailCtrls/timeViewCtrl';
 
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
@@ -38,6 +39,11 @@ import { addTrajSetRequest, updateControls, addClusterTrackRequest } from '../..
 
 // selectors
 import { selectControls } from './selectors';
+
+// static ViewSetting
+const DETAIL_MAP = 0;
+const DETAIL_TIME = 1;
+const DETAIL_GRAPH = 2;
 
 class ControlPanel extends Component {
 	static propTypes = {
@@ -397,7 +403,7 @@ class ControlPanel extends Component {
 							style={{ float: "right", borderWidth: 0 }}
 							size="small"
 							icon="right"
-							onClick={this.toViewDetail}
+							onClick={() => this.toViewDetail(DETAIL_MAP)}
 						/>
 					</label>
 				</Row>
@@ -408,7 +414,7 @@ class ControlPanel extends Component {
 							style={{ float: "right", borderWidth: 0 }}
 							size="small"
 							icon="right"
-							onClick={this.toViewDetail}
+							onClick={() => this.toViewDetail(DETAIL_TIME)}
 						/>
 					</label>
 				</Row>
@@ -419,7 +425,7 @@ class ControlPanel extends Component {
 							style={{ float: "right", borderWidth: 0 }}
 							size="small"
 							icon="right"
-							onClick={this.toViewDetail}
+							onClick={() => this.toViewDetail(DETAIL_GRAPH)}
 						/>
 					</label>
 				</Row>
@@ -429,15 +435,33 @@ class ControlPanel extends Component {
 		return panelFilter;
 	}
 
-	toViewDetail = (index) => {
+	toViewDetail = (type) => {
 
-		const panelFilter = (
-			<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
-				<MapViewCtrl
-					toBack={this.toBack}
-				/>
-			</Panel>
-		);
+		let panelFilter = null;
+
+		switch(type) {
+			case DETAIL_MAP:
+				panelFilter = (
+					<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+						<MapViewCtrl
+							toBack={this.toBack}
+						/>
+					</Panel>
+				);
+				break;
+			case DETAIL_TIME:
+				panelFilter = (
+					<Panel header={<span><Icon type="filter" /> 参数设置</span>} key="2">
+						<TimeViewCtrl
+							toBack={this.toBack}
+						/>
+					</Panel>
+				);
+				break;
+			case DETAIL_GRAPH: break;
+			default:break;
+
+		}
 
 		this.setState({
 			panelFilter: panelFilter
