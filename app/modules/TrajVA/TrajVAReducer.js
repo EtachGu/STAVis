@@ -9,7 +9,7 @@ const initialState = {
 		trajName:'cellPhoneTrack',
 		datetime:["2016-03-02","2016-03-03"],
 		timeunit: "1dd",
-		id: [2,3,4,5,6],
+		id: [2,3,4],
 		isClstSettingOpen: false, // Cluster 开关
 		clstPointMin: 10,   //  cluster 点集 的 核心数
 		clstPointDis: 3000,  //  cluster 点集 的 核心距离

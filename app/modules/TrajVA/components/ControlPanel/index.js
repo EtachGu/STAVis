@@ -60,7 +60,7 @@ class ControlPanel extends Component {
 			dateRange:['2016-03-01','2016-03-02'],	// [startDate, endDate]  string type
 			adSettingVisible: false,
 			timeunit: '1dd',
-			id: [2,3,4,5,6],
+			id: [2,3,4],
 			isClstSettingOpen: false, // Cluster 开关
 			clstPointMin: 10,   //  cluster 点集 的 核心数
 			clstPointDis: 3000,  //  cluster 点集 的 核心距离
@@ -127,7 +127,7 @@ class ControlPanel extends Component {
 							trajName: "cellPhoneTrack",
 							datetime: dateRange,
 							timeunit: timeunit,
-							id: id, // [2,3,4,5,6]//['(低)','(中)','(高)']//
+							id: this.props.controlsState.id, // [2,3,4,5,6]//['(低)','(中)','(高)']//
 						};
 
 						this.props.updateTrajectory(requestBody);
