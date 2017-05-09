@@ -17,12 +17,14 @@ import {
 	Col,
 	Slider,
 	InputNumber,
+	Tabs,
 }  from 'antd';
 
 const Panel = Collapse.Panel;
 const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
 const Option = Select.Option;
+const TabPane = Tabs.TabPane;
 
 // Import Actions
 import { updateControls } from '../../../TrajVAActions';
@@ -44,6 +46,7 @@ const POP_TOOLBOX = 2;
 const POP_MARKAREA = 3;
 const POP_MARKLINE = 4;
 const POP_MARKPOINT = 5;
+const POP_AXIS3D = 6;
 
 
 export class MapViewCtrl extends React.Component {
@@ -57,11 +60,16 @@ export class MapViewCtrl extends React.Component {
 			markAreaVisible: false,
 			markLineVisibe: false,
 			markPointVisible: false,
+			axisVisible: false,
 
 			visualMapType: 'piecewise',
 
 			seriesIndex: 0,
-			map2D3D: props.controlsState.map3d ? '3D' : '2D'
+			map2D3D: props.controlsState.map3d ? '3D' : '2D',
+
+			xAxis3DIndex: 0,
+			yAxis3DIndex: 0,
+			zAxis3DIndex: 0,
 		}
 	}
 
@@ -102,6 +110,12 @@ export class MapViewCtrl extends React.Component {
 				this.setState({
 					markPointVisible: visible
 				});
+				break;
+			case POP_AXIS3D:
+				this.setState({
+					axisVisible: visible
+				});
+				break;
 			default: break;
 		}
 	}
@@ -296,6 +310,101 @@ export class MapViewCtrl extends React.Component {
 		return advanceSetting;
 	}
 
+	generateAxis = (xAxis3D, yAxis3D, zAxis3D) => {
+
+		if (!(xAxis3D && yAxis3D && zAxis3D)) return null;
+
+		const generateAxisInfo = (axis, axisOrient) => {
+
+			const axisInfo =  axis.map(item => {
+				return (
+					<div>
+						<Row>
+							<label>
+									开关
+								<Switch
+									style={{ float: "right" }}
+									size="small"
+									defaultChecked={axis.show}
+									onChange={(checked) => axis.show = checked}
+								/>
+							</label>
+						</Row>
+						<Row>
+							<label>
+								名称: {item.name}
+							</label>
+						</Row>
+					</div>
+				);
+			});
+
+			// choose axis Index
+			const chooseAxisIndex = (axisOrient, index = -1) => {
+				switch(axisOrient) {
+					case 'xAxis3D':
+						if (index === -1) return this.state.xAxis3DIndex;
+						this.setState({
+							xAxis3DIndex: index
+						});
+						break;
+					case 'yAxis3D':
+						if (index === -1) return this.state.yAxis3DIndex;
+						this.setState({
+							yAxis3DIndex: index
+						});
+						break;
+					case 'zAxis3D':
+						if (index === -1) return this.state.zAxis3DIndex;
+						this.setState({
+							zAxis3DIndex: index
+						});
+						break;
+					default: break;
+				}
+			}
+
+			return (
+				<div>
+					<Row>
+						<label>
+							系列列表
+						</label>
+						<div>
+							{
+								[...axisInfo.map((itemVM, index)=> (
+										<span
+											style={{ float: "left", backgroundColor: COLOR_BAR[ index % COLOR_BAR.length ], width: 20, height: 20, margin: "5px 5px" }} 
+											onClick={ () =>  { chooseAxisIndex(axisOrient, index) }}
+										></span>
+									)
+								)]
+							}
+						</div>
+					</Row>
+					{axisInfo[chooseAxisIndex(axisOrient)]}
+				</div>
+			);
+		};
+
+		const advanceSetting = (
+			<div className={styles.advancsetting}>
+				<label>
+					坐标轴集合
+				</label>
+				<Tabs defaultActiveKey="1">
+					<TabPane tab="xAxis3D" key="1">{ generateAxisInfo(xAxis3D) }</TabPane>
+					<TabPane tab="yAxis3D" key="2">{ generateAxisInfo(yAxis3D) }</TabPane>
+					<TabPane tab="zAxis3D" key="3">{ generateAxisInfo(zAxis3D) }</TabPane>
+				</Tabs>
+				<Button type="primary" onClick={() => this.confirmSetting(POP_AXIS3D)}>确定</Button>
+				<Button type="primary" onClick={() => this.cancelSetting(POP_AXIS3D)}>取消</Button>
+			</div>
+		);
+
+		return advanceSetting;
+	}
+
 	on2D3DChange = (e) => {
 
 		const controlsObject = this.props.controlsState;
@@ -325,6 +434,8 @@ export class MapViewCtrl extends React.Component {
 	const markLineSetting = null ;//(<div></div>);
 
 	const markPointSetting = null;
+
+	const axisSetting = mapOption ?  this.generateAxis(mapOption.xAxis3D, mapOption.yAxis3D, mapOption.zAxis3D) : null;
 
 	return (
 		<div>
@@ -473,6 +584,26 @@ export class MapViewCtrl extends React.Component {
 							size="small"
 							icon="caret-right"
 							onClick={() => this.showDetail(POP_MARKPOINT)}
+						/>
+					</Popover>
+				</label>
+			</Row>
+			<Row>
+				<label>
+					坐标轴设置
+					<Popover
+						placement="right"
+						title="坐标轴设置 axis"
+						content={axisSetting}
+						trigger="click"
+						visible={this.state.axisVisible}
+						onVisibleChange={(visible) => this.handlePopVisibleChange(visible, POP_AXIS3D)}
+					>
+						<Button
+							style={{ float: "right", borderWidth: 0 }}
+							size="small"
+							icon="caret-right"
+							onClick={() => this.showDetail(POP_AXIS3D)}
 						/>
 					</Popover>
 				</label>

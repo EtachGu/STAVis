@@ -179,7 +179,17 @@ class MapView extends Component {
       default: break; 
     }
     let mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>);
-    if (this.props.map3d) mapDiv = (<Map3D className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>)
+    if (this.props.map3d) {
+      switch (geomType) {
+        // case 1: mapDiv = (<STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
+        // case 2: mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
+        case 1: mapEChartsSeriesType = 'scatter3D'; break;
+        case 2: mapEChartsSeriesType = 'line3D'; break;
+        // case 3: mapEChartsSeriesType = 'heatmap'; break;
+        default: break; 
+      }
+      mapDiv = (<Map3D className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>)
+    }
     return (
       <div>
         {mapDiv}

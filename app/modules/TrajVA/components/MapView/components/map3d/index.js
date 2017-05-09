@@ -167,44 +167,13 @@ class MapDiv extends Component {
 		// legend 图例
 		const legendData = [ '基站'];
 		const seriesData = [];
-		// convertData(cellTracks).forEach((item,index) => {
-		// 	legendData.push(`轨迹${index}`)
-		// 	seriesData.push({
-		// 		name: `轨迹${index}`,
-		// 		type: 'lines',
-		// 		polyline: true,
-		// 		coordinateSystem: 'geo',
-		// 		data:item,
-		// 		lineStyle: {
-		// 			normal: {
-		// 				opacity: 0.2,
-		// 				width: 1
-		// 			}
-		// 		},
-		// 		// zlevel: 2,
-		// 		// effect: {
-		// 		// 	show: true,
-		// 		// 	period: 6,
-		// 		// 	trailLength: 0,
-		// 		// 	symbol: "arrow",
-		// 		// 	symbolSize: 15
-		// 		// },
-		// 		// lineStyle: {
-		// 		// 	normal: {
-		// 		// 		width: 1,
-		// 		// 		opacity: 0.6,
-		// 		// 	}
-		// 		// },
-		// 		progressiveThreshold: 500,
-		// 		progressive: 200
-		// 	})
-		// });
+		
 		// 绘制基站
 		seriesData.push({
 			name: '基站',
 			type: 'scatter3D',
 			coordinateSystem: 'geo3D',
-			data:cellBaseStations.data.map(e => e.concat([1])),
+			data:cellBaseStations.data.map(e => e.concat([10])),
 			symbolSize:1
 		});
 
@@ -213,7 +182,7 @@ class MapDiv extends Component {
 
 		chart.setOption({
 			backgroundColor: '#404a59',
-			geo3D: this.setEChartGeoOption(),
+			geo3D: this.setEChartGeo3DOption(),
 			series:seriesData,
 			grid3D: {},
 		    xAxis3D: {},
@@ -229,6 +198,10 @@ class MapDiv extends Component {
 				}
 			},
 		});
+
+		if (this.props.mapData) {
+			this.generateEChartsData(this.props.mapData);
+		}
 
 		//
 		console.log(document.getElementById('map').clientWidth);
@@ -246,78 +219,9 @@ class MapDiv extends Component {
 		if(this.props.mapData && this.props.mapData != nextProps.mapData) {
 			
 			if(nextProps.mapData) {
+
+				this.generateEChartsData(nextProps.mapData);
 				
-				const clusterTracks = nextProps.mapData;
-				
-				// 依据时间粒度划分的 数据集合
-				const trajDataSet = [];
-
-				for(let i = 0; i < clusterTracks.length; i++) {
-
-					// 每一个元素 为个单元时间粒度的 轨迹集合
-					const groupName = clusterTracks[i]._id;
-					const geom =  clusterTracks[i].trajectories;
-					const clusterid = clusterTracks[i].clusterid;
-
-					const nowTracksByCluster = [];  // 该时间粒度下，不同人群的轨迹集合
-
-					// 将每个时间粒度内的元素 依据各自的群体类别进行划分
-					geom.forEach((item,index) => {
-						const clusterName = `人群${clusterid[index]}`;
-
-						let everyCluster = nowTracksByCluster.find((everyCluster) => everyCluster.name == clusterName);
-
-						if(everyCluster == undefined) {
-							everyCluster = {};
-							everyCluster.name = clusterName;
-							everyCluster.geoms = [];
-							everyCluster.count = 0;
-							nowTracksByCluster.push(everyCluster);
-						}
-						const geojson = JSON.parse(item);
-						const coord = geojson.coordinates;
-						const coord_e = [];
-						for(let index = 0; index < coord.length; index++){
-							const lon = coord[index][0];
-							const lat = coord[index][1];
-							coord_e.push([lon, lat]);
-						}
-						const geom_e = { coords: coord_e };
-
-						// 将该类别的轨迹 添加到集合
-						everyCluster.geoms.push(geom_e);
-
-						// 添加每个系列的属性
-						if (geojson.count) {
-							everyCluster.count = geojson.count;
-						}
-						
-					});
-
-					const legendData = nowTracksByCluster.map( e => e.name);
-
-					const seriesData = nowTracksByCluster.map( e => e.geoms);
-
-					const seriesProperty = nowTracksByCluster.map( e => e.count);
-
-					// 将每个时间粒度下的 数据添加到 集合
-					trajDataSet.push({
-						date:groupName,
-						legends:legendData,
-						series:seriesData,
-						seriesProperty: seriesProperty
-					});
-				}
-
-				let startDate = '';
-
-				if (trajDataSet.length > 0) startDate = trajDataSet[0].date;
-
-				this.setState({
-					currentDate: startDate, 
-					echartData: trajDataSet,
-					isEChartDataNew: true
-				})
 			}// if mapdata valid
 		}// if props updated
 
@@ -352,6 +256,73 @@ class MapDiv extends Component {
 
 	componentWillUnmount() {
     	window.removeEventListener('resize', this.handleResize);
+  	}
+
+  	generateEChartsData = (mapdata) => {
+  		const clusterTracks = mapdata;
+		
+		// 依据时间粒度划分的 数据集合
+		const trajDataSet = [];
+
+		for(let i = 0; i < clusterTracks.length; i++) {
+
+			// 每一个元素 为个单元时间粒度的 轨迹集合
+			const groupName = clusterTracks[i]._id;
+			const geom =  clusterTracks[i].trajectories;
+			const clusterid = clusterTracks[i].clusterid;
+
+			const nowTracksByCluster = [];  // 该时间粒度下，不同人群的轨迹集合
+
+			// 将每个时间粒度内的元素 依据各自的群体类别进行划分
+			geom.forEach((item,index) => {
+				const clusterName = `人群${clusterid[index]}`;
+
+				let everyCluster = nowTracksByCluster.find((everyCluster) => everyCluster.name == clusterName);
+
+				if(everyCluster == undefined) {
+					everyCluster = {};
+					everyCluster.name = clusterName;
+					everyCluster.geoms = [];
+					everyCluster.count = 0;
+					nowTracksByCluster.push(everyCluster);
+				}
+				const geojson = JSON.parse(item);
+				const coord = geojson.coordinates;
+
+				// 将该类别的轨迹 添加到集合
+				everyCluster.geoms.push(coord);
+
+				// 添加每个系列的属性
+				if (geojson.count) {
+					everyCluster.count = geojson.count;
+				}
+				
+			});
+
+			const legendData = nowTracksByCluster.map( e => e.name);
+
+			const seriesData = nowTracksByCluster.map( e => e.geoms);
+
+			const seriesProperty = nowTracksByCluster.map( e => e.count);
+
+			// 将每个时间粒度下的 数据添加到 集合
+			trajDataSet.push({
+				date:groupName,
+				legends:legendData,
+				series:seriesData,
+				seriesProperty: seriesProperty
+			});
+		}
+
+		let startDate = '';
+
+		if (trajDataSet.length > 0) startDate = trajDataSet[0].date;
+
+		this.setState({
+			currentDate: startDate, 
+			echartData: trajDataSet,
+			isEChartDataNew: true
+		})
   	}
 
 	// update Trajectories ECharts
@@ -393,7 +364,7 @@ class MapDiv extends Component {
 			// add Time line
 			if (currentEchartsData.length > 1) {
 
-				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+				const coordinateSystemName = 'geo3D';//mapType == 1 ? 'geo3D' : 'bmap';
 				
 				const dateSet = currentEchartsData.map(e => `${e.date}`);
 
@@ -442,9 +413,8 @@ class MapDiv extends Component {
 							// add 该系列数据
 							let seriesData = series[indexSeries];
 							switch (seriesType) {
-								case 'scatter': seriesData = _.flatten(seriesData.map((points) => points.coords)); break;
-								case 'lines': break;
-								case 'heatmap': seriesData = _.flatten(seriesData.map((points) => points.coords)).map( c => c.concat([1]) ); break;
+								case 'scatter3D': //seriesData = _.flatten(seriesData.map((points) => points.coords)); break;
+								case 'line3D': break;
 								default: break;
 							}
 							
@@ -472,7 +442,7 @@ class MapDiv extends Component {
 
 				baseSeriesData.push({
 					name: '基站',
-					type: 'scatter',
+					type: 'scatter3D',
 					// coordinateSystem: 'geo',
 					coordinateSystem: coordinateSystemName,
 					itemStyle: {
@@ -487,7 +457,7 @@ class MapDiv extends Component {
 				chart.clear();
 				
 				// 判断底图 类型
-				mapType == 1 ? chart.setOption(
+				chart.setOption(
 				    {
 				        baseOption: {
 				        	backgroundColor: '#404a59',
@@ -535,46 +505,13 @@ class MapDiv extends Component {
 				            	},
 				            	zlevel: 1    //  new Canvas level = 3
 				            },
-				            geo: this.setEChartGeoOption(),
+				            geo3D: this.setEChartGeo3DOption(),
 				            series: baseSeriesData,
 				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				        },
 				        options: optionsData
 				    }
-				) : chart.setOption(
-				    {
-				        baseOption: {
-				        	color: this.state.color,
-				            timeline: {
-				            	axisType: 'category',
-				            	top: 25,
-				            	left: 'center',
-				                data: dateSet,
-				                zlevel: 1    //  new Canvas level = 3
-				            },
-				            toolbox: toolboxOtpion,
-				            legend: {
-								orient: 'vertical',
-								y: 'top',
-								x:'left',
-								data:baseLegends,
-								textStyle: {
-									color: '#fff'
-								}
-							},
-				            title: {
-				            	top: 0,
-				            	left: 'center',
-				            	text: `${dateSet[0]}轨迹分布`,
-				            	zlevel: 1    //  new Canvas level = 3
-				            },
-				            bmap:bmapShangHai,
-				            series: baseSeriesData,
-				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
-				        },
-				        options: optionsData
-				    }
-				); // echartSetOption
+				);
 
 			} else {
 				// one Date
@@ -585,7 +522,7 @@ class MapDiv extends Component {
 				
 				const seriesData = [];
 
-				const coordinateSystemName = mapType == 1 ? 'geo' : 'bmap';
+				const coordinateSystemName = 'geo3D';
 
 				this.generateSeriesOptionSet(series, seriesType, legendData, coordinateSystemName, seriesData, linesWidths);
 
@@ -597,10 +534,10 @@ class MapDiv extends Component {
 				legendData.push('基站');
 				seriesData.push({
 					name: '基站',
-					type: 'scatter',
+					type: 'scatter3D',
 					// coordinateSystem: 'geo',
 					coordinateSystem: coordinateSystemName,
-					data:cellBaseStations.data,
+					data:cellBaseStations.data.map(e => e.concat([1])),
 					itemStyle: {
 						normal: {
 							color: '#ff0000',
@@ -612,38 +549,13 @@ class MapDiv extends Component {
 
 				const color = this.state.color;
 
-				// add 
-				// seriesData.push({
-				// 	mapType: 'shanghai',
-				// 	type: 'map',
-				// 	center: [121.487899486,31.24916171],
-				// 	roam: true,
-				// 	label: {
-				// 		emphasis: {
-				// 			show: true
-				// 		}
-				// 	},
-				// 	itemStyle: {
-				// 		normal: {
-				// 			// areaColor: '#323c48',
-				// 			areaColor: 'rgba(128, 128, 128, 0.5)',
-				// 			borderColor: '#111'
-				// 		},
-				// 		emphasis: {
-				// 			// areaColor: '#2a333d',
-				// 			areaColor: 'rgba(128, 128, 200, 0.5)',
-				// 		}
-				// 	}
-				// });
-
 				chart.clear();
-
-				mapType === 1 ?  this.setEChartGeoOption(chart) : chart.setOption({ bmap:bmapShangHai });			
 
 				chart.setOption({
 					backgroundColor: '#404a59',
 					color:color,
 					series:seriesData,
+					geo3D:  this.setEChartGeo3DOption(),
 				 	toolbox: toolboxOtpion,
 					legend: {
 						orient: 'vertical',
@@ -675,17 +587,17 @@ class MapDiv extends Component {
 	generateSeriesOptionSet = (series, seriesType, legendData, coordinateSystemName, outputSeriesData, linesWidths) => {
 
 		switch (seriesType) {
-			case 'scatter' : 
+			case 'scatter3D' : 
 				// add Scatter seriesData
 				series.forEach((item,index) => {
 					outputSeriesData.push({
 						name: legendData[index],
 						type: seriesType,
 						coordinateSystem: coordinateSystemName,
-						data:_.flatten(item.map((points) => points.coords)),
+						data: item,
 					})
 				}); break;
-			case 'lines': 
+			case 'line3D': 
 				// add Lines seriesData
 				series.forEach((item,index) => {
 					outputSeriesData.push({
@@ -740,14 +652,14 @@ class MapDiv extends Component {
 	generateBaseSeriesOptionSet = (seriesType, legendName, coordinateSystemName, outputbaseSeriesData,linesWidth) => {
 
 		switch (seriesType) {
-			case 'scatter': 
+			case 'scatter3D': 
 				// add Scatter seriesData
 				outputbaseSeriesData.push({
 					name: legendName,
 					type: seriesType,
 					coordinateSystem: coordinateSystemName,
 				}); break;
-			case 'lines': 
+			case 'line3D': 
 				// add Lines seriesData
 				outputbaseSeriesData.push({
 					name: legendName,
@@ -777,18 +689,6 @@ class MapDiv extends Component {
 					},
 					progressiveThreshold: 500,
 					progressive: 200
-				}); break;
-			case 'heatmap':
-				// add Scatter seriesData
-				series.forEach((item,index) => {
-					outputSeriesData.push({
-						name: legendData[index],
-						type: seriesType,
-						coordinateSystem: coordinateSystemName,
-						data:_.flatten(item.map((points) => points.coords)).map(e => e.concat([1])),
-						pointSize: 5,
-						blurSize: 6
-					})
 				}); break;
 			default: break;
 		}
@@ -825,7 +725,7 @@ class MapDiv extends Component {
 		return visualMapItem;
 	}
 
-	setEChartGeoOption = (echartsInstance) => {
+	setEChartGeo3DOption = (echartsInstance) => {
 		const geoOption =  {
 			map: 'shanghai',
 			roam: true,
@@ -835,14 +735,10 @@ class MapDiv extends Component {
 				}
 			},
 			itemStyle: {
-				normal: {
-					areaColor: '#323c48',
-					borderColor: '#111'
-				},
-				emphasis: {
-					areaColor: '#2a333d',
-					//areaColor: rgba(128, 128, 200, 0.5),
-				}
+				areaColor: '#323c48',
+				opacity: 1,
+				borderWidth: 1,
+				borderColor: '#111',
 			},
 			silent: true,
 		};
@@ -880,329 +776,6 @@ class MapDiv extends Component {
 		}
 		return dataSeries;
 	};
-
-	initalECharts(data) {
-
-		const myChart = echarts.init(document.getElementById('map'));
-		const hStep = 300 / (data.length - 1);
-		const busLines = [].concat.apply([], data.map(function (busLine, idx) {
-			let prevPt;
-			let points = [];
-			for (let i = 0; i < busLine.length; i += 2) {
-				let pt = [busLine[i], busLine[i + 1]];
-				if (i > 0) {
-					pt = [
-						prevPt[0] + pt[0],
-						prevPt[1] + pt[1]
-					];
-				}
-				prevPt = pt;
-
-				points.push([pt[0] / 1e4, pt[1] / 1e4]);
-			}
-			return {
-				coords: points,
-				lineStyle: {
-					normal: {
-						color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * idx))
-					}
-				}
-			};
-		}));
-
-		myChart.setOption({
-			bmap: {
-				center: [116.46, 39.92],
-				zoom: 10,
-				roam: true,
-				mapStyle: {
-				  'styleJson': [
-					{
-					  'featureType': 'water',
-					  'elementType': 'all',
-					  'stylers': {
-						'color': '#031628'
-					  }
-					},
-					{
-					  'featureType': 'land',
-					  'elementType': 'geometry',
-					  'stylers': {
-						'color': '#000102'
-					  }
-					},
-					{
-					  'featureType': 'highway',
-					  'elementType': 'all',
-					  'stylers': {
-						'visibility': 'off'
-					  }
-					},
-					{
-					  'featureType': 'arterial',
-					  'elementType': 'geometry.fill',
-					  'stylers': {
-						'color': '#000000'
-					  }
-					},
-					{
-					  'featureType': 'arterial',
-					  'elementType': 'geometry.stroke',
-					  'stylers': {
-						'color': '#0b3d51'
-					  }
-					},
-					{
-					  'featureType': 'local',
-					  'elementType': 'geometry',
-					  'stylers': {
-						'color': '#000000'
-					  }
-					},
-					{
-					  'featureType': 'railway',
-					  'elementType': 'geometry.fill',
-					  'stylers': {
-						'color': '#000000'
-					  }
-					},
-					{
-					  'featureType': 'railway',
-					  'elementType': 'geometry.stroke',
-					  'stylers': {
-						'color': '#08304b'
-					  }
-					},
-					{
-					  'featureType': 'subway',
-					  'elementType': 'geometry',
-					  'stylers': {
-						'lightness': -70
-					  }
-					},
-					{
-					  'featureType': 'building',
-					  'elementType': 'geometry.fill',
-					  'stylers': {
-						'color': '#000000'
-					  }
-					},
-					{
-					  'featureType': 'all',
-					  'elementType': 'labels.text.fill',
-					  'stylers': {
-						'color': '#857f7f'
-					  }
-					},
-					{
-					  'featureType': 'all',
-					  'elementType': 'labels.text.stroke',
-					  'stylers': {
-						'color': '#000000'
-					  }
-					},
-					{
-					  'featureType': 'building',
-					  'elementType': 'geometry',
-					  'stylers': {
-						'color': '#022338'
-					  }
-					},
-					{
-					  'featureType': 'green',
-					  'elementType': 'geometry',
-					  'stylers': {
-						'color': '#062032'
-					  }
-					},
-					{
-					  'featureType': 'boundary',
-					  'elementType': 'all',
-					  'stylers': {
-						'color': '#465b6c'
-					  }
-					},
-					{
-					  'featureType': 'manmade',
-					  'elementType': 'all',
-					  'stylers': {
-						'color': '#022338'
-					  }
-					},
-					{
-					  'featureType': 'label',
-					  'elementType': 'all',
-					  'stylers': {
-						'visibility': 'off'
-					  }
-					}
-				  ]
-				}
-			},
-			series: [{
-				type: 'lines',
-				coordinateSystem: 'bmap',
-				polyline: true,
-				data: busLines,
-				silent: true,
-				lineStyle: {
-					normal: {
-						// color: '#c23531',
-						// color: 'rgb(200, 35, 45)',
-						opacity: 0.2,
-						width: 1
-					}
-				},
-				progressiveThreshold: 500,
-				progressive: 200
-			}, {
-				type: 'lines',
-				coordinateSystem: 'bmap',
-				polyline: true,
-				data: busLines,
-				lineStyle: {
-					normal: {
-						width: 0
-					}
-				},
-				effect: {
-					constantSpeed: 20,
-					show: true,
-					trailLength: 0.1,
-					symbolSize: 1.5
-				},
-				zlevel: 1
-			}]
-		});
-
-		// draw line 
-		const lines = data.map(function (track) {
-			return {
-				coords: track.map(function (seg, idx) {
-					return seg.coord;
-				})
-			};
-		});
-		myChart.setOption({
-			bmap: {
-				center: [120.13066322374, 30.240018034923],
-				zoom: 14,
-				roam: true,
-				mapStyle: {
-					styleJson: [{
-						'featureType': 'water',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#d1d1d1'
-						}
-					}, {
-						'featureType': 'land',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#f3f3f3'
-						}
-					}, {
-						'featureType': 'railway',
-						'elementType': 'all',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'highway',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#fdfdfd'
-						}
-					}, {
-						'featureType': 'highway',
-						'elementType': 'labels',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'arterial',
-						'elementType': 'geometry',
-						'stylers': {
-							'color': '#fefefe'
-						}
-					}, {
-						'featureType': 'arterial',
-						'elementType': 'geometry.fill',
-						'stylers': {
-							'color': '#fefefe'
-						}
-					}, {
-						'featureType': 'poi',
-						'elementType': 'all',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'green',
-						'elementType': 'all',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'subway',
-						'elementType': 'all',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'manmade',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#d1d1d1'
-						}
-					}, {
-						'featureType': 'local',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#d1d1d1'
-						}
-					}, {
-						'featureType': 'arterial',
-						'elementType': 'labels',
-						'stylers': {
-							'visibility': 'off'
-						}
-					}, {
-						'featureType': 'boundary',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#fefefe'
-						}
-					}, {
-						'featureType': 'building',
-						'elementType': 'all',
-						'stylers': {
-							'color': '#d1d1d1'
-						}
-					}, {
-						'featureType': 'label',
-						'elementType': 'labels.text.fill',
-						'stylers': {
-							'color': '#999999'
-						}
-					}]
-				}
-			},
-			series: [{
-				type: 'lines',
-				coordinateSystem: 'bmap',
-				data: lines,
-				polyline: true,
-				lineStyle: {
-					normal: {
-						color: 'purple',
-						opacity: 0.6,
-						width: 1
-					}
-				}
-			}]
-		});
-	}
 
 	handleResize = () => {
 		const chart = echarts.getInstanceByDom(document.getElementById('map'));
