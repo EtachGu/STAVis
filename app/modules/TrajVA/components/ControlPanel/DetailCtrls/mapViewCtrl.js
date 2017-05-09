@@ -61,7 +61,7 @@ export class MapViewCtrl extends React.Component {
 			visualMapType: 'piecewise',
 
 			seriesIndex: 0,
-			map2D3D: '2D'
+			map2D3D: props.controlsState.map3d ? '3D' : '2D'
 		}
 	}
 
@@ -305,6 +305,8 @@ export class MapViewCtrl extends React.Component {
 
 		this.setState({map2D3D: e.target.value})
 	}
+
+
 
   render() {
 
