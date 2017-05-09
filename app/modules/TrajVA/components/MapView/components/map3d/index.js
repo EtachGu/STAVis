@@ -184,10 +184,6 @@ class MapDiv extends Component {
 			backgroundColor: '#404a59',
 			geo3D: this.setEChartGeo3DOption(),
 			series:seriesData,
-			grid3D: {},
-		    xAxis3D: {},
-		    yAxis3D: {},
-		    zAxis3D: {},
 			legend: {
 				orient: 'vertical',
 				y: 'top',
@@ -506,13 +502,6 @@ class MapDiv extends Component {
 				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            geo3D: this.setEChartGeo3DOption(),
-				            grid3D: {},
-						    xAxis3D: {show: false},
-						    yAxis3D: {show: false},
-						    zAxis3D: {
-						    	show: true,
-						    	scale: true,
-						    },
 				            series: baseSeriesData,
 				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				        },
@@ -563,13 +552,6 @@ class MapDiv extends Component {
 					color:color,
 					series:seriesData,
 					geo3D:  this.setEChartGeo3DOption(),
-					grid3D: {},
-				    xAxis3D: {show: false},
-				    yAxis3D: {show: false},
-				    zAxis3D: {
-				    	show: true,
-				    	type: 'time',
-				    },
 				 	toolbox: toolboxOtpion,
 					legend: {
 						orient: 'vertical',
@@ -618,7 +600,10 @@ class MapDiv extends Component {
 						name: legendData[index],
 						type: seriesType,
 						coordinateSystem: coordinateSystemName,
-						data: _.flatten(item).map(),
+						data: _.flatten(item),
+						itemStyle: {
+							opacity: 0.2
+						}
 					})
 				}); break;
 			case 'line3D': 
@@ -678,7 +663,10 @@ class MapDiv extends Component {
 						name: legendData[index],
 						type: seriesType,
 						coordinateSystem: coordinateSystemName,
-						data: _.flatten(item).map(),
+						data: _.flatten(item),
+						itemStyle: {
+							opacity: 0.2
+						}
 					})
 				}); break;
 			case 'line3D': 
