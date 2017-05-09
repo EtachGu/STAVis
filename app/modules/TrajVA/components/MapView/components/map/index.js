@@ -226,6 +226,10 @@ class MapDiv extends Component {
 			},
 		});
 
+		if (this.props.mapData) {
+			this.generateEChartsData(this.props.mapData);
+		}
+
 		//
 		console.log(document.getElementById('map').clientWidth);
 		const width = document.getElementById('map').clientWidth;
@@ -242,78 +246,7 @@ class MapDiv extends Component {
 		if(this.props.mapData && this.props.mapData != nextProps.mapData) {
 			
 			if(nextProps.mapData) {
-				
-				const clusterTracks = nextProps.mapData;
-				
-				// 依据时间粒度划分的 数据集合
-				const trajDataSet = [];
-
-				for(let i = 0; i < clusterTracks.length; i++) {
-
-					// 每一个元素 为个单元时间粒度的 轨迹集合
-					const groupName = clusterTracks[i]._id;
-					const geom =  clusterTracks[i].trajectories;
-					const clusterid = clusterTracks[i].clusterid;
-
-					const nowTracksByCluster = [];  // 该时间粒度下，不同人群的轨迹集合
-
-					// 将每个时间粒度内的元素 依据各自的群体类别进行划分
-					geom.forEach((item,index) => {
-						const clusterName = `人群${clusterid[index]}`;
-
-						let everyCluster = nowTracksByCluster.find((everyCluster) => everyCluster.name == clusterName);
-
-						if(everyCluster == undefined) {
-							everyCluster = {};
-							everyCluster.name = clusterName;
-							everyCluster.geoms = [];
-							everyCluster.count = 0;
-							nowTracksByCluster.push(everyCluster);
-						}
-						const geojson = JSON.parse(item);
-						const coord = geojson.coordinates;
-						const coord_e = [];
-						for(let index = 0; index < coord.length; index++){
-							const lon = coord[index][0];
-							const lat = coord[index][1];
-							coord_e.push([lon, lat]);
-						}
-						const geom_e = { coords: coord_e };
-
-						// 将该类别的轨迹 添加到集合
-						everyCluster.geoms.push(geom_e);
-
-						// 添加每个系列的属性
-						if (geojson.count) {
-							everyCluster.count = geojson.count;
-						}
-						
-					});
-
-					const legendData = nowTracksByCluster.map( e => e.name);
-
-					const seriesData = nowTracksByCluster.map( e => e.geoms);
-
-					const seriesProperty = nowTracksByCluster.map( e => e.count);
-
-					// 将每个时间粒度下的 数据添加到 集合
-					trajDataSet.push({
-						date:groupName,
-						legends:legendData,
-						series:seriesData,
-						seriesProperty: seriesProperty
-					});
-				}
-
-				let startDate = '';
-
-				if (trajDataSet.length > 0) startDate = trajDataSet[0].date;
-
-				this.setState({
-					currentDate: startDate, 
-					echartData: trajDataSet,
-					isEChartDataNew: true
-				})
+				this.generateEChartsData(nextProps.mapdata);
 			}// if mapdata valid
 		}// if props updated
 
@@ -348,6 +281,82 @@ class MapDiv extends Component {
 
 	componentWillUnmount() {
     	window.removeEventListener('resize', this.handleResize);
+  	}
+
+
+  	generateEChartsData = (mapData) => {
+
+		const clusterTracks = mapData;
+		
+		// 依据时间粒度划分的 数据集合
+		const trajDataSet = [];
+
+		for(let i = 0; i < clusterTracks.length; i++) {
+
+			// 每一个元素 为个单元时间粒度的 轨迹集合
+			const groupName = clusterTracks[i]._id;
+			const geom =  clusterTracks[i].trajectories;
+			const clusterid = clusterTracks[i].clusterid;
+
+			const nowTracksByCluster = [];  // 该时间粒度下，不同人群的轨迹集合
+
+			// 将每个时间粒度内的元素 依据各自的群体类别进行划分
+			geom.forEach((item,index) => {
+				const clusterName = `人群${clusterid[index]}`;
+
+				let everyCluster = nowTracksByCluster.find((everyCluster) => everyCluster.name == clusterName);
+
+				if(everyCluster == undefined) {
+					everyCluster = {};
+					everyCluster.name = clusterName;
+					everyCluster.geoms = [];
+					everyCluster.count = 0;
+					nowTracksByCluster.push(everyCluster);
+				}
+				const geojson = JSON.parse(item);
+				const coord = geojson.coordinates;
+				const coord_e = [];
+				for(let index = 0; index < coord.length; index++){
+					const lon = coord[index][0];
+					const lat = coord[index][1];
+					coord_e.push([lon, lat]);
+				}
+				const geom_e = { coords: coord_e };
+
+				// 将该类别的轨迹 添加到集合
+				everyCluster.geoms.push(geom_e);
+
+				// 添加每个系列的属性
+				if (geojson.count) {
+					everyCluster.count = geojson.count;
+				}
+				
+			});
+
+			const legendData = nowTracksByCluster.map( e => e.name);
+
+			const seriesData = nowTracksByCluster.map( e => e.geoms);
+
+			const seriesProperty = nowTracksByCluster.map( e => e.count);
+
+			// 将每个时间粒度下的 数据添加到 集合
+			trajDataSet.push({
+				date:groupName,
+				legends:legendData,
+				series:seriesData,
+				seriesProperty: seriesProperty
+			});
+		}
+
+		let startDate = '';
+
+		if (trajDataSet.length > 0) startDate = trajDataSet[0].date;
+
+		this.setState({
+			currentDate: startDate, 
+			echartData: trajDataSet,
+			isEChartDataNew: true
+		})
   	}
 
 	// update Trajectories ECharts
