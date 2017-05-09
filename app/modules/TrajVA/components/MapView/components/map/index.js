@@ -246,7 +246,7 @@ class MapDiv extends Component {
 		if(this.props.mapData && this.props.mapData != nextProps.mapData) {
 			
 			if(nextProps.mapData) {
-				this.generateEChartsData(nextProps.mapdata);
+				this.generateEChartsData(nextProps.mapData);
 			}// if mapdata valid
 		}// if props updated
 
