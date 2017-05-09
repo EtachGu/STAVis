@@ -296,13 +296,13 @@ export class TimeViewCtrl extends React.Component {
 
   	const timeCharts = echarts.getInstanceByDom(document.getElementById('timeCharts'));
 
-  	const timeOption = timeCharts.getOption();
+  	const timeOption = timeCharts ? timeCharts.getOption() : null;
 
-  	const seriesSetting =  this.generateSeries(timeOption.series, timeOption.color);
+  	const seriesSetting = timeOption ? this.generateSeries(timeOption.series, timeOption.color) : null;
 
-	const visualMapSetting = this.generateVisualMap(timeOption.visualMap);
+	const visualMapSetting = timeOption ? this.generateVisualMap(timeOption.visualMap) : null;
 
-	const toolboxSetting = this.generateToolBox(timeOption.toolbox);
+	const toolboxSetting = timeOption ? this.generateToolBox(timeOption.toolbox) : null;
 
 	const markAreaSetting = null; //this.generateMarkArea();
 

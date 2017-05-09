@@ -297,13 +297,13 @@ export class GraphViewCtrl extends React.Component {
 
   	const graphCharts = echarts.getInstanceByDom(document.getElementById(this.state.chartName));
 
-  	const graphOption = graphCharts.getOption();
+  	const graphOption = graphCharts ? graphCharts.getOption() : null;
 
-  	const seriesSetting =  this.generateSeries(graphOption.series, graphOption.color);
+  	const seriesSetting =  graphOption ? this.generateSeries(graphOption.series, graphOption.color) : null;
 
-	const visualMapSetting = this.generateVisualMap(graphOption.visualMap);
+	const visualMapSetting = graphOption ? this.generateVisualMap(graphOption.visualMap) : null;
 
-	const toolboxSetting = this.generateToolBox(graphOption.toolbox);
+	const toolboxSetting = graphOption ? this.generateToolBox(graphOption.toolbox) : null;
 
 	const markAreaSetting = null; //this.generateMarkArea();
 
