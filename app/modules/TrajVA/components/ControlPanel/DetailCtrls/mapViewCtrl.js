@@ -299,7 +299,7 @@ export class MapViewCtrl extends React.Component {
 	on2D3DChange = (e) => {
 
 		const controlsObject = this.props.controlsState;
-		controlsObject.map3d = this.state.map2D3D === '3D';
+		controlsObject.map3d = e.target.value === '3D';
 		const controlsNew = Object.assign({}, controlsObject);
 		this.props.updateControlState(controlsNew);
 
@@ -310,13 +310,13 @@ export class MapViewCtrl extends React.Component {
 
   	const mapCharts = echarts.getInstanceByDom(document.getElementById('map'));
 
-  	const mapOption = mapCharts.getOption();
+  	const mapOption = mapCharts ? mapCharts.getOption() : null;
 
-  	const seriesSetting =  this.generateSeries(mapOption.series, mapOption.color);
+  	const seriesSetting =  mapOption ? this.generateSeries(mapOption.series, mapOption.color) : null;
 
-	const visualMapSetting = this.generateVisualMap(mapOption.visualMap);
+	const visualMapSetting = mapOption ? this.generateVisualMap(mapOption.visualMap) : null;
 
-	const toolboxSetting = this.generateToolBox(mapOption.toolbox);
+	const toolboxSetting = mapOption ?  this.generateToolBox(mapOption.toolbox) : null;
 
 	const markAreaSetting = null; //this.generateMarkArea();
 

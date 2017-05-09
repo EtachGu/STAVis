@@ -203,7 +203,7 @@ class MapDiv extends Component {
 		seriesData.push({
 			name: '基站',
 			type: 'scatter3D',
-			coordinateSystem: 'geo',
+			coordinateSystem: 'geo3D',
 			data:cellBaseStations.data.map(e => e.concat([1])),
 			symbolSize:1
 		});
@@ -211,10 +211,9 @@ class MapDiv extends Component {
 		echarts.registerMap('shanghai', shanghaiJson);
 		const chart = echarts.init(document.getElementById('map'));
 
-		this.setEChartGeoOption(chart);
-
 		chart.setOption({
 			backgroundColor: '#404a59',
+			geo3D: this.setEChartGeoOption(),
 			series:seriesData,
 			grid3D: {},
 		    xAxis3D: {},
