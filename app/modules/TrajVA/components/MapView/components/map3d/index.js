@@ -413,7 +413,7 @@ class MapDiv extends Component {
 							// add 该系列数据
 							let seriesData = series[indexSeries];
 							switch (seriesType) {
-								case 'scatter3D': //seriesData = _.flatten(seriesData.map((points) => points.coords)); break;
+								case 'scatter3D': seriesData = _.flatten(seriesData); break;
 								case 'line3D': break;
 								default: break;
 							}
@@ -506,6 +506,13 @@ class MapDiv extends Component {
 				            	zlevel: 1    //  new Canvas level = 3
 				            },
 				            geo3D: this.setEChartGeo3DOption(),
+				            grid3D: {},
+						    xAxis3D: {show: false},
+						    yAxis3D: {show: false},
+						    zAxis3D: {
+						    	show: true,
+						    	scale: true,
+						    },
 				            series: baseSeriesData,
 				            visualMap: this.props.geomType === 'heatmap' ? this.generateVisualMap() : null
 				        },
@@ -556,6 +563,13 @@ class MapDiv extends Component {
 					color:color,
 					series:seriesData,
 					geo3D:  this.setEChartGeo3DOption(),
+					grid3D: {},
+				    xAxis3D: {show: false},
+				    yAxis3D: {show: false},
+				    zAxis3D: {
+				    	show: true,
+				    	scale: true,
+				    },
 				 	toolbox: toolboxOtpion,
 					legend: {
 						orient: 'vertical',
@@ -594,7 +608,7 @@ class MapDiv extends Component {
 						name: legendData[index],
 						type: seriesType,
 						coordinateSystem: coordinateSystemName,
-						data: item,
+						data: _.flatten(item),
 					})
 				}); break;
 			case 'line3D': 
@@ -632,18 +646,6 @@ class MapDiv extends Component {
 						progressive: 200
 					});
 
-				}); break;
-			case 'heatmap' : 
-				// add Scatter seriesData
-				series.forEach((item,index) => {
-					outputSeriesData.push({
-						name: legendData[index],
-						type: seriesType,
-						coordinateSystem: coordinateSystemName,
-						data:_.flatten(item.map((points) => points.coords)).map(e => e.concat([1])),
-						pointSize: 5,
-						blurSize: 6
-					})
 				}); break;
 			default: break;
 		}
