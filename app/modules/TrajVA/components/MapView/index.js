@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 // components
 import MapDiv from './components/map';
 import STMapDiv from './components/statisticMap';
-
+import Map3D from './components/map3d';
 
 // styles
 import styles from './styles.css';
@@ -16,7 +16,8 @@ import styles from './styles.css';
 import {
   selectTrajectory,
   selectControlsGeomType,
-  selectControlsMapType
+  selectControlsMapType,
+  selectControlsMap3d
 } from './selectors';
 
 class MapView extends Component {
@@ -27,7 +28,7 @@ class MapView extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.mapType !== nextProps.mapType || this.props.geomType !== nextProps.geomType) {
+    if (this.props.mapType !== nextProps.mapType || this.props.geomType !== nextProps.geomType || this.props.map3d !== nextProps.map3d) {
       return true;
     }
     if (this.props.trajectories !== nextProps.trajectories) {
@@ -177,7 +178,8 @@ class MapView extends Component {
       case 3: mapEChartsSeriesType = 'heatmap'; break;
       default: break; 
     }
-    const mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>);
+    let mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>);
+    if (this.props.map3d) mapDiv = (<Map3D className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={mapEChartsSeriesType}/>)
     return (
       <div>
         {mapDiv}
@@ -190,14 +192,16 @@ MapView.propTypes = {
   ij: React.PropTypes.any,
   trajectories: React.PropTypes.object,
   geomType: React.PropTypes.number,
-  mapType: React.PropTypes.number
+  mapType: React.PropTypes.number,
+  map3d: React.PropTypes.boolean,
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = createStructuredSelector({
   trajectories:selectTrajectory,
   geomType: selectControlsGeomType,
-  mapType: selectControlsMapType
+  mapType: selectControlsMapType,
+  map3d: selectControlsMap3d,
 });
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。

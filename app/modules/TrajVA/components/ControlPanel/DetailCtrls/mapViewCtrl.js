@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import echarts from 'echarts';
+import { createStructuredSelector } from 'reselect';
 // import components
 import {
 	Input,
@@ -23,6 +24,13 @@ const RadioGroup = Radio.Group;
 const { MonthPicker, RangePicker } = DatePicker;
 const Option = Select.Option;
 
+// Import Actions
+import { updateControls } from '../../../TrajVAActions';
+
+// selectors
+import { selectControls } from '../selectors';
+
+
 //css
 import styles from '../styles.css';
 
@@ -39,10 +47,6 @@ const POP_MARKPOINT = 5;
 
 
 export class MapViewCtrl extends React.Component {
-	static propTypes = {
-		name: React.PropTypes.string,
-		toBack: React.PropTypes.func,
-	};
 
 	constructor(props) {
 		super(props);
@@ -56,7 +60,8 @@ export class MapViewCtrl extends React.Component {
 
 			visualMapType: 'piecewise',
 
-			seriesIndex: 0
+			seriesIndex: 0,
+			map2D3D: '2D'
 		}
 	}
 
@@ -291,6 +296,15 @@ export class MapViewCtrl extends React.Component {
 		return advanceSetting;
 	}
 
+	on2D3DChange = (e) => {
+
+		const controlsObject = this.props.controlsState;
+		controlsObject.map3d = this.state.map2D3D === '3D';
+		const controlsNew = Object.assign({}, controlsObject);
+		this.props.updateControlState(controlsNew);
+
+		this.setState({map2D3D: e.target.value})
+	}
 
   render() {
 
@@ -326,6 +340,21 @@ export class MapViewCtrl extends React.Component {
 				</Button>
 			</Row>
 			<hr style={{ marginTop: 5, marginBottom: 5 }} />
+			<Row>
+				<label>
+					2D/3D切换
+					<div>
+						<RadioGroup
+							value={this.state.map2D3D}
+							onChange={this.on2D3DChange}
+							size="small"
+						>
+							<Radio.Button value="2D">2D</Radio.Button>
+							<Radio.Button value="3D">3D</Radio.Button>
+						</RadioGroup>
+					</div>
+				</label>
+			</Row>
 			<Row>
 				<label>
 					系列集合
@@ -451,15 +480,27 @@ export class MapViewCtrl extends React.Component {
   }
 }
 
+MapViewCtrl.propTypes = {
+	name: React.PropTypes.string,
+	toBack: React.PropTypes.func,
+	updateControlState: React.PropTypes.func
+};
 
-function mapStateToProps(state) {
-	return {
 
-	};
+// 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
+const mapStateToProps = createStructuredSelector({
+ 	controlsState: selectControls
+});
+
+// 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
+export function mapDispatchToProps(dispatch) {
+  return {
+    changeRoute: (url) => dispatch(push(url)),
+    updateControlState: (controlData) => dispatch(updateControls(controlData)),
+  };
 }
-
 
 export default connect(
 	mapStateToProps,
-// Implement map dispatch to props
+	mapDispatchToProps
 )(MapViewCtrl)

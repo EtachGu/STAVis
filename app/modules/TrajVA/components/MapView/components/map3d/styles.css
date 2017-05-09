@@ -1,0 +1,7 @@
+.mapdiv {
+	width: 100%;
+	min-width: 300px;
+	min-height: 250px;
+	max-height: 800px;
+	height: 100%;
+}

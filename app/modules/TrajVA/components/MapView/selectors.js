@@ -24,9 +24,15 @@ const selectControlsMapType = createSelector(
 	(globalState) => globalState.controls.mapType
 );
 
+const selectControlsMap3d = createSelector(
+	selectDefault,
+	(globalState) => globalState.controls.map3d
+)
+
 export {
 	selectTrajectory,
 	selectControls,
 	selectControlsGeomType,
-	selectControlsMapType
+	selectControlsMapType,
+	selectControlsMap3d
 };
