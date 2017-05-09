@@ -183,7 +183,7 @@ class MapView extends Component {
       switch (geomType) {
         // case 1: mapDiv = (<STMapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
         // case 2: mapDiv = (<MapDiv className={styles.mapdiv} mapData={mapData} mapType={mapType} geomType={geomType}/>); break;
-        case 1: mapEChartsSeriesType = 'scatter3D'; break;
+        case 1: mapEChartsSeriesType = 'bar3D'; break;//'scatter3D'; break;
         case 2: mapEChartsSeriesType = 'line3D'; break;
         // case 3: mapEChartsSeriesType = 'heatmap'; break;
         default: break; 

@@ -568,7 +568,7 @@ class MapDiv extends Component {
 				    yAxis3D: {show: false},
 				    zAxis3D: {
 				    	show: true,
-				    	scale: true,
+				    	type: 'time',
 				    },
 				 	toolbox: toolboxOtpion,
 					legend: {
@@ -608,7 +608,17 @@ class MapDiv extends Component {
 						name: legendData[index],
 						type: seriesType,
 						coordinateSystem: coordinateSystemName,
-						data: _.flatten(item),
+						data: _.flatten(item).map(e => {e[2] *= 100; return e;} ),
+					})
+				}); break;
+			case 'bar3D' : 
+				// add Scatter seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						coordinateSystem: coordinateSystemName,
+						data: _.flatten(item).map(),
 					})
 				}); break;
 			case 'line3D': 
@@ -660,6 +670,16 @@ class MapDiv extends Component {
 					name: legendName,
 					type: seriesType,
 					coordinateSystem: coordinateSystemName,
+				}); break;
+			case 'bar3D' : 
+				// add Scatter seriesData
+				series.forEach((item,index) => {
+					outputSeriesData.push({
+						name: legendData[index],
+						type: seriesType,
+						coordinateSystem: coordinateSystemName,
+						data: _.flatten(item).map(),
+					})
 				}); break;
 			case 'line3D': 
 				// add Lines seriesData
