@@ -410,7 +410,17 @@ class MapDiv extends Component {
 							let seriesData = series[indexSeries];
 							switch (seriesType) {
 								case 'scatter3D': seriesData = _.flatten(seriesData); break;
-								case 'line3D': break;
+								case 'lines3D': 
+									const tempData = [];
+									for (var i = 0; i < item.length; i++) {
+										const line = item[i];
+										tempData.push([ 
+											[line[0][0], line[0][1]],
+											[line[line.length-1][0], line[line.length-1][1]]
+										]);
+									}
+									seriesData = tempData;
+								break;
 								default: break;
 							}
 							
@@ -606,41 +616,36 @@ class MapDiv extends Component {
 						}
 					})
 				}); break;
-			case 'line3D': 
+			case 'lines3D': 
 				// add Lines seriesData
 				series.forEach((item,index) => {
+					const linesData = [];
+					for (var i = 0; i < item.length; i++) {
+						const line = item[i];
+						linesData.push([ 
+							[line[0][0], line[0][1]],
+							[line[line.length-1][0], line[line.length-1][1]]
+						]);
+					}
 					outputSeriesData.push({
-						name: legendData[index],
-						type: seriesType,
-						polyline: true,
-						// coordinateSystem: 'geo',
-						coordinateSystem: coordinateSystemName,
-						data:item,
-						// lineStyle: {
-						// 	normal: {
-						// 		opacity: 0.2,
-						// 		width: 1
-						// 	}
-						// },
-						// zlevel: 2,
-						effect: {
-							show: true,
-							period: 6,
-							trailLength: 0,
-							symbol: "pin",
-							symbolSize: 5
-						},
-						lineStyle: {
-							normal: {
-								width: linesWidths[index] || 0.5,
-								opacity: 0.1,
-								curveness: 0.2,
-							}
-						},
-						progressiveThreshold: 500,
-						progressive: 200
+							name: legendData[index],
+							type: seriesType,
+							// coordinateSystem: 'geo',
+							coordinateSystem: coordinateSystemName,
+							data: linesData,
+							// lineStyle: {
+							// 	normal: {
+							// 		opacity: 0.2,
+							// 		width: 1
+							// 	}
+							// },
+							// zlevel: 2,
+							effect: {
+								show: true,
+								period: 6,
+								trailLength: 0.1,
+							},
 					});
-
 				}); break;
 			default: break;
 		}
@@ -669,12 +674,11 @@ class MapDiv extends Component {
 						}
 					})
 				}); break;
-			case 'line3D': 
+			case 'lines3D': 
 				// add Lines seriesData
 				outputbaseSeriesData.push({
 					name: legendName,
 					type: seriesType,
-					polyline: true,
 					coordinateSystem: coordinateSystemName,
 					// lineStyle: {
 					// 	normal: {
@@ -687,18 +691,7 @@ class MapDiv extends Component {
 						show: true,
 						period: 6,
 						trailLength: 0,
-						symbol: "pin",
-						symbolSize: 5
 					},
-					lineStyle: {
-						normal: {
-							width: linesWidth || 0.5,
-							opacity: 0.1,
-							curveness: 0.2
-						}
-					},
-					progressiveThreshold: 500,
-					progressive: 200
 				}); break;
 			default: break;
 		}
