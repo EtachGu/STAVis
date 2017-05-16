@@ -412,9 +412,9 @@ class MapDiv extends Component {
 								case 'scatter3D': seriesData = _.flatten(seriesData); break;
 								case 'lines3D': 
 									const tempData = [];
-									for (var i = 0; i < item.length; i++) {
-										const line = item[i];
-										tempData.push([ 
+									for (var i = 0; i < seriesData.length; i++) {
+										const line = seriesData[i];
+										tempData.push([
 											[line[0][0], line[0][1]],
 											[line[line.length-1][0], line[line.length-1][1]]
 										]);
@@ -690,7 +690,7 @@ class MapDiv extends Component {
 					effect: {
 						show: true,
 						period: 6,
-						trailLength: 0,
+						trailLength: 0.1,
 					},
 				}); break;
 			default: break;
